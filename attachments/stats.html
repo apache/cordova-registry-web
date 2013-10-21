@@ -1,0 +1,86 @@
+<html>
+  <head>
+    <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+    <script src="http://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css">
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-theme.min.css">
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+    <script type='text/javascript'>
+      function clientStats() {
+        var url = 'http://cordova.iriscouch.com/downloads/_design/downloads/_view/byClient?group=true'
+        var xhr = new XMLHttpRequest();
+        xhr.open('GET', url, true);
+        xhr.onload = function(e) {
+          var data = JSON.parse(xhr.responseText).rows;
+          var clientStatsEm = document.getElementById('client_stats');
+          var plugman = cordova_cli = unknown = total = 0;
+          for(var i = 0 ; i < data.length ; i++) {
+            total += data[i].value;
+            if(data[i].key[1] === 'plugman') {
+              plugman += data[i].value;
+            } else if(data[i].key[1] === 'cordova-cli') {
+              cordova_cli += data[i].value;
+            } else {
+              unknown += data[i].value;
+            }
+          }
+          var plugmanPerc = plugman * 100 / total;
+          var cordovaCliPerc = cordova_cli * 100 / total;
+          var unknownPerc = unknown * 100 / total;
+          var html = 'plugman '+Math.round(plugmanPerc)+'%<br/>';
+          html += 'cordova-cli '+Math.round(cordovaCliPerc)+'%<br/>';
+          html += 'unknown '+Math.round(unknownPerc)+'%<br/>';
+          clientStatsEm.innerHTML = html; 
+        };
+        xhr.send();
+      };
+      window.addEventListener('load', function load(event) {
+          window.removeEventListener('load');
+          var url = 'http://cordova.iriscouch.com/downloads/_design/downloads/_view/byId?group=true';
+          var xhr = new XMLHttpRequest();
+          xhr.open('GET', url, true);
+          xhr.onload = function(e) {
+            var downloads = JSON.parse(xhr.responseText).rows;
+            var downloadsEm = document.getElementById('downloads');
+            downloads.sort(function(a,b) { return b.value - a.value; });
+            for(var i = 0 ; i < downloads.length ; i++) {
+              var row = document.createElement('tr');
+              var rank = i+1;
+              row.innerHTML = '<td>'+rank+'</td><td>'+downloads[i].key+'</td>'+'<td>'+downloads[i].value+'</td>';
+              downloadsEm.appendChild(row); 
+            }
+            clientStats();
+          };
+          xhr.send();
+      });
+    </script>
+  </head>
+
+  <body>
+    <table class='table'>
+      <thead>
+        <tr>
+          <th>
+            Rank 
+          </th>
+          <th>
+            Plugin ID
+          </th>
+          <th>
+            Downloads
+          </th>
+        </tr>
+      </thead>
+      <tbody id='downloads'>
+      </tbody>
+    </table>
+    <div id="client_stats">
+    </div>
+  </body>
+
+</html>
