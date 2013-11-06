@@ -786,6 +786,15 @@ app.author = function () {
     })
   })
 }
+
+app.stats = function() {
+  clearContent();
+
+  request({url:'/stats.html', dataType:'html'}, function (e, resp) {
+    $('div#content').html('<div id="main-container">'+resp+'</div>');
+  })
+}
+
 app.analytics = function () {
   clearContent();
   var view = this.params.view || "thisweek";
@@ -922,6 +931,7 @@ $(function () {
     this.get('', app.index);
     this.get("#/", app.index);
     this.get("#/_analytics", app.analytics);
+    this.get("#/_stats", app.stats);
     this.get("#/_analytics/:view", app.analytics);
     this.get("#/_browse", app.browse);
     this.get("#/_browse/:view", app.browse);

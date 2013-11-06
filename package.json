@@ -1,0 +1,16 @@
+{
+  "name": "cordova-registry-web",
+    "version": "0.1.0",
+    "description": "The cordova registry ui couchapp",
+    "scripts": {
+      "start": "./push.sh"
+    },
+    "dependencies": {
+      "couchapp": "~0.9",
+      "semver": "~2.0.10"
+    },
+    "devDependencies": {
+      "jsontool": "~4.0.0"
+    }
+}
+
