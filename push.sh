@@ -3,7 +3,7 @@ HOST="localhost:5984"
 
 if [ $# -ne 2 ] && [ $# -ne 0 ]
 then
-    echo 'Usage: drop_registry username:password http://registry_host'
+    echo 'Usage: ./push.sh username:password http://registry_host'
     exit 1
 fi
 
