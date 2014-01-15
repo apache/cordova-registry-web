@@ -324,12 +324,23 @@ app.index = function () {
 app.showPackage = function () {
   var id = this.params.id;
   clearContent();
-  $('div#content').html('<div id="main-container"></div>')
-  request({url:'/api/'+id}, function (err, doc) {
+    request({url:'/showPackage.html?id='+id, dataType:'html'}, function (e, resp) {
+        $('div#content').html('<div id="main-container">'+resp+'</div>');
+    })
+    /*
     var package = $('div#main-container')
-    
+  
+    package.append('<div class="package-label">Plugin ID</div>')
     package.append('<div class="package-title">'+doc._id+'</div>')
-    // package.append('<div class="package-description">'+doc.description+'</div>')
+    package.append('<div class="spacer"></div>')
+    package.append('<div class="spacer"></div>')
+
+    package.append('<div class="package-label">Description</div>')
+    package.append('<div class="package-description">'+doc.description+'</div>')
+    package.append('<div class="spacer"></div>')
+
+    package.append('<hr>')  
+
     
     if (doc['dist-tags'] && doc['dist-tags'].latest) {
       if (doc.versions[doc['dist-tags'].latest].homepage) {
@@ -508,6 +519,8 @@ app.showPackage = function () {
         ).appendTo('div#version-info');
       }
 
+      package.append('<section id="readme">'+doc.readme +'</section>');
+
       
       //  +
       // '<div class="version-info-cell">' +
@@ -578,8 +591,7 @@ app.showPackage = function () {
       }
       deps += '</p></div>'
       package.append(deps)
-    })
-  })
+    })*/
 }
 
 app.browse = function () {

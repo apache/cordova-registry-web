@@ -39,6 +39,7 @@ a.dep-link {
 .spacer,
 .clear {
   clear: both;
+  margin-bottom: 10px;
 }
 .button {
   display: inline-block;
@@ -241,8 +242,12 @@ div.package {
   text-align: center;
 }
 div.package-title {
-  font-size: 45px;
+  font-size: 22px;
   float: left;
+}
+div.package-label {
+  font-size: 17px;
+  color: #999999;
 }
 div.pkg-link {
   float: left;
