@@ -1,51 +1,46 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
+<html ng-app='registry'>
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <meta name="keywords" content="">
     <meta name="description" content="">
 
     <title>Cordova Plugin Registry</title>
-    <link href="/layout.css" rel="stylesheet" type="text/css">
-    <!-- could also go to
-         http://registry.npmjs.org/-/rss?descending=true&limit=50 -->
-    <link rel="alternate" type="application/rss+xml"
-      href="/api/_design/app/_rewrite/-/rss?descending=true&limit=50"
-      title="npm publish feed (RSS)">
-    <script language="javascript" type="text/javascript" src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
-    <script language="javascript" type="text/javascript" src="http://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
-    <script language="javascript" type="text/javascript" src="sammy/sammy.js"></script>
-    <script language="javascript" type="text/javascript" src="site.js"></script>
+    <link href="css/layout.css" rel="stylesheet" type="text/css">
     <link href="images/favicon.ico" rel="shortcut icon" type="image/x-icon">
   </head>
 
   <body>
     <div id="body-container">
-      <div id="header">
-        <div class="wrap">
-          <a href="/" title="Home" class="icon-cordova logo">Cordova Plugins</a>
-          <div id="howto" style="display:none;">
-            <a href="http://npmjs.org/doc/README.html"><span>How to</span>Install npm</a>
-            <a href="http://npmjs.org/doc/publish.html"><span>How to</span>Publish a package</a>
-          </div>
+        <div id="header">
+            <div class="wrap">
+            <a href="/" title="Home" class="icon-cordova logo">Cordova Plugins</a>
+            <div id="howto" style="display:none;">
+                <a href="http://npmjs.org/doc/README.html"><span>How to</span>Install npm</a>
+                <a href="http://npmjs.org/doc/publish.html"><span>How to</span>Publish a package</a>
+            </div>
         </div>
-      </div>
+    </div>
       
-      <div id="totals">
-      </div>
+    <div id="totals"></div>
 
-      <div class="grid">
+    <div class="grid">
         <div id="tabs">
           <a href="/" class="selected tab-find">Find packages</a>
           <a href="/#/_browse/all" class="tab-browse">Browse packages</a>
           <a href="/#/_more" class="tab-more">More</a>
         </div>
         <div id="content-wrapper" class="wrap">
-          <div id="content">
-          </div>
+          <div id="content" ng-view></div>
         </div>
       </div>
 
     </div>
+    <script language="javascript" type="text/javascript" src="js/lib/angular.min.js"></script>
+    <script type="text/javascript" src="js/lib/angular-route.min.js"></script>
+    <script language="javascript" type="text/javascript" src="js/app.js"></script>
+    <script language="javascript" type="text/javascript" src="js/controllers.js"></script>
+    <script type="text/javascript" src="js/controllers/home.js"></script>
+
   </body>
 </html>

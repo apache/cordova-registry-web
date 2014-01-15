@@ -1,4 +1,4 @@
-@import "font/style.css";
+@import "../font/style.css";
 /* ----- mixins ------ */
 /* ----- font ----- */
 html {
@@ -26,7 +26,7 @@ body {
   padding: 40px 0;
 }
 .grid {
-  background: url(images/grid.png);
+  background: url(../images/grid.png);
 }
 /* ----- common elements -----*/
 a {
