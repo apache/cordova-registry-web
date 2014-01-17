@@ -9,6 +9,7 @@ angular.module('registry.controllers').controller('ViewAllController', ['$rootSc
                     $scope.plugins = data.rows;
                     console.log($scope.plugins)
                     console.log($scope.plugins[0].doc.description)
+                    console.log($scope.plugins[0].doc['dist-tags'].latest)
                 }).
                 error(function(data, status){
                     if (status === 404){

@@ -1,13 +1,25 @@
 <div>
     <div id="pluginList">
         <div id="listHeader">
-            <div class="listHeaderItem">Plugin ID and Description</div>
-            <div class="listHeaderItem">Version</div>
-            <div class="listHeaderItem">Downloads</div>
+            <div class="listHeaderItem left">Plugin ID and Description</div>
+            <div class="right">
+                <div class="listHeaderItem left">Version</div>
+                <div class="listHeaderItem right">Downloads</div>
+            </div>
+            <div style="clear:both"></div>
         </div>
+        <div class="darkline"></div>
         <div ng-repeat="plugin in plugins">
-            <div><a ng-href="#/package/{{plugin.id}}">{{plugin.id}}</a></div>
-        
+            <div class="left">
+                <div><a ng-href="#/package/{{plugin.id}}">{{plugin.id}}</a></div>
+                <div>{{plugin.doc.description}}</div>
+            </div>
+            <div class="right">
+                <div class="left">{{plugin.doc['dist-tags'].latest}}</div>
+                <div class="right">count</div>
+            </div>
+            <div style="clear:both"></div>
+            <div class="lightline"></div>
         </div>
     </div>
 </div>
