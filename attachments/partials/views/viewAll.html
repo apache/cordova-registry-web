@@ -1,0 +1,13 @@
+<div>
+    <div id="pluginList">
+        <div id="listHeader">
+            <div class="listHeaderItem">Plugin ID and Description</div>
+            <div class="listHeaderItem">Version</div>
+            <div class="listHeaderItem">Downloads</div>
+        </div>
+        <div ng-repeat="plugin in plugins">
+            <div><a ng-href="#/package/{{plugin.id}}">{{plugin.id}}</a></div>
+        
+        </div>
+    </div>
+</div>

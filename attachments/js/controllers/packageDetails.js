@@ -30,5 +30,4 @@ angular.module('registry.controllers').controller('PackageDetailsController', ['
 
     }
     $scope.getPackage();
-
 }]);
