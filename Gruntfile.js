@@ -11,7 +11,7 @@ module.exports = function(grunt) {
     },
     watch: {
       changeFiles: {
-        files: ['attachments/*.html', 'attachments/partials/**/*.html', 'attachments/css/*.less', 'attachments/css/**/*.css', 'attachments/js/**/*.js'],
+        files: ['attachments/*.html', 'attachments/partials/**/*.html', 'attachments/css/**/*.less', 'attachments/css/**/*.css', 'attachments/js/**/*.js'],
         tasks: ['less', 'shell:reloadServer']
       },
       options: {
