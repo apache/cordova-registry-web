@@ -32,8 +32,8 @@
       <div class="topcoat-grid__column--6">
         <div class="topcoat-grid header-links">
           <div class="topcoat-grid__column--12">
-            <div class="search-container">
-              <input id="search-text" type="search" value="" placeholder="Find a plugin..." class="topcoat-search-input" />
+            <div class="search-container" ng-controller="SearchController">
+              <input id="search-text" type="search" ng-model="searchText" placeholder="Find a plugin..." class="topcoat-search-input" ng-enter="searchPlugins()" />
             </div>
             <a href="/#/createAccount">Create Account</a> 
             <a href="/#/signIn">Sign In</a>
@@ -80,6 +80,10 @@
   <script type="text/javascript" src="js/controllers/home.js"></script>
   <script type="text/javascript" src="js/controllers/packageDetails.js"></script>
   <script type="text/javascript" src="js/controllers/viewAll.js"></script>
+  <script type="text/javascript" src="js/controllers/search.js"></script>
+  <script type="text/javascript" src="js/directives/ng-enter.js"></script>
+  <script type="text/javascript" src="js/services/search-service.js"></script>
+
 
 </body>
 </html>

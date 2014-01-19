@@ -7,7 +7,8 @@ angular.module('registry', ['ngRoute', 'registry.controllers']).
         $route.
             when('/', {templateUrl:'/partials/views/home.html', controller:'HomeController'}).
             when('/viewAll', {templateUrl:'/partials/views/viewAll.html', controller:'ViewAllController'}).
-            when('/package/:id', {templateUrl:'/partials/views/packageDetails.html', controller:'PackageDetailsController'});
+            when('/package/:id', {templateUrl:'/partials/views/packageDetails.html', controller:'PackageDetailsController'}).
+            when('/search/:searchText', {templateUrl:'/partials/views/search.html', controller:'SearchController'});
            // otherwise({redirectTo: '/'});
        //$location.html5Mode(true); // use pushState instead of hash for urls
        
