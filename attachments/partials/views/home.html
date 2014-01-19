@@ -1,7 +1,6 @@
-<div id="main-container" class="grid">
-
-	<div class="topcoat-grid">
-		<div class="topcoat-grid__row">
+<div id="home-container">
+	<div class="topcoat-grid cordova-grid-bg">
+		<div class="topcoat-grid__row discover-message-container">
 			<div class="topcoat-grid__column--3 topcoat-grid__offset--1">
 				<h1 class="discover-message">Discover plugins for your </h1>
 				<h1 class="discover-message">Apache Cordova project.</h1>
@@ -17,37 +16,73 @@
 			</div>
 		</div>
 
-		<div class="topcoat-grid__row">
+	</div>
+
+	<div class="topcoat-grid">
+
+		<div class="topcoat-grid__row" class="call-to-action-panes">
 			<div class="topcoat-grid__column--6">
-				Contribute
+				<div class="topcoat-grid">
+					<div class="topcoat-grid__row">
+						<div class="topcoat-grid__column--12 topcoat-grid__offset--2">
+							<img title="Contrib flyer" />
+						</div>
+					</div>
+					<div class="topcoat-grid__row">
+						<div class="topcoat-grid__column--12 topcoat-grid__offset--3">
+							<h2>Contribute</h2>
+						</div>
+					</div>
+					<div class="topcoat-grid__row">
+						<div class="topcoat-grid__column--12 topcoat-grid__offset--2">
+							<h4>Want to <span> author &amp; publish</span> plugins?</h4>
+							<a href="pleaseread.html">Please read our docs</a>.
+						</div>
+					</div>
+				</div>
 			</div>
 			<div class="topcoat-grid__column--6">
-				Utilize
+				<div class="topcoat-grid">
+					<div class="topcoat-grid__row">
+						<div class="topcoat-grid__column--12 topcoat-grid__offset--2">
+							<img title="Utilize wrench" />
+						</div>
+					</div>
+					<div class="topcoat-grid__row">
+						<div class="topcoat-grid__column--12 topcoat-grid__offset--3">
+							<h2>Utilize</h2>
+						</div>
+					</div>
+					<div class="topcoat-grid__row">
+						<div class="topcoat-grid__column--12 topcoat-grid__offset--2">
+							<h4>Need to <span>install or remove</span> a plugin?</h4>
+							<a href="pleaseread.html">Check the documentation</a>.
+						</div>
+					</div>
+				</div>
 			</div>
 		</div>
 
-		<div class="topcoat-grid__row">
+		<div class="topcoat-grid__row home-plugin-listing">
 			<div class="topcoat-grid__column--6">
-				Most Downloaded
+				<h3>Most Downloaded</h3>
 			</div>
 			<div class="topcoat-grid__column--6">
-				Last Updated
+				<h3>Last Updated</h3>
 			</div>
 		</div>		
 
-		<div class="topcoat-grid__row">
+		<div class="topcoat-grid__row home-plugin-listing">
 			<div class="topcoat-grid__column--6">
-				
+				<div ng-repeat="plugin in mostDownloaded">
+					{{plugin.download_count}} {{plugin.bundle_id}}
+				</div>
 			</div>
 			<div class="topcoat-grid__column--6">
-				
+				<div ng-repeat="plugin in lastUpdated">
+					{{plugin.updated}} {{plugin.bundle_id}}
+				</div>
 			</div>
 		</div>
 	</div>
-
-	<!-- <div id="top-packages">
-		<div id="latest-packages"><div class="top-title">Latest Updates</div></div>
-		<div id="top-dep-packages"><div class="top-title">Most Depended On</div></div>
-		<div class="clear"></div>
-	</div> -->
 </div>

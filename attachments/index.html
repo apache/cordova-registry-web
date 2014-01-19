@@ -21,24 +21,22 @@
 <body ng-app='registry'>
 
   <div id="header" class="topcoat-grid">
-    <div class="topcoat-grid__row">
+    <div class="header-content topcoat-grid__row">
       <div class="topcoat-grid__column--6">
         <a href="/" title="Home" class="icon-cordova logo">
           <img class="registry-logo left" />
           <div class="top-project-text">Apache Cordova</div>
           <div class="top-plugins-registry-text">Plugins Registry</div>
         </a>
-        <div id="howto" style="display:none;">
-          <a href="http://npmjs.org/doc/README.html"><span>How to</span>Install npm</a>
-          <a href="http://npmjs.org/doc/publish.html"><span>How to</span>Publish a package</a>
-        </div>
       </div>
       <div class="topcoat-grid__column--6">
         <div class="topcoat-grid header-links">
           <div class="topcoat-grid__column--12">
-            <a href="plugins.html">Find Plugins</a>
-            <a href="signup.html">Create Account</a> 
-            <a href="signin.html">Sign In</a>
+            <div class="search-container">
+              <input id="search-text" type="search" value="" placeholder="Find a plugin..." class="topcoat-search-input" />
+            </div>
+            <a href="/#/createAccount">Create Account</a> 
+            <a href="/#/signIn">Sign In</a>
           </div>
         </div>
       </div>
@@ -50,16 +48,27 @@
 
   <div id="footer" class="topcoat-grid">
     <div class="topcoat-grid__row">
-      <div class="topcoat-grid__column--3">
-        <a href="registry-tracker">Plugin Registry Issue Tracker</a>
+      <div class="topcoat-grid__column--2">
+        <a href="https://issues.apache.org/jira/browse/CB/component/12321101">Plugin Registry Issue Tracker</a>
+      </div>
+      <div class="topcoat-grid__column--2">
+        <a href="http://cordova.apache.org/docs/en/edge/plugin_ref_plugman.md.html#Using%20Plugman%20to%20Manage%20Plugins_registry_actions">Cordova Plugin Documentation</a>
       </div>
       <div class="topcoat-grid__column--3">
-        <a href="registry-tracker">Cordova Plugin Documentation</a>
+        <a href="http://cordova.apache.org/">Apache Cordova Home</a>
       </div>
       <div class="topcoat-grid__column--3">
-        <a href="registry-tracker">Apache Cordova Home</a>
       </div>
-      <div class="topcoat-grid__column--3">
+    </div>
+    <div class="topcoat-grid__row">
+      <div class="topcoat-grid__column--6">
+        <p>Copyright &copy; 2012, 2013, 2014 The Apache Software Foundation, Licensed under the Apache License, Version 2.0</p>
+        <p>Apache and the Apache feather logos are trademarks of The Apache Software Foundation.</p>
+      </div>
+      <div class="topcoat-grid__column--4">
+        <div class="right">
+          <img title="Cordova Hi robot" />
+        </div>
       </div>
     </div>
   </div>
