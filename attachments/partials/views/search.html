@@ -6,7 +6,11 @@
     </div>
     <div class="topcoat-grid__row">
         <div class="topcoat-grid__column--12 topcoat-grid__offset--1">
-            <span>{{searchResults.length}} plugins found</span>
+            <ng-pluralize count="searchResults.length"
+                    when="{'0': 'No plugins found.',
+                           'one': '1 plugin found.',
+                           'other': '{} plugins found.'}">
+            </ng-pluralize>
         </div>
     </div>
     <div class="topcoat-grid__row">
