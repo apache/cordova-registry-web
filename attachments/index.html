@@ -1,50 +1,77 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html ng-app='registry'>
-  <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <meta name="keywords" content="">
-    <meta name="description" content="">
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta name="keywords" content="">
+  <meta name="description" content="">
 
-    <title>Cordova Plugin Registry</title>
-    <link rel="stylesheet" type="text/css" href="css/topcoat-mobile-light.min.css" />
-    <link rel="stylesheet" type="text/css" href="css/grid.min.css">
-    <link href="css/layout.css" rel="stylesheet" type="text/css">
-    <link href="images/favicon.ico" rel="shortcut icon" type="image/x-icon">
-  </head>
+  <title>Cordova Plugin Registry</title>
+  <!-- <link rel="stylesheet" type="text/css" href="css/topcoat-mobile-light.min.css" /> -->
+  <!-- <link rel="stylesheet" type="text/css" href="css/grid.min.css"> -->
+  <link href="css/styles.css" rel="stylesheet" type="text/css">
+  <link href="images/favicon.ico" rel="shortcut icon" type="image/x-icon">
 
-  <body>
-    <div id="body-container">
-        <div id="header">
-            <div class="wrap">
-            <a href="/" title="Home" class="icon-cordova logo">Cordova Plugins</a>
-            <div id="howto" style="display:none;">
-                <a href="http://npmjs.org/doc/README.html"><span>How to</span>Install npm</a>
-                <a href="http://npmjs.org/doc/publish.html"><span>How to</span>Publish a package</a>
-            </div>
-        </div>
-    </div>
-      
-    <div id="totals"></div>
+  <script src="http://localhost:35729/livereload.js"></script>
 
-    <div class="grid">
-        <div id="tabs">
-          <a href="/" class="selected tab-find">Find packages</a>
-          <a href="/#/_browse/all" class="tab-browse">Browse packages</a>
-          <a href="/#/_more" class="tab-more">More</a>
-        </div>
-        <div id="content-wrapper" class="wrap">
-          <div id="content" ng-view></div>
+</head>
+
+<body ng-app='registry'>
+
+  <div id="header" class="topcoat-grid">
+    <div class="topcoat-grid__row">
+      <div class="topcoat-grid__column--6">
+        <a href="/" title="Home" class="icon-cordova logo">
+          <img class="registry-logo left" />
+          <div class="top-project-text">Apache Cordova</div>
+          <div class="top-plugins-registry-text">Plugins Registry</div>
+        </a>
+        <div id="howto" style="display:none;">
+          <a href="http://npmjs.org/doc/README.html"><span>How to</span>Install npm</a>
+          <a href="http://npmjs.org/doc/publish.html"><span>How to</span>Publish a package</a>
         </div>
       </div>
-
+      <div class="topcoat-grid__column--6">
+        <div class="topcoat-grid header-links">
+          <div class="topcoat-grid__column--12">
+            <a href="plugins.html">Find Plugins</a>
+            <a href="signup.html">Create Account</a>
+            &nbsp;|&nbsp;
+            <a href="signin.html">Sign In</a>
+          </div>
+        </div>
+      </div>
     </div>
-    <script type="text/javascript" src="js/lib/angular.min.js"></script>
-    <script type="text/javascript" src="js/lib/angular-route.min.js"></script>
-    <script type="text/javascript" src="js/app.js"></script>
-    <script type="text/javascript" src="js/controllers.js"></script>
-    <script type="text/javascript" src="js/controllers/home.js"></script>
-    <script type="text/javascript" src="js/controllers/packageDetails.js"></script>
-    <script type="text/javascript" src="js/controllers/viewAll.js"></script>
+  </div>
 
-  </body>
+  <div id="content-wrapper" ng-view>
+  </div>
+
+  <div id="footer" class="topcoat-grid">
+    <div class="topcoat-grid__row">
+      <div class="topcoat-grid__column--3">
+        <a href="registry-tracker">Plugin Registry Issue Tracker</a>
+      </div>
+      <div class="topcoat-grid__column--3">
+        <a href="registry-tracker">Cordova Plugin Documentation</a>
+      </div>
+      <div class="topcoat-grid__column--3">
+        <a href="registry-tracker">Apache Cordova Home</a>
+      </div>
+      <div class="topcoat-grid__column--3">
+      </div>
+    </div>
+  </div>
+
+  <script type="text/javascript" src="js/lib/angular.min.js"></script>
+  <script type="text/javascript" src="js/lib/angular-route.min.js"></script>
+  <script type="text/javascript" src="js/app.js"></script>
+  <script type="text/javascript" src="js/controllers.js"></script>
+  <script type="text/javascript" src="js/controllers/home.js"></script>
+  <script type="text/javascript" src="js/controllers/packageDetails.js"></script>
+  <script type="text/javascript" src="js/controllers/viewAll.js"></script>
+
+</body>
 </html>
