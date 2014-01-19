@@ -1,6 +1,6 @@
 angular.module('registry.controllers').controller('HomeController', ['$rootScope', '$scope', '$location', '$http', function($rootScope, $scope, $location, $http) {
     
-    $scope.totalPlugins = null;
+    $scope.totalPlugins = 0;
     
     $scope.getTotalPlugins = function(){
         //console.log($scope.packageID);
