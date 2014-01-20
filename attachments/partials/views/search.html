@@ -1,7 +1,12 @@
 <div class="topcoat-grid">
     <div class="topcoat-grid__row">
         <div class="topcoat-grid__column--12 topcoat-grid__offset--1">
-            <input id="search-text" type="search" ng-model="searchText" placeholder="Find a plugin..." class="topcoat-search-input" ng-enter="searchPlugins()" />
+            <a href="/#/viewAll">Browse all {{totalPlugins}} plugins</a>    
+        </div>
+    </div>
+    <div class="topcoat-grid__row">
+        <div class="topcoat-grid__column--12 topcoat-grid__offset--1">
+            <input id="search-text" type="search" ng-model="searchText" placeholder="Find a plugin..." ng-enter="searchPlugins()" />
         </div>
     </div>
     <div class="topcoat-grid__row">
