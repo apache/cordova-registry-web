@@ -3302,6 +3302,19 @@ a.dep-link {
   background-color: #4cd6fc;
   color: #fff;
 }
+.pluggy-logo {
+  background: transparent url('../images/pluggy.svg') no-repeat top left;
+  background-size: contain;
+}
+.logo-link {
+  width: 100%;
+}
+.top-logo {
+  float: left;
+  height: 50px;
+  margin-right: 10px;
+  width: 32px;
+}
 /* ----- content ---- */
 #content-wrapper {
   padding-top: 0;
@@ -3709,16 +3722,28 @@ div.left {
 #home-container {
   min-height: 350px;
 }
+.home-pluggy {
+  height: 260px;
+  margin: -89px auto 10px auto;
+  width: 169px;
+}
 .discover-message-container {
-  padding-top: 80px;
+  padding-top: 120px;
+}
+.home-browse-all {
+  display: block;
+  margin: 20px auto;
+  width: 280px;
+  font-size: 20px;
 }
 .cordova-grid-bg {
   background: url(../images/grid.png);
 }
 .discover-message {
   background-color: white;
-  font-size: 36px;
+  font-size: 41px;
   margin: 1px;
+  text-align: center;
 }
 .home-plugin-listing {
   border-bottom: dotted 2px #bfb7b9;
@@ -3735,5 +3760,60 @@ div.left {
 .call-to-action-panes {
   text-align: center;
 }
+.call-to-action-pane {
+  background-color: #effbfe;
+  margin: 20px auto;
+  position: relative;
+  text-align: center;
+  height: 209px;
+}
+.call-to-action-mid-spacer {
+  flex-basis: 3%;
+  position: relative;
+}
+.call-to-action-mid-spacer div {
+  color: #F0F0F0;
+  font-size: 45px;
+  position: absolute;
+  top: 40%;
+}
+.call-to-action-pane-left-triangle,
+.call-to-action-pane-right-triangle {
+  position: absolute;
+}
+.call-to-action-pane-left-triangle {
+  width: 4%;
+  height: 100%;
+  overflow: hidden;
+  right: 0px;
+}
+.call-to-action-pane-left-triangle div {
+  width: 0px;
+  height: 0px;
+  border-style: solid;
+  border-width: 105px 18px 105px 0;
+  border-color: transparent #ffffff transparent transparent;
+}
+.call-to-action-pane-right-triangle {
+  width: 4%;
+  height: 100%;
+  overflow: hidden;
+  left: 0px;
+}
+.call-to-action-pane-right-triangle div {
+  width: 0px;
+  height: 0px;
+  border-style: solid;
+  border-width: 105px 0px 105px 18px;
+  border-color: transparent transparent transparent #ffffff;
+}
+.call-to-action-img {
+  border: solid 1px transparent;
+  border-radius: 30px;
+  background-color: white;
+  padding: 5px;
+  margin-top: 20px;
+}
 /* Package Details styles */
 /* View all page styles */
+/* Search styles */
