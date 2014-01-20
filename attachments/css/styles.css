@@ -3293,6 +3293,10 @@ a.dep-link {
   font-size: 1.5em;
   text-align: center;
   text-decoration: none;
+  -webkit-transition: background;
+  -moz-transition: background;
+  -ms-transition: background;
+  -o-transition: background;
   -webkit-transition: background 0.25s linear;
   -moz-transition: background 0.25s linear;
   transition: background 0.25s linear;
@@ -3325,6 +3329,9 @@ a.dep-link {
 #tabs span {
   background: #fff;
   padding: 2% 2%;
+  -moz-background-clip: padding;
+  -webkit-background-clip: padding-box;
+  background-clip: padding-box;
   -moz-border-radius: 5px;
   -webkit-border-radius: 5px;
   border-radius: 5px;
@@ -3344,6 +3351,10 @@ a.dep-link {
   margin: 0 10px 0 0;
 }
 #tabs a {
+  -webkit-transition: background-color;
+  -moz-transition: background-color;
+  -ms-transition: background-color;
+  -o-transition: background-color;
   -webkit-transition: background-color 0.25s linear;
   -moz-transition: background-color 0.25s linear;
   transition: background-color 0.25s linear;
@@ -3411,6 +3422,10 @@ a.dep-link {
   color: #fff;
   text-align: center;
   text-decoration: none;
+  -webkit-transition: background;
+  -moz-transition: background;
+  -ms-transition: background;
+  -o-transition: background;
   -webkit-transition: background 0.25s linear;
   -moz-transition: background 0.25s linear;
   transition: background 0.25s linear;
@@ -3628,6 +3643,10 @@ div.left {
   padding: 20px 0;
 }
 #header a {
+  -webkit-transition: color;
+  -moz-transition: color;
+  -ms-transition: color;
+  -o-transition: color;
   -webkit-transition: color 0.25s linear;
   -moz-transition: color 0.25s linear;
   transition: color 0.25s linear;
@@ -3730,9 +3749,17 @@ div.left {
 .discover-message-container {
   padding-top: 120px;
 }
+.grid-gradient {
+  background-color: transparent;
+  background: -webkit-gradient(linear, left top, left bottom, from(transparent), to(#ededed));
+  background: -webkit-linear-gradient(top, transparent, #ededed);
+  background: -moz-linear-gradient(top, transparent, #ededed);
+  background: -ms-linear-gradient(top, transparent, #ededed);
+  background: -o-linear-gradient(top, transparent, #ededed);
+}
 .home-browse-all {
   display: block;
-  margin: 20px auto;
+  margin: 40px auto 20px auto;
   width: 280px;
   font-size: 20px;
 }
@@ -3745,17 +3772,23 @@ div.left {
   margin: 1px;
   text-align: center;
 }
-.home-plugin-listing {
+.home-plugin-listing-headers {
   border-bottom: dotted 2px #bfb7b9;
+  margin: 20px auto;
   text-align: center;
 }
-.home-plugin-listing h3 {
+.home-plugin-listing-headers h3 {
+  color: #3b4854;
   font-weight: bolder;
-  font-size: 25px;
+  font-size: 30px;
   margin: 0;
 }
-.home-plugin-listing div {
+.home-plugin-listing-headers div {
   font-size: 14px;
+}
+.home-plugin-listing {
+  text-align: left;
+  margin: 20px auto;
 }
 .call-to-action-panes {
   text-align: center;
@@ -3774,6 +3807,7 @@ div.left {
 .call-to-action-mid-spacer div {
   color: #F0F0F0;
   font-size: 45px;
+  left: 13%;
   position: absolute;
   top: 40%;
 }
@@ -3782,7 +3816,6 @@ div.left {
   position: absolute;
 }
 .call-to-action-pane-left-triangle {
-  width: 4%;
   height: 100%;
   overflow: hidden;
   right: 0px;
@@ -3795,7 +3828,6 @@ div.left {
   border-color: transparent #ffffff transparent transparent;
 }
 .call-to-action-pane-right-triangle {
-  width: 4%;
   height: 100%;
   overflow: hidden;
   left: 0px;
@@ -3804,7 +3836,7 @@ div.left {
   width: 0px;
   height: 0px;
   border-style: solid;
-  border-width: 105px 0px 105px 18px;
+  border-width: 105px 0 105px 18px;
   border-color: transparent transparent transparent #ffffff;
 }
 .call-to-action-img {

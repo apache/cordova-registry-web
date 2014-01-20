@@ -11,7 +11,7 @@
 			<div class="topcoat-grid__column--2"></div>
 		</div>
 
-		<div class="topcoat-grid__row">
+		<div class="topcoat-grid__row grid-gradient">
 			<div class="topcoat-grid__column--10 topcoat-grid__offset--1">
 				<a href="/#/viewAll" class="home-browse-all">Browse all {{totalPlugins}} plugins</a>
 			</div>
@@ -73,24 +73,50 @@
 			</div>
 		</div>
 
-		<div class="topcoat-grid__row home-plugin-listing">
-			<div class="topcoat-grid__column--6">
+		<div class="topcoat-grid__row home-plugin-listing-headers">
+			<div class="topcoat-grid__column--4 topcoat-grid__offset--2">
 				<h3>Most Downloaded</h3>
 			</div>
-			<div class="topcoat-grid__column--6">
+			<div class="call-to-action-mid-spacer">
+			</div>
+			<div class="topcoat-grid__column--4">
 				<h3>Last Updated</h3>
 			</div>
 		</div>		
 
 		<div class="topcoat-grid__row home-plugin-listing">
-			<div class="topcoat-grid__column--6">
+			<div class="topcoat-grid__column--4 topcoat-grid__offset--2">
 				<div ng-repeat="plugin in mostDownloaded">
-					{{plugin.download_count}} {{plugin.bundle_id}}
+					<div class="topcoat-grid__row">
+						<div class="topcoat-grid__column--1">
+							{{plugin.download_count}}
+						</div>
+						<div class="topcoat-grid__column--1">
+						</div>
+						<div class="topcoat-grid__column--10">
+							<a href="/#/package/{{plugin.bundle_id}}">
+								{{plugin.bundle_id}}
+							</a>
+						</div>
+					</div>
 				</div>
 			</div>
-			<div class="topcoat-grid__column--6">
+			<div class="call-to-action-mid-spacer">
+			</div>
+			<div class="topcoat-grid__column--4">
 				<div ng-repeat="plugin in lastUpdated">
-					{{plugin.updated}} {{plugin.bundle_id}}
+					<div class="topcoat-grid__row">
+						<div class="topcoat-grid__column--1">
+							{{plugin.updated}}
+						</div>
+						<div class="topcoat-grid__column--1">
+						</div>
+						<div class="topcoat-grid__column--10">
+							<a href="/#/package/{{plugin.bundle_id}}">
+								{{plugin.bundle_id}}
+							</a>
+						</div>
+					</div>
 				</div>
 			</div>
 		</div>
