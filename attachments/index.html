@@ -1,48 +1,89 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html ng-app='registry'>
-  <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <meta name="keywords" content="">
-    <meta name="description" content="">
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta name="keywords" content="">
+  <meta name="description" content="">
 
-    <title>Cordova Plugin Registry</title>
-    <link href="css/layout.css" rel="stylesheet" type="text/css">
-    <link href="images/favicon.ico" rel="shortcut icon" type="image/x-icon">
-  </head>
+  <title>Cordova Plugin Registry</title>
+  <!-- <link rel="stylesheet" type="text/css" href="css/topcoat-mobile-light.min.css" /> -->
+  <!-- <link rel="stylesheet" type="text/css" href="css/grid.min.css"> -->
+  <link href="css/styles.css" rel="stylesheet" type="text/css">
+  <link href="images/favicon.ico" rel="shortcut icon" type="image/x-icon">
 
-  <body>
-    <div id="body-container">
-        <div id="header">
-            <div class="wrap">
-            <a href="/" title="Home" class="icon-cordova logo">Cordova Plugins</a>
-            <div id="howto" style="display:none;">
-                <a href="http://npmjs.org/doc/README.html"><span>How to</span>Install npm</a>
-                <a href="http://npmjs.org/doc/publish.html"><span>How to</span>Publish a package</a>
+  <script src="http://localhost:35729/livereload.js"></script>
+
+</head>
+
+<body ng-app='registry'>
+
+  <div id="header" class="topcoat-grid">
+    <div class="header-content topcoat-grid__row">
+      <div class="topcoat-grid__column--5 topcoat-grid__offset--2">
+        <a href="/" title="Home" class="logo-link">
+          <div class="registry-logo left pluggy-logo top-logo"></div>
+          <div class="top-project-text">Apache Cordova</div>
+          <div class="top-plugins-registry-text">Plugins Registry</div>
+        </a>
+      </div>
+      <div class="topcoat-grid__column--4 topcoat-grid__offset--1">
+        <div class="topcoat-grid header-links">
+          <div class="topcoat-grid__column--12">
+            <div class="search-container" ng-controller="SearchController">
+              <input id="search-text-header" type="search" ng-model="searchText" placeholder="Find a plugin..." class="topcoat-search-input" ng-enter="searchPlugins()" />
             </div>
-        </div>
-    </div>
-      
-    <div id="totals"></div>
-
-    <div class="grid">
-        <div id="tabs">
-          <a href="/" class="selected tab-find">Find packages</a>
-          <a href="/#/viewAll" class="tab-browse">Browse packages</a>
-          <a href="/#/more" class="tab-more">More</a>
-        </div>
-        <div id="content-wrapper" class="wrap">
-          <div id="content" ng-view></div>
+            <a href="/#/createAccount">Create Account</a> 
+            <a href="/#/signIn">Sign In</a>
+          </div>
         </div>
       </div>
-
     </div>
-    <script type="text/javascript" src="js/lib/angular.min.js"></script>
-    <script type="text/javascript" src="js/lib/angular-route.min.js"></script>
-    <script type="text/javascript" src="js/app.js"></script>
-    <script type="text/javascript" src="js/controllers.js"></script>
-    <script type="text/javascript" src="js/controllers/home.js"></script>
-    <script type="text/javascript" src="js/controllers/packageDetails.js"></script>
-    <script type="text/javascript" src="js/controllers/viewAll.js"></script>
+  </div>
 
-  </body>
+  <div id="content-wrapper" ng-view>
+  </div>
+
+  <div id="footer" class="topcoat-grid">
+    <div class="topcoat-grid__row">
+      <div class="topcoat-grid__column--2">
+        <a href="https://issues.apache.org/jira/browse/CB/component/12321101">Plugin Registry Issue Tracker</a>
+      </div>
+      <div class="topcoat-grid__column--2">
+        <a href="http://cordova.apache.org/docs/en/edge/plugin_ref_plugman.md.html#Using%20Plugman%20to%20Manage%20Plugins_registry_actions">Cordova Plugin Documentation</a>
+      </div>
+      <div class="topcoat-grid__column--3">
+        <a href="http://cordova.apache.org/">Apache Cordova Home</a>
+      </div>
+      <div class="topcoat-grid__column--3">
+      </div>
+    </div>
+    <div class="topcoat-grid__row">
+      <div class="topcoat-grid__column--6">
+        <p>Copyright &copy; 2012, 2013, 2014 The Apache Software Foundation, Licensed under the Apache License, Version 2.0</p>
+        <p>Apache and the Apache feather logos are trademarks of The Apache Software Foundation.</p>
+      </div>
+      <div class="topcoat-grid__column--4">
+        <div class="right">
+          <a href="/" title="Home" class="icon-cordova logo">Hi</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script type="text/javascript" src="js/lib/angular.min.js"></script>
+  <script type="text/javascript" src="js/lib/angular-route.min.js"></script>
+  <script type="text/javascript" src="js/app.js"></script>
+  <script type="text/javascript" src="js/controllers.js"></script>
+  <script type="text/javascript" src="js/controllers/home.js"></script>
+  <script type="text/javascript" src="js/controllers/packageDetails.js"></script>
+  <script type="text/javascript" src="js/controllers/viewAll.js"></script>
+  <script type="text/javascript" src="js/controllers/search.js"></script>
+  <script type="text/javascript" src="js/directives/ng-enter.js"></script>
+  <script type="text/javascript" src="js/services/search-service.js"></script>
+
+
+</body>
 </html>

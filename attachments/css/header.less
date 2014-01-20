@@ -1,0 +1,85 @@
+/* ----- header ---- */
+
+#header {
+    background-color: @header-bg-color;
+    color: @header-font-color;
+
+    border-bottom: 3px solid rgba(0,0,0,0.1);
+    height: 90px;
+    padding: 10px;
+    position: relative;
+    text-align: left;
+    z-index: 3;
+
+    .header-content {
+        width: 100%;
+    }
+
+    .wrap {
+        padding: 20px 0;
+    }
+
+    a {
+        .transition( color );
+        color: @header-font-color;
+        display: inline-block;
+        padding: 6px 0;
+        position: relative;
+
+        &:hover {
+            color: @highlight-color;
+        }
+    }
+
+    a.logo {
+        padding-left: 40px;
+        margin-left: 50px;
+        font-size: 1.2em;
+
+        &:before {
+            font-size: 1.5em;
+            position: absolute;
+            left: 0;
+            top: 3px;
+        }
+    }
+
+    .top-project-text, .top-plugins-registry-text {
+      text-transform: uppercase;
+    }
+
+    .top-project-text {
+      font-size: 12px;
+    }
+
+    .top-plugins-registry-text {
+      font-size: 27px;
+    }
+
+    .header-links {
+      font-size: 18px;
+      font-weight: lighter;
+      padding: 5px;
+
+      a {
+        padding: 20px 20px 0px 0px;
+      }
+    }
+
+    #howto {
+        float: right;
+
+        a {
+            padding-top: 10px;
+            margin-left: 24px;
+
+            span {
+                position: absolute;
+                top: -0px;
+                left: 0;
+                font-size: 10px;
+                font-weight: 600;
+            }
+        }
+    }
+}

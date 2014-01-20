@@ -1,0 +1,13 @@
+/* ----- mixins made locally ------ */
+
+.border-radius( @radius: 8px ) {
+    -moz-border-radius: @radius;
+    -webkit-border-radius: @radius;
+    border-radius: @radius;
+}
+
+.transition ( @type: all, @sec: 0.25s ) {
+    -webkit-transition: @type @sec linear;
+    -moz-transition: @type @sec linear;
+    transition: @type @sec linear;
+}

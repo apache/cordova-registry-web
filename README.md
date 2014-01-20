@@ -79,3 +79,24 @@ couchapp serve app.js http://localhost:5984/registry -p 3000 -l -d attachments/\
 \pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
 \cf0 \
 }
+
+## Changes to LESS
+
+The project is now heavily using LESS using imports
+
+To get started, take a peak into styles.less - this contains @import statements to pull in other stylesheets to help organize the styles. Compile it with your favorite less compiler or use `grunt less` if you'd wish.
+
+## Using Grunt
+
+Grunt has been added to help with some mundane tasks.
+
+To get started, `npm install` this should install Grunt and its plugins.
+
+You can run a few commands with grunt.
+
+* View Grunt tasks available `grunt --help`
+* JSHint the javascript files `grunt jshint`
+* Compile the LESS `grunt less`
+* Watch all HTML/JS/CSS/LESS files - and if changes are made, auto compile LESS and reload the server with latest code `grunt watch`
+
+NOTE - The Grunt watch command is set up to use livereload - this will automatically reload your browser after the server is done reloading - no more needing to click the refresh button on your browser. The livereload script is put in the HEAD of the index.html page - if you wish to not use it, you will need to comment or remove that from the index.html page.
