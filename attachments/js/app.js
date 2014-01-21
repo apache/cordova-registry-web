@@ -1,7 +1,7 @@
 'use strict';
 
 // Declare app level module and its dependencies.
-angular.module('registry', ['ngRoute', 'registry.controllers']).
+angular.module('registry', ['ngRoute', 'registry.controllers', 'ngSanitize']).
     // Set up routes on the client side
     config(['$routeProvider', '$locationProvider', function($route) {
         $route.

@@ -1,8 +1,14 @@
 <div class="package-label">Plugin ID</div>
-<div class="package-title" ng-model="packageID">{{packageID}}</div>
+<div class="package-title">{{packageID}}</div>
 <div class="spacer"></div>
 
-<div class="package-label">Description</div>
-<div class="package-title" ng-show="description" ng-model="description">{{description}}</div>
-<div class="spacer"></div>
+<div ng-show="description">
+    <div class="package-label">Description</div>
+    <div class="package-title" ng-model="description">{{description}}</div>
+    <div class="spacer"></div>
+</div>
+
+<div  ng-show="readme">
+    <div class="package-readme" ng-bind-html="readme"></div>
+</div>
 

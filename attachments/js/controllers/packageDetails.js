@@ -1,5 +1,6 @@
-angular.module('registry.controllers').controller('PackageDetailsController', ['$rootScope', '$scope', '$location', '$routeParams', '$http', function($rootScope, $scope, $location, $routeParams, $http) {
-
+angular.module('registry.controllers').controller('PackageDetailsController', ['$rootScope', '$scope', '$location', '$routeParams', '$http', function($rootScope, $scope, $location, $routeParams, $http) 
+{
+    console.log(marked('im using marked'));
     $scope.packageID = $routeParams.id
     $scope.description = null;
     $scope.version = null;
@@ -19,6 +20,7 @@ angular.module('registry.controllers').controller('PackageDetailsController', ['
                 success(function(data, status, headers, config) {
                     $scope.data = data;
                     $scope.description = $scope.data.description;
+                    $scope.readme = marked($scope.data.readme);
                     console.log(data);
                 }).
                 error(function(data, status){
