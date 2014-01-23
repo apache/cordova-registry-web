@@ -4,11 +4,30 @@
 
 <div ng-show="description">
     <div class="package-label">Description</div>
-    <div class="package-title" ng-model="description">{{description}}</div>
+    <div class="package-title">{{description}}</div>
     <div class="spacer"></div>
 </div>
 
-<div  ng-show="readme">
+<div>
+    <select ng-model="currentVersion" ng-options="key as key for (key, value) in versions">
+        <option value="{{currentVersion}}">{{currentVersion}}</option> 
+    </select>
+</div>
+
+
+<div ng-show="repo">
+    <div class="package-label">Repository</div>
+    <div class="package-title"><a href={{repo}}>{{repo}}</a></div>
+    <div class="spacer"></div>
+</div>
+
+<div ng-show="issue">
+    <div class="package-label">Issue tracker</div>
+    <div class="package-title"><a href={{issue}}>{{issue}}</a></div>
+    <div class="spacer"></div>
+</div>
+
+<div ng-show="readme">
     <div class="package-readme" ng-bind-html="readme"></div>
 </div>
 
