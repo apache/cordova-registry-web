@@ -13,23 +13,6 @@ h2 {
   font-size: 1.2em;
   font-weight: normal;
 }
-/**
-*
-* Copyright 2012 Adobe Systems Inc.;
-*
-* Licensed under the Apache License, Version 2.0 (the "License");
-* you may not use this file except in compliance with the License.
-* You may obtain a copy of the License at
-*
-* http://www.apache.org/licenses/LICENSE-2.0
-*
-* Unless required by applicable law or agreed to in writing, software
-* distributed under the License is distributed on an "AS IS" BASIS,
-* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-* See the License for the specific language governing permissions and
-* limitations under the License.
-*
-*/
 .button-bar {
   display: table;
   table-layout: fixed;
@@ -47,70 +30,19 @@ h2 {
   overflow: hidden;
   padding: 0;
   border: 0;
-  opacity: 0.001;
+  opacity: .001;
   z-index: 1;
   vertical-align: top;
-  outline: none;
+  outline: 0;
 }
 .button-bar__button {
   border-radius: inherit;
 }
 .button-bar__item:disabled {
-  opacity: 0.3;
+  opacity: .3;
   cursor: default;
   pointer-events: none;
 }
-/**
-*
-* Copyright 2012 Adobe Systems Inc.;
-*
-* Licensed under the Apache License, Version 2.0 (the "License");
-* you may not use this file except in compliance with the License.
-* You may obtain a copy of the License at
-*
-* http://www.apache.org/licenses/LICENSE-2.0
-*
-* Unless required by applicable law or agreed to in writing, software
-* distributed under the License is distributed on an "AS IS" BASIS,
-* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-* See the License for the specific language governing permissions and
-* limitations under the License.
-*
-*/
-/**
-*
-* Copyright 2012 Adobe Systems Inc.;
-*
-* Licensed under the Apache License, Version 2.0 (the "License");
-* you may not use this file except in compliance with the License.
-* You may obtain a copy of the License at
-*
-* http://www.apache.org/licenses/LICENSE-2.0
-*
-* Unless required by applicable law or agreed to in writing, software
-* distributed under the License is distributed on an "AS IS" BASIS,
-* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-* See the License for the specific language governing permissions and
-* limitations under the License.
-*
-*/
-/**
-*
-* Copyright 2012 Adobe Systems Inc.;
-*
-* Licensed under the Apache License, Version 2.0 (the "License");
-* you may not use this file except in compliance with the License.
-* You may obtain a copy of the License at
-*
-* http://www.apache.org/licenses/LICENSE-2.0
-*
-* Unless required by applicable law or agreed to in writing, software
-* distributed under the License is distributed on an "AS IS" BASIS,
-* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-* See the License for the specific language governing permissions and
-* limitations under the License.
-*
-*/
 .button,
 .topcoat-button,
 .topcoat-button--quiet,
@@ -131,7 +63,7 @@ h2 {
   font: inherit;
   color: inherit;
   background: transparent;
-  border: none;
+  border: 0;
   cursor: default;
   -webkit-user-select: none;
   -moz-user-select: none;
@@ -156,7 +88,7 @@ h2 {
 .topcoat-button--large--cta:disabled,
 .topcoat-button-bar__button:disabled,
 .topcoat-button-bar__button--large:disabled {
-  opacity: 0.3;
+  opacity: .3;
   cursor: default;
   pointer-events: none;
 }
@@ -168,7 +100,7 @@ h2 {
 .topcoat-button--large--cta,
 .topcoat-button-bar__button,
 .topcoat-button-bar__button--large {
-  padding: 0 0.563rem;
+  padding: 0 .563rem;
   font-size: 12px;
   line-height: 1.313rem;
   letter-spacing: 0;
@@ -220,7 +152,7 @@ h2 {
 .topcoat-button--large--quiet:hover {
   text-shadow: 0 1px #fff;
   border: 1px solid #9daca9;
-  box-shadow: inset 0 1px #fff;
+  box-shadow: inset 0 1px #ffffff;
 }
 .topcoat-button--quiet:active,
 .topcoat-button--quiet:focus:active,
@@ -235,7 +167,7 @@ h2 {
 .topcoat-button--large,
 .topcoat-button--large--quiet,
 .topcoat-button-bar__button--large {
-  font-size: 0.875rem;
+  font-size: .875rem;
   font-weight: 600;
   line-height: 1.688rem;
   padding: 0 0.875rem;
@@ -264,7 +196,7 @@ h2 {
   box-shadow: inset 0 1px rgba(0, 0, 0, 0.12);
 }
 .topcoat-button--large--cta {
-  font-size: 0.875rem;
+  font-size: .875rem;
   font-weight: 600;
   line-height: 1.688rem;
   padding: 0 0.875rem;
@@ -289,47 +221,19 @@ h2 {
   overflow: hidden;
   padding: 0;
   border: 0;
-  opacity: 0.001;
+  opacity: .001;
   z-index: 1;
   vertical-align: top;
-  outline: none;
+  outline: 0;
 }
 .button-bar__button {
   border-radius: inherit;
 }
 .button-bar__item:disabled {
-  opacity: 0.3;
+  opacity: .3;
   cursor: default;
   pointer-events: none;
 }
-/* topdoc
-  name: Button Bar
-  description: Component of grouped buttons
-  modifiers:
-    :disabled: Disabled state
-  markup:
-    <div class="topcoat-button-bar">
-      <div class="topcoat-button-bar__item">
-        <button class="topcoat-button-bar__button">One</button>
-      </div>
-      <div class="topcoat-button-bar__item">
-        <button class="topcoat-button-bar__button">Two</button>
-      </div>
-      <div class="topcoat-button-bar__item">
-        <button class="topcoat-button-bar__button">Three</button>
-      </div>
-    </div>
-  examples:
-    mobile button bar: http://codepen.io/Topcoat/pen/kdKyg
-  tags:
-    - desktop
-    - light
-    - dark
-    - mobile
-    - button
-    - group
-    - bar
-*/
 .topcoat-button-bar > .topcoat-button-bar__item:first-child {
   border-top-left-radius: 4px;
   border-bottom-left-radius: 4px;
@@ -340,11 +244,11 @@ h2 {
 }
 .topcoat-button-bar__item:first-child > .topcoat-button-bar__button,
 .topcoat-button-bar__item:first-child > .topcoat-button-bar__button--large {
-  border-right: none;
+  border-right: 0;
 }
 .topcoat-button-bar__item:last-child > .topcoat-button-bar__button,
 .topcoat-button-bar__item:last-child > .topcoat-button-bar__button--large {
-  border-left: none;
+  border-left: 0;
 }
 .topcoat-button-bar__button {
   border-radius: inherit;
@@ -353,53 +257,9 @@ h2 {
 .topcoat-button-bar__button--large:focus {
   z-index: 1;
 }
-/* topdoc
-  name: Large Button Bar
-  description: A button bar, only larger
-  modifiers:
-    :disabled: Disabled state
-  markup:
-    <div class="topcoat-button-bar">
-      <div class="topcoat-button-bar__item">
-        <button class="topcoat-button-bar__button--large">One</button>
-      </div>
-      <div class="topcoat-button-bar__item">
-        <button class="topcoat-button-bar__button--large">Two</button>
-      </div>
-      <div class="topcoat-button-bar__item">
-        <button class="topcoat-button-bar__button--large">Three</button>
-      </div>
-    </div>
-  tags:
-    - desktop
-    - light
-    - dark
-    - mobile
-    - button
-    - group
-    - bar
-    - large
-*/
 .topcoat-button-bar__button--large {
   border-radius: inherit;
 }
-/**
-*
-* Copyright 2012 Adobe Systems Inc.;
-*
-* Licensed under the Apache License, Version 2.0 (the "License");
-* you may not use this file except in compliance with the License.
-* You may obtain a copy of the License at
-*
-* http://www.apache.org/licenses/LICENSE-2.0
-*
-* Unless required by applicable law or agreed to in writing, software
-* distributed under the License is distributed on an "AS IS" BASIS,
-* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-* See the License for the specific language governing permissions and
-* limitations under the License.
-*
-*/
 .button {
   position: relative;
   display: inline-block;
@@ -412,7 +272,7 @@ h2 {
   font: inherit;
   color: inherit;
   background: transparent;
-  border: none;
+  border: 0;
   cursor: default;
   -webkit-user-select: none;
   -moz-user-select: none;
@@ -429,61 +289,10 @@ h2 {
   box-shadow: none;
 }
 .button--disabled {
-  opacity: 0.3;
+  opacity: .3;
   cursor: default;
   pointer-events: none;
 }
-/**
-*
-* Copyright 2012 Adobe Systems Inc.;
-*
-* Licensed under the Apache License, Version 2.0 (the "License");
-* you may not use this file except in compliance with the License.
-* You may obtain a copy of the License at
-*
-* http://www.apache.org/licenses/LICENSE-2.0
-*
-* Unless required by applicable law or agreed to in writing, software
-* distributed under the License is distributed on an "AS IS" BASIS,
-* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-* See the License for the specific language governing permissions and
-* limitations under the License.
-*
-*/
-/**
-*
-* Copyright 2012 Adobe Systems Inc.;
-*
-* Licensed under the Apache License, Version 2.0 (the "License");
-* you may not use this file except in compliance with the License.
-* You may obtain a copy of the License at
-*
-* http://www.apache.org/licenses/LICENSE-2.0
-*
-* Unless required by applicable law or agreed to in writing, software
-* distributed under the License is distributed on an "AS IS" BASIS,
-* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-* See the License for the specific language governing permissions and
-* limitations under the License.
-*
-*/
-/**
-*
-* Copyright 2012 Adobe Systems Inc.;
-*
-* Licensed under the Apache License, Version 2.0 (the "License");
-* you may not use this file except in compliance with the License.
-* You may obtain a copy of the License at
-*
-* http://www.apache.org/licenses/LICENSE-2.0
-*
-* Unless required by applicable law or agreed to in writing, software
-* distributed under the License is distributed on an "AS IS" BASIS,
-* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-* See the License for the specific language governing permissions and
-* limitations under the License.
-*
-*/
 .button,
 .topcoat-button,
 .topcoat-button--quiet,
@@ -502,7 +311,7 @@ h2 {
   font: inherit;
   color: inherit;
   background: transparent;
-  border: none;
+  border: 0;
   cursor: default;
   -webkit-user-select: none;
   -moz-user-select: none;
@@ -525,36 +334,17 @@ h2 {
 .topcoat-button--large--quiet:disabled,
 .topcoat-button--cta:disabled,
 .topcoat-button--large--cta:disabled {
-  opacity: 0.3;
+  opacity: .3;
   cursor: default;
   pointer-events: none;
 }
-/* topdoc
-  name: Button
-  description: A simple button
-  modifiers:
-    :active: Active state
-    :disabled: Disabled state
-    :hover: Hover state
-    :focus: Focused
-  markup:
-    <button class="topcoat-button">Button</button>
-    <button class="topcoat-button" disabled>Button</button>
-  examples:
-    mobile button: http://codepen.io/Topcoat/pen/DpKtf
-  tags:
-    - desktop
-    - light
-    - mobile
-    - button
-*/
 .topcoat-button,
 .topcoat-button--quiet,
 .topcoat-button--large,
 .topcoat-button--large--quiet,
 .topcoat-button--cta,
 .topcoat-button--large--cta {
-  padding: 0 0.563rem;
+  padding: 0 .563rem;
   font-size: 12px;
   line-height: 1.313rem;
   letter-spacing: 0;
@@ -590,24 +380,6 @@ h2 {
   background-color: #d2d6d6;
   box-shadow: inset 0 1px rgba(0, 0, 0, 0.1);
 }
-/* topdoc
-  name: Quiet Button
-  description: A simple, yet quiet button
-  modifiers:
-    :active: Quiet button active state
-    :disabled: Disabled state
-    :hover: Hover state
-    :focus: Focused
-  markup:
-    <button class="topcoat-button--quiet">Button</button>
-    <button class="topcoat-button--quiet" disabled>Button</button>
-  tags:
-    - desktop
-    - light
-    - mobile
-    - button
-    - quiet
-*/
 .topcoat-button--quiet {
   background: transparent;
   border: 1px solid transparent;
@@ -617,7 +389,7 @@ h2 {
 .topcoat-button--large--quiet:hover {
   text-shadow: 0 1px #fff;
   border: 1px solid #9daca9;
-  box-shadow: inset 0 1px #fff;
+  box-shadow: inset 0 1px #ffffff;
 }
 .topcoat-button--quiet:active,
 .topcoat-button--quiet:focus:active,
@@ -629,73 +401,18 @@ h2 {
   border: 1px solid #9daca9;
   box-shadow: inset 0 1px rgba(0, 0, 0, 0.1);
 }
-/* topdoc
-  name: Large Button
-  description: A big ol button
-  modifiers:
-    :active: Active state
-    :disabled: Disabled state
-    :hover: Hover state
-    :focus: Focused
-  markup:
-    <button class="topcoat-button--large" >Button</button>
-    <button class="topcoat-button--large" disabled>Button</button>
-  tags:
-    - desktop
-    - light
-    - mobile
-    - button
-    - large
-*/
 .topcoat-button--large,
 .topcoat-button--large--quiet {
-  font-size: 0.875rem;
+  font-size: .875rem;
   font-weight: 600;
   line-height: 1.688rem;
   padding: 0 0.875rem;
 }
-/* topdoc
-  name: Large Quiet Button
-  description: A large, yet quiet button
-  modifiers:
-    :active: Active state
-    :disabled: Disabled state
-    :hover: Hover state
-    :focus: Focused
-  markup:
-    <button class="topcoat-button--large--quiet" >Button</button>
-    <button class="topcoat-button--large--quiet" disabled>Button</button>
-  tags:
-    - desktop
-    - light
-    - mobile
-    - button
-    - large
-    - quiet
-*/
 .topcoat-button--large--quiet {
   background: transparent;
   border: 1px solid transparent;
   box-shadow: none;
 }
-/* topdoc
-  name: Call To Action Button
-  description: A CALL TO ARMS, er, ACTION!
-  modifiers:
-    :active: Active state
-    :disabled: Disabled state
-    :hover: Hover state
-    :focus: Focused
-  markup:
-    <button class="topcoat-button--cta" >Button</button>
-    <button class="topcoat-button--cta" disabled>Button</button>
-  tags:
-    - desktop
-    - light
-    - mobile
-    - button
-    - call to action
-*/
 .topcoat-button--cta,
 .topcoat-button--large--cta {
   border: 1px solid #134f7f;
@@ -714,57 +431,21 @@ h2 {
   background-color: #1e7dc8;
   box-shadow: inset 0 1px rgba(0, 0, 0, 0.12);
 }
-/* topdoc
-  name: Large Call To Action Button
-  description: Like call to action, but bigger
-  modifiers:
-    :active: Active state
-    :disabled: Disabled state
-    :hover: Hover state
-    :focus: Focused
-  markup:
-    <button class="topcoat-button--large--cta" >Button</button>
-    <button class="topcoat-button--large--cta" disabled>Button</button>
-  tags:
-    - desktop
-    - light
-    - mobile
-    - button
-    - large
-    - call to action
-*/
 .topcoat-button--large--cta {
-  font-size: 0.875rem;
+  font-size: .875rem;
   font-weight: 600;
   line-height: 1.688rem;
   padding: 0 0.875rem;
 }
-/**
-*
-* Copyright 2012 Adobe Systems Inc.;
-*
-* Licensed under the Apache License, Version 2.0 (the "License");
-* you may not use this file except in compliance with the License.
-* You may obtain a copy of the License at
-*
-* http://www.apache.org/licenses/LICENSE-2.0
-*
-* Unless required by applicable law or agreed to in writing, software
-* distributed under the License is distributed on an "AS IS" BASIS,
-* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-* See the License for the specific language governing permissions and
-* limitations under the License.
-*
-*/
-input[type="checkbox"] {
+input[type=checkbox] {
   position: absolute;
   overflow: hidden;
   padding: 0;
   border: 0;
-  opacity: 0.001;
+  opacity: .001;
   z-index: 1;
   vertical-align: top;
-  outline: none;
+  outline: 0;
 }
 .checkbox {
   -moz-box-sizing: border-box;
@@ -790,7 +471,7 @@ input[type="checkbox"] {
   user-select: none;
 }
 .checkbox--disabled {
-  opacity: 0.3;
+  opacity: .3;
   cursor: default;
   pointer-events: none;
 }
@@ -804,66 +485,15 @@ input[type="checkbox"] {
   box-sizing: border-box;
   background-clip: padding-box;
 }
-/**
-*
-* Copyright 2012 Adobe Systems Inc.;
-*
-* Licensed under the Apache License, Version 2.0 (the "License");
-* you may not use this file except in compliance with the License.
-* You may obtain a copy of the License at
-*
-* http://www.apache.org/licenses/LICENSE-2.0
-*
-* Unless required by applicable law or agreed to in writing, software
-* distributed under the License is distributed on an "AS IS" BASIS,
-* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-* See the License for the specific language governing permissions and
-* limitations under the License.
-*
-*/
-/**
-*
-* Copyright 2012 Adobe Systems Inc.;
-*
-* Licensed under the Apache License, Version 2.0 (the "License");
-* you may not use this file except in compliance with the License.
-* You may obtain a copy of the License at
-*
-* http://www.apache.org/licenses/LICENSE-2.0
-*
-* Unless required by applicable law or agreed to in writing, software
-* distributed under the License is distributed on an "AS IS" BASIS,
-* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-* See the License for the specific language governing permissions and
-* limitations under the License.
-*
-*/
-/**
-*
-* Copyright 2012 Adobe Systems Inc.;
-*
-* Licensed under the Apache License, Version 2.0 (the "License");
-* you may not use this file except in compliance with the License.
-* You may obtain a copy of the License at
-*
-* http://www.apache.org/licenses/LICENSE-2.0
-*
-* Unless required by applicable law or agreed to in writing, software
-* distributed under the License is distributed on an "AS IS" BASIS,
-* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-* See the License for the specific language governing permissions and
-* limitations under the License.
-*
-*/
-input[type="checkbox"] {
+input[type=checkbox] {
   position: absolute;
   overflow: hidden;
   padding: 0;
   border: 0;
-  opacity: 0.001;
+  opacity: .001;
   z-index: 1;
   vertical-align: top;
-  outline: none;
+  outline: 0;
 }
 .checkbox,
 .topcoat-checkbox__checkmark {
@@ -891,8 +521,8 @@ input[type="checkbox"] {
   user-select: none;
 }
 .checkbox--disabled,
-input[type="checkbox"]:disabled + .topcoat-checkbox__checkmark {
-  opacity: 0.3;
+input[type=checkbox]:disabled + .topcoat-checkbox__checkmark {
+  opacity: .3;
   cursor: default;
   pointer-events: none;
 }
@@ -909,37 +539,10 @@ input[type="checkbox"]:disabled + .topcoat-checkbox__checkmark {
   box-sizing: border-box;
   background-clip: padding-box;
 }
-/* topdoc
-  name: Checkbox
-  description: Default skin for Topcoat checkbox
-  modifiers:
-    :focus: Focus state
-    :disabled: Disabled state
-  markup:
-    <label class="topcoat-checkbox">
-      <input type="checkbox">
-      <div class="topcoat-checkbox__checkmark"></div>
-      Default
-    </label>
-    <br>
-    <br>
-    <label class="topcoat-checkbox">
-      <input type="checkbox" disabled>
-      <div class="topcoat-checkbox__checkmark"></div>
-      Disabled
-    </label>
-  examples:
-    mobile checkbox: http://codepen.io/Topcoat/pen/piHcs
-  tags:
-    - desktop
-    - light
-    - mobile
-    - checkbox
-*/
 .topcoat-checkbox__checkmark {
   height: 1rem;
 }
-input[type="checkbox"] {
+input[type=checkbox] {
   height: 1rem;
   width: 1rem;
   margin-top: 0;
@@ -947,7 +550,7 @@ input[type="checkbox"] {
   margin-bottom: -1rem;
   margin-left: 0;
 }
-input[type="checkbox"]:checked + .topcoat-checkbox__checkmark:after {
+input[type=checkbox]:checked + .topcoat-checkbox__checkmark:after {
   opacity: 1;
 }
 .topcoat-checkbox {
@@ -959,7 +562,7 @@ input[type="checkbox"]:checked + .topcoat-checkbox__checkmark:after {
   background: #e5e9e8;
   border: 1px solid #9daca9;
   border-radius: 3px;
-  box-shadow: inset 0 1px #fff;
+  box-shadow: inset 0 1px #ffffff;
 }
 .topcoat-checkbox__checkmark {
   width: 1rem;
@@ -974,61 +577,27 @@ input[type="checkbox"]:checked + .topcoat-checkbox__checkmark:after {
   background: transparent;
   border: 7px solid #454545;
   border-width: 3px;
-  border-top: none;
-  border-right: none;
+  border-top: 0;
+  border-right: 0;
   border-radius: 1px;
   -webkit-transform: rotate(-50deg);
   -ms-transform: rotate(-50deg);
   transform: rotate(-50deg);
 }
-input[type="checkbox"]:focus + .topcoat-checkbox__checkmark:before {
+input[type=checkbox]:focus + .topcoat-checkbox__checkmark:before {
   border: 1px solid #0036ff;
   box-shadow: inset 0 1px rgba(255, 255, 255, 0.36), 0 0 0 2px #6fb5f1;
 }
-input[type="checkbox"]:active + .topcoat-checkbox__checkmark:before {
+input[type=checkbox]:active + .topcoat-checkbox__checkmark:before {
   border: 1px solid #9daca9;
   background-color: #d2d6d6;
   box-shadow: inset 0 1px rgba(0, 0, 0, 0.1);
 }
-input[type="checkbox"]:disabled:active + .topcoat-checkbox__checkmark:before {
+input[type=checkbox]:disabled:active + .topcoat-checkbox__checkmark:before {
   border: 1px solid #9daca9;
   background: #e5e9e8;
-  box-shadow: inset 0 1px #fff;
+  box-shadow: inset 0 1px #ffffff;
 }
-/**
-*
-* Copyright 2012 Adobe Systems Inc.;
-*
-* Licensed under the Apache License, Version 2.0 (the "License");
-* you may not use this file except in compliance with the License.
-* You may obtain a copy of the License at
-*
-* http://www.apache.org/licenses/LICENSE-2.0
-*
-* Unless required by applicable law or agreed to in writing, software
-* distributed under the License is distributed on an "AS IS" BASIS,
-* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-* See the License for the specific language governing permissions and
-* limitations under the License.
-*
-*/
-/**
-*
-* Copyright 2012 Adobe Systems Inc.;
-*
-* Licensed under the Apache License, Version 2.0 (the "License");
-* you may not use this file except in compliance with the License.
-* You may obtain a copy of the License at
-*
-* http://www.apache.org/licenses/LICENSE-2.0
-*
-* Unless required by applicable law or agreed to in writing, software
-* distributed under the License is distributed on an "AS IS" BASIS,
-* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-* See the License for the specific language governing permissions and
-* limitations under the License.
-*
-*/
 .button,
 .topcoat-icon-button,
 .topcoat-icon-button--quiet,
@@ -1045,7 +614,7 @@ input[type="checkbox"]:disabled:active + .topcoat-checkbox__checkmark:before {
   font: inherit;
   color: inherit;
   background: transparent;
-  border: none;
+  border: 0;
   cursor: default;
   -webkit-user-select: none;
   -moz-user-select: none;
@@ -1066,37 +635,15 @@ input[type="checkbox"]:disabled:active + .topcoat-checkbox__checkmark:before {
 .topcoat-icon-button--quiet:disabled,
 .topcoat-icon-button--large:disabled,
 .topcoat-icon-button--large--quiet:disabled {
-  opacity: 0.3;
+  opacity: .3;
   cursor: default;
   pointer-events: none;
 }
-/* topdoc
-  name: Icon Button
-  description: Like button, but it has an icon.
-  modifiers:
-    :active: Active state
-    :disabled: Disabled state
-    :hover: Hover state
-    :focus: Focused
-  markup:
-    <button class="topcoat-icon-button">
-      <span class="topcoat-icon" style="background-color:#A5A7A7;"></span>
-    </button>
-    <button class="topcoat-icon-button" disabled>
-      <span class="topcoat-icon" style="background-color:#A5A7A7;"></span>
-    </button>
-  tags:
-    - desktop
-    - light
-    - mobile
-    - button
-    - icon
-*/
 .topcoat-icon-button,
 .topcoat-icon-button--quiet,
 .topcoat-icon-button--large,
 .topcoat-icon-button--large--quiet {
-  padding: 0 0.25rem;
+  padding: 0 .25rem;
   line-height: 1.313rem;
   letter-spacing: 0;
   color: #454545;
@@ -1129,29 +676,6 @@ input[type="checkbox"]:disabled:active + .topcoat-checkbox__checkmark:before {
   background-color: #d2d6d6;
   box-shadow: inset 0 1px rgba(0, 0, 0, 0.1);
 }
-/* topdoc
-  name: Quiet Icon Button
-  description: Like quiet button, but it has an icon.
-  modifiers:
-    :active: Active state
-    :disabled: Disabled state
-    :hover: Hover state
-    :focus: Focused
-  markup:
-    <button class="topcoat-icon-button--quiet">
-      <span class="topcoat-icon" style="background-color:#A5A7A7;"></span>
-    </button>
-    <button class="topcoat-icon-button--quiet" disabled>
-      <span class="topcoat-icon" style="background-color:#A5A7A7;"></span>
-    </button>
-  tags:
-    - desktop
-    - light
-    - mobile
-    - button
-    - icon
-    - quiet
-*/
 .topcoat-icon-button--quiet {
   background: transparent;
   border: 1px solid transparent;
@@ -1161,7 +685,7 @@ input[type="checkbox"]:disabled:active + .topcoat-checkbox__checkmark:before {
 .topcoat-icon-button--large--quiet:hover {
   text-shadow: 0 1px #fff;
   border: 1px solid #9daca9;
-  box-shadow: inset 0 1px #fff;
+  box-shadow: inset 0 1px #ffffff;
 }
 .topcoat-icon-button--quiet:active,
 .topcoat-icon-button--quiet:focus:active,
@@ -1173,58 +697,12 @@ input[type="checkbox"]:disabled:active + .topcoat-checkbox__checkmark:before {
   border: 1px solid #9daca9;
   box-shadow: inset 0 1px rgba(0, 0, 0, 0.1);
 }
-/* topdoc
-  name: Large Icon Button
-  description: Like large button, but it has an icon.
-  modifiers:
-    :active: Active state
-    :disabled: Disabled state
-    :hover: Hover state
-    :focus: Focused
-  markup:
-    <button class="topcoat-icon-button--large">
-      <span class="topcoat-icon--large" style="background-color:#A5A7A7;"></span>
-    </button>
-    <button class="topcoat-icon-button--large" disabled>
-      <span class="topcoat-icon--large" style="background-color:#A5A7A7;"></span>
-    </button>
-  tags:
-    - desktop
-    - light
-    - mobile
-    - button
-    - icon
-    - large
-*/
 .topcoat-icon-button--large,
 .topcoat-icon-button--large--quiet {
   width: 1.688rem;
   height: 1.688rem;
   line-height: 1.688rem;
 }
-/* topdoc
-  name: Large Quiet Icon Button
-  description: Like large button, but it has an icon and this one is quiet.
-  modifiers:
-    :active: Active state
-    :disabled: Disabled state
-    :hover: Hover state
-  markup:
-    <button class="topcoat-icon-button--large--quiet">
-      <span class="topcoat-icon--large" style="background-color:#A5A7A7;"></span>
-    </button>
-    <button class="topcoat-icon-button--large--quiet" disabled>
-      <span class="topcoat-icon--large" style="background-color:#A5A7A7;"></span>
-    </button>
-  tags:
-    - desktop
-    - light
-    - mobile
-    - button
-    - icon
-    - large
-    - quiet
-*/
 .topcoat-icon-button--large--quiet {
   background: transparent;
   border: 1px solid transparent;
@@ -1236,8 +714,8 @@ input[type="checkbox"]:disabled:active + .topcoat-checkbox__checkmark:before {
   display: inline-block;
   vertical-align: top;
   overflow: hidden;
-  width: 0.81406rem;
-  height: 0.81406rem;
+  width: .81406rem;
+  height: .81406rem;
   vertical-align: middle;
   top: -1px;
 }
@@ -1246,99 +724,31 @@ input[type="checkbox"]:disabled:active + .topcoat-checkbox__checkmark:before {
   height: 1.06344rem;
   top: -2px;
 }
-/**
-*
-* Copyright 2012 Adobe Systems Inc.;
-*
-* Licensed under the Apache License, Version 2.0 (the "License");
-* you may not use this file except in compliance with the License.
-* You may obtain a copy of the License at
-*
-* http://www.apache.org/licenses/LICENSE-2.0
-*
-* Unless required by applicable law or agreed to in writing, software
-* distributed under the License is distributed on an "AS IS" BASIS,
-* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-* See the License for the specific language governing permissions and
-* limitations under the License.
-*
-*/
-/**
-*
-* Copyright 2012 Adobe Systems Inc.;
-*
-* Licensed under the Apache License, Version 2.0 (the "License");
-* you may not use this file except in compliance with the License.
-* You may obtain a copy of the License at
-*
-* http://www.apache.org/licenses/LICENSE-2.0
-*
-* Unless required by applicable law or agreed to in writing, software
-* distributed under the License is distributed on an "AS IS" BASIS,
-* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-* See the License for the specific language governing permissions and
-* limitations under the License.
-*
-*/
 .input {
   padding: 0;
   margin: 0;
   font: inherit;
   color: inherit;
   background: transparent;
-  border: none;
+  border: 0;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
   background-clip: padding-box;
   vertical-align: top;
-  outline: none;
+  outline: 0;
 }
 .input:disabled {
-  opacity: 0.3;
+  opacity: .3;
   cursor: default;
   pointer-events: none;
 }
-/**
-*
-* Copyright 2012 Adobe Systems Inc.;
-*
-* Licensed under the Apache License, Version 2.0 (the "License");
-* you may not use this file except in compliance with the License.
-* You may obtain a copy of the License at
-*
-* http://www.apache.org/licenses/LICENSE-2.0
-*
-* Unless required by applicable law or agreed to in writing, software
-* distributed under the License is distributed on an "AS IS" BASIS,
-* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-* See the License for the specific language governing permissions and
-* limitations under the License.
-*
-*/
-/**
-*
-* Copyright 2012 Adobe Systems Inc.;
-*
-* Licensed under the Apache License, Version 2.0 (the "License");
-* you may not use this file except in compliance with the License.
-* You may obtain a copy of the License at
-*
-* http://www.apache.org/licenses/LICENSE-2.0
-*
-* Unless required by applicable law or agreed to in writing, software
-* distributed under the License is distributed on an "AS IS" BASIS,
-* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-* See the License for the specific language governing permissions and
-* limitations under the License.
-*
-*/
 .list {
   padding: 0;
   margin: 0;
   font: inherit;
   color: inherit;
   background: transparent;
-  border: none;
+  border: 0;
   cursor: default;
   -webkit-user-select: none;
   -moz-user-select: none;
@@ -1359,40 +769,6 @@ input[type="checkbox"]:disabled:active + .topcoat-checkbox__checkmark:before {
   margin: 0;
   padding: 0;
 }
-/**
-*
-* Copyright 2012 Adobe Systems Inc.;
-*
-* Licensed under the Apache License, Version 2.0 (the "License");
-* you may not use this file except in compliance with the License.
-* You may obtain a copy of the License at
-*
-* http://www.apache.org/licenses/LICENSE-2.0
-*
-* Unless required by applicable law or agreed to in writing, software
-* distributed under the License is distributed on an "AS IS" BASIS,
-* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-* See the License for the specific language governing permissions and
-* limitations under the License.
-*
-*/
-/**
-*
-* Copyright 2012 Adobe Systems Inc.;
-*
-* Licensed under the Apache License, Version 2.0 (the "License");
-* you may not use this file except in compliance with the License.
-* You may obtain a copy of the License at
-*
-* http://www.apache.org/licenses/LICENSE-2.0
-*
-* Unless required by applicable law or agreed to in writing, software
-* distributed under the License is distributed on an "AS IS" BASIS,
-* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-* See the License for the specific language governing permissions and
-* limitations under the License.
-*
-*/
 .navigation-bar {
   -moz-box-sizing: border-box;
   box-sizing: border-box;
@@ -1405,7 +781,7 @@ input[type="checkbox"]:disabled:active + .topcoat-checkbox__checkmark:before {
   font: inherit;
   color: inherit;
   background: transparent;
-  border: none;
+  border: 0;
   cursor: default;
   -webkit-user-select: none;
   -moz-user-select: none;
@@ -1424,7 +800,7 @@ input[type="checkbox"]:disabled:active + .topcoat-checkbox__checkmark:before {
   font: inherit;
   color: inherit;
   background: transparent;
-  border: none;
+  border: 0;
 }
 .navigation-bar__title {
   padding: 0;
@@ -1432,42 +808,11 @@ input[type="checkbox"]:disabled:active + .topcoat-checkbox__checkmark:before {
   font: inherit;
   color: inherit;
   background: transparent;
-  border: none;
+  border: 0;
   text-overflow: ellipsis;
   white-space: nowrap;
   overflow: hidden;
 }
-/*
-Copyright 2012 Adobe Systems Inc.;
-Licensed under the Apache License, Version 2.0 (the "License");
-you may not use this file except in compliance with the License.
-You may obtain a copy of the License at
-
-http://www.apache.org/licenses/LICENSE-2.0
-
-Unless required by applicable law or agreed to in writing, software
-distributed under the License is distributed on an "AS IS" BASIS,
-WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-See the License for the specific language governing permissions and
-limitations under the License.
-*/
-/**
-*
-* Copyright 2012 Adobe Systems Inc.;
-*
-* Licensed under the Apache License, Version 2.0 (the "License");
-* you may not use this file except in compliance with the License.
-* You may obtain a copy of the License at
-*
-* http://www.apache.org/licenses/LICENSE-2.0
-*
-* Unless required by applicable law or agreed to in writing, software
-* distributed under the License is distributed on an "AS IS" BASIS,
-* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-* See the License for the specific language governing permissions and
-* limitations under the License.
-*
-*/
 .notification {
   position: relative;
   display: inline-block;
@@ -1480,7 +825,7 @@ limitations under the License.
   font: inherit;
   color: inherit;
   background: transparent;
-  border: none;
+  border: 0;
   cursor: default;
   -webkit-user-select: none;
   -moz-user-select: none;
@@ -1491,37 +836,6 @@ limitations under the License.
   overflow: hidden;
   text-decoration: none;
 }
-/*
-Copyright 2012 Adobe Systems Inc.;
-Licensed under the Apache License, Version 2.0 (the "License");
-you may not use this file except in compliance with the License.
-You may obtain a copy of the License at
-
-http://www.apache.org/licenses/LICENSE-2.0
-
-Unless required by applicable law or agreed to in writing, software
-distributed under the License is distributed on an "AS IS" BASIS,
-WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-See the License for the specific language governing permissions and
-limitations under the License.
-*/
-/**
-*
-* Copyright 2012 Adobe Systems Inc.;
-*
-* Licensed under the Apache License, Version 2.0 (the "License");
-* you may not use this file except in compliance with the License.
-* You may obtain a copy of the License at
-*
-* http://www.apache.org/licenses/LICENSE-2.0
-*
-* Unless required by applicable law or agreed to in writing, software
-* distributed under the License is distributed on an "AS IS" BASIS,
-* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-* See the License for the specific language governing permissions and
-* limitations under the License.
-*
-*/
 .notification,
 .topcoat-notification {
   position: relative;
@@ -1535,7 +849,7 @@ limitations under the License.
   font: inherit;
   color: inherit;
   background: transparent;
-  border: none;
+  border: 0;
   cursor: default;
   -webkit-user-select: none;
   -moz-user-select: none;
@@ -1546,66 +860,21 @@ limitations under the License.
   overflow: hidden;
   text-decoration: none;
 }
-/* topdoc
-  name: Notification
-  description: Notification badge
-  markup:
-    <span class="topcoat-notification">1</span>
-  tags:
-    - desktop
-    - light
-    - mobile
-    - notification
-*/
 .topcoat-notification {
-  padding: 0.15em 0.5em 0.2em;
+  padding: .15em .5em .2em;
   border-radius: 2px;
   background-color: #ec514e;
-  color: #fff;
+  color: #ffffff;
 }
-/**
-*
-* Copyright 2012 Adobe Systems Inc.;
-*
-* Licensed under the Apache License, Version 2.0 (the "License");
-* you may not use this file except in compliance with the License.
-* You may obtain a copy of the License at
-*
-* http://www.apache.org/licenses/LICENSE-2.0
-*
-* Unless required by applicable law or agreed to in writing, software
-* distributed under the License is distributed on an "AS IS" BASIS,
-* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-* See the License for the specific language governing permissions and
-* limitations under the License.
-*
-*/
-/**
-*
-* Copyright 2012 Adobe Systems Inc.;
-*
-* Licensed under the Apache License, Version 2.0 (the "License");
-* you may not use this file except in compliance with the License.
-* You may obtain a copy of the License at
-*
-* http://www.apache.org/licenses/LICENSE-2.0
-*
-* Unless required by applicable law or agreed to in writing, software
-* distributed under the License is distributed on an "AS IS" BASIS,
-* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-* See the License for the specific language governing permissions and
-* limitations under the License.
-*
-*/
-input[type="radio"] {
+input[type=radio] {
   position: absolute;
   overflow: hidden;
   padding: 0;
   border: 0;
-  opacity: 0.001;
+  opacity: .001;
   z-index: 1;
   vertical-align: top;
-  outline: none;
+  outline: 0;
 }
 .radio-button {
   -moz-box-sizing: border-box;
@@ -1649,53 +918,19 @@ input[type="radio"] {
   background-clip: padding-box;
 }
 .radio-button--disabled {
-  opacity: 0.3;
+  opacity: .3;
   cursor: default;
   pointer-events: none;
 }
-/**
-*
-* Copyright 2012 Adobe Systems Inc.;
-*
-* Licensed under the Apache License, Version 2.0 (the "License");
-* you may not use this file except in compliance with the License.
-* You may obtain a copy of the License at
-*
-* http://www.apache.org/licenses/LICENSE-2.0
-*
-* Unless required by applicable law or agreed to in writing, software
-* distributed under the License is distributed on an "AS IS" BASIS,
-* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-* See the License for the specific language governing permissions and
-* limitations under the License.
-*
-*/
-/**
-*
-* Copyright 2012 Adobe Systems Inc.;
-*
-* Licensed under the Apache License, Version 2.0 (the "License");
-* you may not use this file except in compliance with the License.
-* You may obtain a copy of the License at
-*
-* http://www.apache.org/licenses/LICENSE-2.0
-*
-* Unless required by applicable law or agreed to in writing, software
-* distributed under the License is distributed on an "AS IS" BASIS,
-* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-* See the License for the specific language governing permissions and
-* limitations under the License.
-*
-*/
-input[type="radio"] {
+input[type=radio] {
   position: absolute;
   overflow: hidden;
   padding: 0;
   border: 0;
-  opacity: 0.001;
+  opacity: .001;
   z-index: 1;
   vertical-align: top;
-  outline: none;
+  outline: 0;
 }
 .radio-button,
 .topcoat-radio-button__checkmark {
@@ -1745,54 +980,12 @@ input[type="radio"] {
   background-clip: padding-box;
 }
 .radio-button--disabled,
-input[type="radio"]:disabled + .topcoat-radio-button__checkmark {
-  opacity: 0.3;
+input[type=radio]:disabled + .topcoat-radio-button__checkmark {
+  opacity: .3;
   cursor: default;
   pointer-events: none;
 }
-/* topdoc
-  name: Radio Button
-  description: A button that can play music, but usually just plays ads.
-  modifiers:
-  markup:
-    <!-- NO LABEL -->
-    <label class="topcoat-radio-button">
-      <input type="radio" name="topcoat">
-      <div class="topcoat-radio-button__checkmark"></div>
-    </label>
-    <br>
-    <br>
-    <!-- LEFT LABEL -->
-    <label class="topcoat-radio-button">
-      Left label
-      <input type="radio" name="topcoat">
-      <div class="topcoat-radio-button__checkmark"></div>
-    </label>
-    <br>
-    <br>
-    <!-- RIGHT LABEL -->
-    <label class="topcoat-radio-button">
-      <input type="radio" name="topcoat">
-      <div class="topcoat-radio-button__checkmark"></div>
-      Right label
-    </label>
-    <br>
-    <br>
-    <!-- DISABLED -->
-    <label class="topcoat-radio-button">
-      <input type="radio" name="topcoat" Disabled>
-      <div class="topcoat-radio-button__checkmark"></div>
-      Disabled
-    </label>
-  examples:
-    Mobile Radio Button: http://codepen.io/Topcoat/pen/HDcJj
-  tags:
-    - desktop
-    - light
-    - mobile
-    - Radio
-*/
-input[type="radio"] {
+input[type=radio] {
   height: 1.063rem;
   width: 1.063rem;
   margin-top: 0;
@@ -1800,7 +993,7 @@ input[type="radio"] {
   margin-bottom: -1.063rem;
   margin-left: 0;
 }
-input[type="radio"]:checked + .topcoat-radio-button__checkmark:after {
+input[type=radio]:checked + .topcoat-radio-button__checkmark:after {
   opacity: 1;
 }
 .topcoat-radio-button {
@@ -1812,7 +1005,7 @@ input[type="radio"]:checked + .topcoat-radio-button__checkmark:after {
   height: 1.063rem;
   background: #e5e9e8;
   border: 1px solid #9daca9;
-  box-shadow: inset 0 1px #fff;
+  box-shadow: inset 0 1px #ffffff;
 }
 .topcoat-radio-button__checkmark {
   position: relative;
@@ -1821,71 +1014,43 @@ input[type="radio"]:checked + .topcoat-radio-button__checkmark:after {
 }
 .topcoat-radio-button__checkmark:after {
   opacity: 0;
-  width: 0.313rem;
-  height: 0.313rem;
+  width: .313rem;
+  height: .313rem;
   background: #454545;
   border: 1px solid rgba(0, 0, 0, 0.1);
   box-shadow: 0 1px rgba(255, 255, 255, 0.5);
   -webkit-transform: none;
   -ms-transform: none;
   transform: none;
-  top: 0.313rem;
+  top: .313rem;
   left: 0.313rem;
 }
-input[type="radio"]:focus + .topcoat-radio-button__checkmark:before {
+input[type=radio]:focus + .topcoat-radio-button__checkmark:before {
   border: 1px solid #0036ff;
   box-shadow: inset 0 1px rgba(255, 255, 255, 0.36), 0 0 0 2px #6fb5f1;
 }
-input[type="radio"]:active + .topcoat-radio-button__checkmark:before {
+input[type=radio]:active + .topcoat-radio-button__checkmark:before {
   border: 1px solid #9daca9;
   background-color: #d2d6d6;
   box-shadow: inset 0 1px rgba(0, 0, 0, 0.1);
 }
-input[type="radio"]:disabled:active + .topcoat-radio-button__checkmark:before {
+input[type=radio]:disabled:active + .topcoat-radio-button__checkmark:before {
   border: 1px solid #9daca9;
   background: #e5e9e8;
-  box-shadow: inset 0 1px #fff;
+  box-shadow: inset 0 1px #ffffff;
 }
-/*
-Copyright 2012 Adobe Systems Inc.;
-Licensed under the Apache License, Version 2.0 (the "License");
-you may not use this file except in compliance with the License.
-You may obtain a copy of the License at
-
-http://www.apache.org/licenses/LICENSE-2.0
-
-Unless required by applicable law or agreed to in writing, software
-distributed under the License is distributed on an "AS IS" BASIS,
-WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-See the License for the specific language governing permissions and
-limitations under the License.
-*/
-/*
-Copyright 2012 Adobe Systems Inc.;
-Licensed under the Apache License, Version 2.0 (the "License");
-you may not use this file except in compliance with the License.
-You may obtain a copy of the License at
-
-http://www.apache.org/licenses/LICENSE-2.0
-
-Unless required by applicable law or agreed to in writing, software
-distributed under the License is distributed on an "AS IS" BASIS,
-WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-See the License for the specific language governing permissions and
-limitations under the License.
-*/
 .range {
   padding: 0;
   margin: 0;
   font: inherit;
   color: inherit;
   background: transparent;
-  border: none;
+  border: 0;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
   background-clip: padding-box;
   vertical-align: top;
-  outline: none;
+  outline: 0;
   -webkit-appearance: none;
 }
 .range__thumb {
@@ -1896,38 +1061,10 @@ limitations under the License.
   -webkit-appearance: none;
 }
 .range:disabled {
-  opacity: 0.3;
+  opacity: .3;
   cursor: default;
   pointer-events: none;
 }
-/*
-Copyright 2012 Adobe Systems Inc.;
-Licensed under the Apache License, Version 2.0 (the "License");
-you may not use this file except in compliance with the License.
-You may obtain a copy of the License at
-
-http://www.apache.org/licenses/LICENSE-2.0
-
-Unless required by applicable law or agreed to in writing, software
-distributed under the License is distributed on an "AS IS" BASIS,
-WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-See the License for the specific language governing permissions and
-limitations under the License.
-*/
-/*
-Copyright 2012 Adobe Systems Inc.;
-Licensed under the Apache License, Version 2.0 (the "License");
-you may not use this file except in compliance with the License.
-You may obtain a copy of the License at
-
-http://www.apache.org/licenses/LICENSE-2.0
-
-Unless required by applicable law or agreed to in writing, software
-distributed under the License is distributed on an "AS IS" BASIS,
-WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-See the License for the specific language governing permissions and
-limitations under the License.
-*/
 .range,
 .topcoat-range {
   padding: 0;
@@ -1935,12 +1072,12 @@ limitations under the License.
   font: inherit;
   color: inherit;
   background: transparent;
-  border: none;
+  border: 0;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
   background-clip: padding-box;
   vertical-align: top;
-  outline: none;
+  outline: 0;
   -webkit-appearance: none;
 }
 .range__thumb,
@@ -1954,57 +1091,39 @@ limitations under the License.
 }
 .range:disabled,
 .topcoat-range:disabled {
-  opacity: 0.3;
+  opacity: .3;
   cursor: default;
   pointer-events: none;
 }
-/* topdoc
-  name: Range
-  description: Range input
-  modifiers:
-    :active: Active state
-    :disabled: Disabled state
-    :hover: Hover state
-    :focus: Focused
-  markup:
-    <input type="range" class="topcoat-range">
-    <input type="range" class="topcoat-range" disabled>
-  examples:
-    mobile range: http://codepen.io/Topcoat/pen/BskEn
-  tags:
-    - desktop
-    - mobile
-    - range
-*/
 .topcoat-range {
   border-radius: 4px;
   border: 1px solid #9daca9;
   background-color: #d6dcdb;
-  height: 0.5rem;
+  height: .5rem;
   border-radius: 15px;
 }
 .topcoat-range::-moz-range-track {
   border-radius: 4px;
   border: 1px solid #9daca9;
   background-color: #d6dcdb;
-  height: 0.5rem;
+  height: .5rem;
   border-radius: 15px;
 }
 .topcoat-range::-webkit-slider-thumb {
   height: 1.313rem;
-  width: 0.75rem;
+  width: .75rem;
   background-color: #e5e9e8;
   border: 1px solid #9daca9;
   border-radius: 4px;
-  box-shadow: inset 0 1px #fff;
+  box-shadow: inset 0 1px #ffffff;
 }
 .topcoat-range::-moz-range-thumb {
   height: 1.313rem;
-  width: 0.75rem;
+  width: .75rem;
   background-color: #e5e9e8;
   border: 1px solid #9daca9;
   border-radius: 4px;
-  box-shadow: inset 0 1px #fff;
+  box-shadow: inset 0 1px #ffffff;
 }
 .topcoat-range:focus::-webkit-slider-thumb {
   border: 1px solid #0036ff;
@@ -2016,102 +1135,34 @@ limitations under the License.
 }
 .topcoat-range:active::-webkit-slider-thumb {
   border: 1px solid #9daca9;
-  box-shadow: inset 0 1px #fff;
+  box-shadow: inset 0 1px #ffffff;
 }
 .topcoat-range:active::-moz-range-thumb {
   border: 1px solid #9daca9;
-  box-shadow: inset 0 1px #fff;
+  box-shadow: inset 0 1px #ffffff;
 }
-/**
-*
-* Copyright 2012 Adobe Systems Inc.;
-*
-* Licensed under the Apache License, Version 2.0 (the "License");
-* you may not use this file except in compliance with the License.
-* You may obtain a copy of the License at
-*
-* http://www.apache.org/licenses/LICENSE-2.0
-*
-* Unless required by applicable law or agreed to in writing, software
-* distributed under the License is distributed on an "AS IS" BASIS,
-* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-* See the License for the specific language governing permissions and
-* limitations under the License.
-*
-*/
-/**
-*
-* Copyright 2012 Adobe Systems Inc.;
-*
-* Licensed under the Apache License, Version 2.0 (the "License");
-* you may not use this file except in compliance with the License.
-* You may obtain a copy of the License at
-*
-* http://www.apache.org/licenses/LICENSE-2.0
-*
-* Unless required by applicable law or agreed to in writing, software
-* distributed under the License is distributed on an "AS IS" BASIS,
-* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-* See the License for the specific language governing permissions and
-* limitations under the License.
-*
-*/
 .search-input {
   padding: 0;
   margin: 0;
   font: inherit;
   color: inherit;
   background: transparent;
-  border: none;
+  border: 0;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
   background-clip: padding-box;
   vertical-align: top;
-  outline: none;
+  outline: 0;
   -webkit-appearance: none;
 }
-input[type="search"]::-webkit-search-cancel-button {
+input[type=search]::-webkit-search-cancel-button {
   -webkit-appearance: none;
 }
 .search-input:disabled {
-  opacity: 0.3;
+  opacity: .3;
   cursor: default;
   pointer-events: none;
 }
-/**
-*
-* Copyright 2012 Adobe Systems Inc.;
-*
-* Licensed under the Apache License, Version 2.0 (the "License");
-* you may not use this file except in compliance with the License.
-* You may obtain a copy of the License at
-*
-* http://www.apache.org/licenses/LICENSE-2.0
-*
-* Unless required by applicable law or agreed to in writing, software
-* distributed under the License is distributed on an "AS IS" BASIS,
-* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-* See the License for the specific language governing permissions and
-* limitations under the License.
-*
-*/
-/**
-*
-* Copyright 2012 Adobe Systems Inc.;
-*
-* Licensed under the Apache License, Version 2.0 (the "License");
-* you may not use this file except in compliance with the License.
-* You may obtain a copy of the License at
-*
-* http://www.apache.org/licenses/LICENSE-2.0
-*
-* Unless required by applicable law or agreed to in writing, software
-* distributed under the License is distributed on an "AS IS" BASIS,
-* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-* See the License for the specific language governing permissions and
-* limitations under the License.
-*
-*/
 .search-input,
 .topcoat-search-input,
 .topcoat-search-input--large {
@@ -2120,41 +1171,24 @@ input[type="search"]::-webkit-search-cancel-button {
   font: inherit;
   color: inherit;
   background: transparent;
-  border: none;
+  border: 0;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
   background-clip: padding-box;
   vertical-align: top;
-  outline: none;
+  outline: 0;
   -webkit-appearance: none;
 }
-input[type="search"]::-webkit-search-cancel-button {
+input[type=search]::-webkit-search-cancel-button {
   -webkit-appearance: none;
 }
 .search-input:disabled,
 .topcoat-search-input:disabled,
 .topcoat-search-input--large:disabled {
-  opacity: 0.3;
+  opacity: .3;
   cursor: default;
   pointer-events: none;
 }
-/* topdoc
-  name: Search Input
-  description: A text input designed for searching.
-  modifiers:
-    :disabled: Disabled state
-  markup:
-    <input type="search" value="" placeholder="search" class="topcoat-search-input">
-    <input type="search" value="" placeholder="search" class="topcoat-search-input" disabled>
-  tags:
-    - desktop
-    - light
-    - mobile
-    - text
-    - input
-    - search
-    - form
-*/
 .topcoat-search-input,
 .topcoat-search-input--large {
   line-height: 1.313rem;
@@ -2166,7 +1200,7 @@ input[type="search"]::-webkit-search-cancel-button {
   color: #454545;
   padding: 0 0 0 1.3rem;
   border-radius: 15px;
-  background-image: url("../images/search.svg");
+  background-image: url(../img/search.svg);
   background-position: 1rem center;
   background-repeat: no-repeat;
   background-size: 12px;
@@ -2197,28 +1231,10 @@ input[type="search"]::-webkit-search-cancel-button {
 .topcoat-search-input:disabled:-ms-input-placeholder {
   color: #454545;
 }
-/* topdoc
-  name: Large Search Input
-  description: A large text input designed for searching.
-  modifiers:
-    :disabled: Disabled state
-  markup:
-    <input type="search" value="" placeholder="search" class="topcoat-search-input--large">
-    <input type="search" value="" placeholder="search" class="topcoat-search-input--large" disabled>
-  tags:
-    - desktop
-    - light
-    - mobile
-    - text
-    - input
-    - search
-    - form
-    - large
-*/
 .topcoat-search-input--large {
   line-height: 1.688rem;
   height: 1.688rem;
-  font-size: 0.875rem;
+  font-size: .875rem;
   font-weight: 400;
   padding: 0 0 0 1.8rem;
   border-radius: 25px;
@@ -2237,40 +1253,6 @@ input[type="search"]::-webkit-search-cancel-button {
 .topcoat-search-input--large:disabled:-ms-input-placeholder {
   color: #454545;
 }
-/**
-*
-* Copyright 2012 Adobe Systems Inc.;
-*
-* Licensed under the Apache License, Version 2.0 (the "License");
-* you may not use this file except in compliance with the License.
-* You may obtain a copy of the License at
-*
-* http://www.apache.org/licenses/LICENSE-2.0
-*
-* Unless required by applicable law or agreed to in writing, software
-* distributed under the License is distributed on an "AS IS" BASIS,
-* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-* See the License for the specific language governing permissions and
-* limitations under the License.
-*
-*/
-/**
-*
-* Copyright 2012 Adobe Systems Inc.;
-*
-* Licensed under the Apache License, Version 2.0 (the "License");
-* you may not use this file except in compliance with the License.
-* You may obtain a copy of the License at
-*
-* http://www.apache.org/licenses/LICENSE-2.0
-*
-* Unless required by applicable law or agreed to in writing, software
-* distributed under the License is distributed on an "AS IS" BASIS,
-* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-* See the License for the specific language governing permissions and
-* limitations under the License.
-*
-*/
 .switch {
   position: relative;
   display: inline-block;
@@ -2284,10 +1266,10 @@ input[type="search"]::-webkit-search-cancel-button {
   overflow: hidden;
   padding: 0;
   border: 0;
-  opacity: 0.001;
+  opacity: .001;
   z-index: 1;
   vertical-align: top;
-  outline: none;
+  outline: 0;
 }
 .switch__toggle {
   position: relative;
@@ -2301,7 +1283,7 @@ input[type="search"]::-webkit-search-cancel-button {
   font: inherit;
   color: inherit;
   background: transparent;
-  border: none;
+  border: 0;
   cursor: default;
   -webkit-user-select: none;
   -moz-user-select: none;
@@ -2318,44 +1300,10 @@ input[type="search"]::-webkit-search-cancel-button {
   background-clip: padding-box;
 }
 .switch--disabled {
-  opacity: 0.3;
+  opacity: .3;
   cursor: default;
   pointer-events: none;
 }
-/**
-*
-* Copyright 2012 Adobe Systems Inc.;
-*
-* Licensed under the Apache License, Version 2.0 (the "License");
-* you may not use this file except in compliance with the License.
-* You may obtain a copy of the License at
-*
-* http://www.apache.org/licenses/LICENSE-2.0
-*
-* Unless required by applicable law or agreed to in writing, software
-* distributed under the License is distributed on an "AS IS" BASIS,
-* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-* See the License for the specific language governing permissions and
-* limitations under the License.
-*
-*/
-/**
-*
-* Copyright 2012 Adobe Systems Inc.;
-*
-* Licensed under the Apache License, Version 2.0 (the "License");
-* you may not use this file except in compliance with the License.
-* You may obtain a copy of the License at
-*
-* http://www.apache.org/licenses/LICENSE-2.0
-*
-* Unless required by applicable law or agreed to in writing, software
-* distributed under the License is distributed on an "AS IS" BASIS,
-* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-* See the License for the specific language governing permissions and
-* limitations under the License.
-*
-*/
 .switch,
 .topcoat-switch {
   position: relative;
@@ -2371,10 +1319,10 @@ input[type="search"]::-webkit-search-cancel-button {
   overflow: hidden;
   padding: 0;
   border: 0;
-  opacity: 0.001;
+  opacity: .001;
   z-index: 1;
   vertical-align: top;
-  outline: none;
+  outline: 0;
 }
 .switch__toggle,
 .topcoat-switch__toggle {
@@ -2389,7 +1337,7 @@ input[type="search"]::-webkit-search-cancel-button {
   font: inherit;
   color: inherit;
   background: transparent;
-  border: none;
+  border: 0;
   cursor: default;
   -webkit-user-select: none;
   -moz-user-select: none;
@@ -2409,44 +1357,13 @@ input[type="search"]::-webkit-search-cancel-button {
 }
 .switch--disabled,
 .topcoat-switch__input:disabled + .topcoat-switch__toggle {
-  opacity: 0.3;
+  opacity: .3;
   cursor: default;
   pointer-events: none;
 }
-/* topdoc
-  name: Switch
-  description: Default skin for Topcoat switch
-  modifiers:
-    :focus: Focus state
-    :disabled: Disabled state
-  markup:
-    <label class="topcoat-switch">
-      <input type="checkbox" class="topcoat-switch__input">
-      <div class="topcoat-switch__toggle"></div>
-    </label>
-    <br>
-    <br>
-    <label class="topcoat-switch">
-      <input type="checkbox" class="topcoat-switch__input" checked>
-      <div class="topcoat-switch__toggle"></div>
-    </label>
-    <br>
-    <br>
-    <label class="topcoat-switch">
-      <input type="checkbox" class="topcoat-switch__input" disabled>
-      <div class="topcoat-switch__toggle"></div>
-    </label>
-  examples:
-    mobile switch: http://codepen.io/Topcoat/pen/upxds
-  tags:
-    - desktop
-    - light
-    - mobile
-    - switch
-*/
 .topcoat-switch {
   font-size: 12px;
-  padding: 0 0.563rem;
+  padding: 0 .563rem;
   border-radius: 4px;
   border: 1px solid #9daca9;
   overflow: hidden;
@@ -2461,7 +1378,7 @@ input[type="search"]::-webkit-search-cancel-button {
   content: 'ON';
   color: #288edf;
   background-color: #e5f1fb;
-  right: 0.8rem;
+  right: .8rem;
   padding-left: 0.75rem;
 }
 .topcoat-switch__toggle {
@@ -2483,7 +1400,7 @@ input[type="search"]::-webkit-search-cancel-button {
 .topcoat-switch__toggle:after {
   content: 'OFF';
   background-color: #d2d6d6;
-  left: 0.8rem;
+  left: .8rem;
   padding-left: 0.6rem;
 }
 .topcoat-switch__input:checked + .topcoat-switch__toggle {
@@ -2491,7 +1408,7 @@ input[type="search"]::-webkit-search-cancel-button {
 }
 .topcoat-switch__input:active + .topcoat-switch__toggle {
   border: 1px solid #9daca9;
-  box-shadow: inset 0 1px #fff;
+  box-shadow: inset 0 1px #ffffff;
 }
 .topcoat-switch__input:focus + .topcoat-switch__toggle {
   border: 1px solid #0036ff;
@@ -2501,40 +1418,6 @@ input[type="search"]::-webkit-search-cancel-button {
 .topcoat-switch__input:disabled + .topcoat-switch__toggle:before {
   background: transparent;
 }
-/**
-*
-* Copyright 2012 Adobe Systems Inc.;
-*
-* Licensed under the Apache License, Version 2.0 (the "License");
-* you may not use this file except in compliance with the License.
-* You may obtain a copy of the License at
-*
-* http://www.apache.org/licenses/LICENSE-2.0
-*
-* Unless required by applicable law or agreed to in writing, software
-* distributed under the License is distributed on an "AS IS" BASIS,
-* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-* See the License for the specific language governing permissions and
-* limitations under the License.
-*
-*/
-/**
-*
-* Copyright 2012 Adobe Systems Inc.;
-*
-* Licensed under the Apache License, Version 2.0 (the "License");
-* you may not use this file except in compliance with the License.
-* You may obtain a copy of the License at
-*
-* http://www.apache.org/licenses/LICENSE-2.0
-*
-* Unless required by applicable law or agreed to in writing, software
-* distributed under the License is distributed on an "AS IS" BASIS,
-* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-* See the License for the specific language governing permissions and
-* limitations under the License.
-*
-*/
 .button,
 .topcoat-tab-bar__button {
   position: relative;
@@ -2548,7 +1431,7 @@ input[type="search"]::-webkit-search-cancel-button {
   font: inherit;
   color: inherit;
   background: transparent;
-  border: none;
+  border: 0;
   cursor: default;
   -webkit-user-select: none;
   -moz-user-select: none;
@@ -2566,7 +1449,7 @@ input[type="search"]::-webkit-search-cancel-button {
 }
 .button--disabled,
 .topcoat-tab-bar__button:disabled {
-  opacity: 0.3;
+  opacity: .3;
   cursor: default;
   pointer-events: none;
 }
@@ -2590,52 +1473,21 @@ input[type="search"]::-webkit-search-cancel-button {
   overflow: hidden;
   padding: 0;
   border: 0;
-  opacity: 0.001;
+  opacity: .001;
   z-index: 1;
   vertical-align: top;
-  outline: none;
+  outline: 0;
 }
 .button-bar__button {
   border-radius: inherit;
 }
 .button-bar__item:disabled {
-  opacity: 0.3;
+  opacity: .3;
   cursor: default;
   pointer-events: none;
 }
-/* topdoc
-  name: Tab Bar
-  description: Component of tab buttons
-  modifiers:
-    :disabled: Disabled state
-  markup:
-    <div class="topcoat-tab-bar">
-      <label class="topcoat-tab-bar__item">
-        <input type="radio" name="tab-bar">
-        <button class="topcoat-tab-bar__button">One</button>
-      </label>
-      <label class="topcoat-tab-bar__item">
-        <input type="radio" name="tab-bar">
-        <button class="topcoat-tab-bar__button">Two</button>
-      </label>
-      <label class="topcoat-tab-bar__item">
-        <input type="radio" name="tab-bar">
-        <button class="topcoat-tab-bar__button">Three</button>
-      </label>
-    </div>
-  examples:
-    mobile tab bar: http://codepen.io/Topcoat/pen/rJICF
-  tags:
-    - desktop
-    - light
-    - dark
-    - mobile
-    - tab
-    - group
-    - bar
-*/
 .topcoat-tab-bar__button {
-  padding: 0 0.563rem;
+  padding: 0 .563rem;
   height: 1.313rem;
   line-height: 1.313rem;
   letter-spacing: 0;
@@ -2659,40 +1511,6 @@ input[type="search"]::-webkit-search-cancel-button {
   box-shadow: inset 0 1px rgba(255, 255, 255, 0.36), 0 0 0 2px #6fb5f1;
   outline: 0;
 }
-/**
-*
-* Copyright 2012 Adobe Systems Inc.;
-*
-* Licensed under the Apache License, Version 2.0 (the "License");
-* you may not use this file except in compliance with the License.
-* You may obtain a copy of the License at
-*
-* http://www.apache.org/licenses/LICENSE-2.0
-*
-* Unless required by applicable law or agreed to in writing, software
-* distributed under the License is distributed on an "AS IS" BASIS,
-* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-* See the License for the specific language governing permissions and
-* limitations under the License.
-*
-*/
-/**
-*
-* Copyright 2012 Adobe Systems Inc.;
-*
-* Licensed under the Apache License, Version 2.0 (the "License");
-* you may not use this file except in compliance with the License.
-* You may obtain a copy of the License at
-*
-* http://www.apache.org/licenses/LICENSE-2.0
-*
-* Unless required by applicable law or agreed to in writing, software
-* distributed under the License is distributed on an "AS IS" BASIS,
-* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-* See the License for the specific language governing permissions and
-* limitations under the License.
-*
-*/
 .input,
 .topcoat-text-input,
 .topcoat-text-input--large {
@@ -2701,47 +1519,26 @@ input[type="search"]::-webkit-search-cancel-button {
   font: inherit;
   color: inherit;
   background: transparent;
-  border: none;
+  border: 0;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
   background-clip: padding-box;
   vertical-align: top;
-  outline: none;
+  outline: 0;
 }
 .input:disabled,
 .topcoat-text-input:disabled,
 .topcoat-text-input--large:disabled {
-  opacity: 0.3;
+  opacity: .3;
   cursor: default;
   pointer-events: none;
 }
-/* topdoc
-  name: Text input
-  description: Topdoc text input
-  modifiers:
-    :disabled: Disabled state
-    :focus: Focused
-    :invalid: Hover state
-  markup:
-    <input type="text" class="topcoat-text-input" placeholder="text" value="">
-    <br>
-    <br>
-    <input type="text" class="topcoat-text-input" placeholder="text" value="" disabled>
-    <br>
-    <br>
-    <input type="text" class="topcoat-text-input" placeholder="text" value="fail" pattern="not-fail">
-  tags:
-    - desktop
-    - mobile
-    - text
-    - input
-*/
 .topcoat-text-input,
 .topcoat-text-input--large {
   line-height: 1.313rem;
   font-size: 12px;
   letter-spacing: 0;
-  padding: 0 0.563rem;
+  padding: 0 .563rem;
   border: 1px solid #9daca9;
   border-radius: 4px;
   background-color: #fff;
@@ -2768,29 +1565,6 @@ input[type="search"]::-webkit-search-cancel-button {
 .topcoat-text-input:invalid {
   border: 1px solid #ec514e;
 }
-/* topdoc
-  name: Large Text Input
-  description: A bigger input, still for text.
-  modifiers:
-    :disabled: Disabled state
-    :focus: Focused
-    :invalid: Hover state
-  markup:
-    <input type="text" class="topcoat-text-input--large" value="" placeholder="text">
-    <br>
-    <br>
-    <input type="text" class="topcoat-text-input--large" value="" placeholder="text" disabled>
-    <br>
-    <br>
-    <input type="text" class="topcoat-text-input--large" placeholder="text" value="fail" pattern="not-fail">
-  tags:
-    - desktop
-    - light
-    - mobile
-    - form
-    - input
-    - large
-*/
 .topcoat-text-input--large {
   line-height: 1.688rem;
   font-size: 0.875rem;
@@ -2810,40 +1584,6 @@ input[type="search"]::-webkit-search-cancel-button {
 .topcoat-text-input--large:invalid {
   border: 1px solid #ec514e;
 }
-/**
-*
-* Copyright 2012 Adobe Systems Inc.;
-*
-* Licensed under the Apache License, Version 2.0 (the "License");
-* you may not use this file except in compliance with the License.
-* You may obtain a copy of the License at
-*
-* http://www.apache.org/licenses/LICENSE-2.0
-*
-* Unless required by applicable law or agreed to in writing, software
-* distributed under the License is distributed on an "AS IS" BASIS,
-* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-* See the License for the specific language governing permissions and
-* limitations under the License.
-*
-*/
-/**
-*
-* Copyright 2012 Adobe Systems Inc.;
-*
-* Licensed under the Apache License, Version 2.0 (the "License");
-* you may not use this file except in compliance with the License.
-* You may obtain a copy of the License at
-*
-* http://www.apache.org/licenses/LICENSE-2.0
-*
-* Unless required by applicable law or agreed to in writing, software
-* distributed under the License is distributed on an "AS IS" BASIS,
-* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-* See the License for the specific language governing permissions and
-* limitations under the License.
-*
-*/
 .textarea {
   -moz-box-sizing: border-box;
   box-sizing: border-box;
@@ -2853,50 +1593,16 @@ input[type="search"]::-webkit-search-cancel-button {
   font: inherit;
   color: inherit;
   background: transparent;
-  border: none;
+  border: 0;
   vertical-align: top;
   resize: none;
-  outline: none;
+  outline: 0;
 }
 .textarea:disabled {
-  opacity: 0.3;
+  opacity: .3;
   cursor: default;
   pointer-events: none;
 }
-/**
-*
-* Copyright 2012 Adobe Systems Inc.;
-*
-* Licensed under the Apache License, Version 2.0 (the "License");
-* you may not use this file except in compliance with the License.
-* You may obtain a copy of the License at
-*
-* http://www.apache.org/licenses/LICENSE-2.0
-*
-* Unless required by applicable law or agreed to in writing, software
-* distributed under the License is distributed on an "AS IS" BASIS,
-* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-* See the License for the specific language governing permissions and
-* limitations under the License.
-*
-*/
-/**
-*
-* Copyright 2012 Adobe Systems Inc.;
-*
-* Licensed under the Apache License, Version 2.0 (the "License");
-* you may not use this file except in compliance with the License.
-* You may obtain a copy of the License at
-*
-* http://www.apache.org/licenses/LICENSE-2.0
-*
-* Unless required by applicable law or agreed to in writing, software
-* distributed under the License is distributed on an "AS IS" BASIS,
-* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-* See the License for the specific language governing permissions and
-* limitations under the License.
-*
-*/
 .textarea,
 .topcoat-textarea,
 .topcoat-textarea--large {
@@ -2908,36 +1614,18 @@ input[type="search"]::-webkit-search-cancel-button {
   font: inherit;
   color: inherit;
   background: transparent;
-  border: none;
+  border: 0;
   vertical-align: top;
   resize: none;
-  outline: none;
+  outline: 0;
 }
 .textarea:disabled,
 .topcoat-textarea:disabled,
 .topcoat-textarea--large:disabled {
-  opacity: 0.3;
+  opacity: .3;
   cursor: default;
   pointer-events: none;
 }
-/* topdoc
-  name: Textarea
-  description: A whole area, just for text.
-  modifiers:
-    :disabled: Disabled state
-  markup:
-    <textarea class="topcoat-textarea" rows="6" cols="36" placeholder="Textarea"></textarea>
-    <br>
-    <br>
-    <textarea class="topcoat-textarea" rows="6" cols="36" placeholder="Textarea" disabled></textarea>
-  tags:
-    - desktop
-    - light
-    - mobile
-    - form
-    - input
-    - textarea
-*/
 .topcoat-textarea,
 .topcoat-textarea--large {
   padding: 1rem;
@@ -2967,24 +1655,6 @@ input[type="search"]::-webkit-search-cancel-button {
 .topcoat-textarea:disabled:-ms-input-placeholder {
   color: #454545;
 }
-/* topdoc
-  name: Large Textarea
-  description: A whole area, just for text; now available in large.
-  modifiers:
-    :disabled: Disabled state
-  markup:
-    <textarea class="topcoat-textarea--large" rows="6" cols="36" placeholder="Textarea"></textarea>
-    <br>
-    <br>
-    <textarea class="topcoat-textarea--large" rows="6" cols="36" placeholder="Textarea" disabled></textarea>
-  tags:
-    - desktop
-    - light
-    - mobile
-    - form
-    - input
-    - textarea
-*/
 .topcoat-textarea--large {
   font-size: 1.3rem;
   line-height: 1.688rem;
@@ -3003,16 +1673,16 @@ input[type="search"]::-webkit-search-cancel-button {
 }
 @font-face {
   font-family: "Source Sans";
-  src: url("../font/SourceSansPro-Regular.otf");
+  src: url(../font/SourceSansPro-Regular.otf);
 }
 @font-face {
   font-family: "Source Sans";
-  src: url("../font/SourceSansPro-Light.otf");
+  src: url(../font/SourceSansPro-Light.otf);
   font-weight: 200;
 }
 @font-face {
   font-family: "Source Sans";
-  src: url("../font/SourceSansPro-Semibold.otf");
+  src: url(../font/SourceSansPro-Semibold.otf);
   font-weight: 600;
 }
 body {
@@ -3028,7 +1698,7 @@ body {
   outline-style: none;
 }
 .topcoat-icon--menu-stack {
-  background: url("../img/hamburger_dark.svg") no-repeat;
+  background: url(../img/hamburger_dark.svg) no-repeat;
   background-size: cover;
 }
 .quarter {
@@ -3070,7 +1740,7 @@ body {
   font: inherit;
   color: inherit;
   background: transparent;
-  border: none;
+  border: 0;
   cursor: default;
   -webkit-user-select: none;
   -moz-user-select: none;
@@ -3080,185 +1750,605 @@ body {
   white-space: nowrap;
   overflow: hidden;
 }
-/* This file should include color and image variables corresponding to the dark theme */
-/* ---------- colors ---------- */
-/* ---------- darken ---------- */
-/* ---------- lighten ---------- */
-/* ---------- alphas ---------- */
-/* ---------- thickness ---------- */
-/* ---------- shadows ---------- */
-/* Icons */
-/* Navigation Bar */
-/* Text Input */
-/* List */
-/* Overlay */
-/* Progress bar */
-/* Checkbox */
-/* Range input */
-/* Radio Button */
-/* Tab bar */
-/* Switch */
-/* Icon Button */
-/* Navigation bar */
-/* List */
-/* Search Input */
-/* Textarea */
-/* Checkbox */
-/* Radio */
-/* Range input */
-/* Search Input */
-/* Switch */
-/* This file should include color and image variables corresponding to the light theme */
-/* ---------- colors ---------- */
-/* ---------- darken ---------- */
-/* ---------- lighten ---------- */
-/* ---------- alphas ---------- */
-/* ---------- thickness ---------- */
-/* ---------- shadows ---------- */
-/* Secondary colors (based on colors above)
-
-Everything below this line should be calculated using the variables above. This area is for people that want to totally customize everything. Have fun, bros!
-
-*/
-/* Icons */
-/* Navigation Bar */
-/* Text Input */
-/* List */
-/* Overlay */
-/* Progress bar */
-/* Checkbox */
-/* Range input */
-/* Radio Button */
-/* Tab bar */
-/* Switch */
-/* Containers */
-/* Icon Button */
-/* Navigation bar */
-/* List */
-/* Search Input */
-/* Text Area */
-/* Checkbox */
-/* Radio */
-/* Range input */
-/* Search Input */
-/* Switch */
-/* Call To Action */
-/* Text Input */
-/* Radio input */
-/* Overlay */
-/* Textarea */
-/* Progress bar container */
-/* Progress bar progress */
-/* Switch */
-/* Notification */
-/* Search */
-.topcoat-grid,
-.topcoat-grid__column--1,
-.topcoat-grid__column--2,
-.topcoat-grid__column--3,
-.topcoat-grid__column--4,
-.topcoat-grid__column--5,
-.topcoat-grid__column--6,
-.topcoat-grid__column--7,
-.topcoat-grid__column--8,
-.topcoat-grid__column--9,
-.topcoat-grid__column--10,
-.topcoat-grid__column--11,
-.topcoat-grid__column--12,
-.topcoat-grid__offset--1,
-.topcoat-grid__offset--2,
-.topcoat-grid__offset--3,
-.topcoat-grid__offset--4,
-.topcoat-grid__offset--5,
-.topcoat-grid__offset--6,
-.topcoat-grid__offset--7,
-.topcoat-grid__offset--8,
-.topcoat-grid__offset--9,
-.topcoat-grid__offset--10,
-.topcoat-grid__offset--11,
-.topcoat-grid__column--auto {
+.grid-margin {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
   box-sizing: border-box;
-  padding-left: 1rem;
-  padding-right: 1rem;
+  padding: 0 2rem;
 }
-.topcoat-grid__row {
-  box-sizing: border-box;
+.row {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
   display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
   flex-wrap: wrap;
-  margin-left: -1rem;
-  margin-right: -1rem;
+  margin: 0 -0.5rem;
 }
-.topcoat-grid__column--1 {
-  flex-basis: 8.333333333333334%;
+.row.reverse {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: reverse;
+  -webkit-flex-direction: row-reverse;
+  -ms-flex-direction: row-reverse;
+  flex-direction: row-reverse;
+  -webkit-flex-wrap: row-reverse;
+  -ms-flex-wrap: row-reverse;
+  flex-wrap: row-reverse;
 }
-.topcoat-grid__column--2 {
-  flex-basis: 16.666666666666668%;
+.column {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
 }
-.topcoat-grid__column--3 {
-  flex-basis: 25%;
+.column.reverse {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: reverse;
+  -webkit-flex-direction: column-reverse;
+  -ms-flex-direction: column-reverse;
+  flex-direction: column-reverse;
+  -webkit-flex-wrap: column-reverse;
+  -ms-flex-wrap: column-reverse;
+  flex-wrap: column-reverse;
 }
-.topcoat-grid__column--4 {
-  flex-basis: 33.333333333333336%;
+.column,
+.column-1--hand,
+.column-10--hand,
+.column-11--hand,
+.column-12--hand,
+.column-2--hand,
+.column-3--hand,
+.column-4--hand,
+.column-5--hand,
+.column-6--hand,
+.column-7--hand,
+.column-8--hand,
+.column-9--hand,
+.column-auto--hand,
+.offset-1--hand,
+.offset-10--hand,
+.offset-11--hand,
+.offset-12--hand,
+.offset-2--hand,
+.offset-3--hand,
+.offset-4--hand,
+.offset-5--hand,
+.offset-6--hand,
+.offset-7--hand,
+.offset-8--hand,
+.offset-9--hand {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  padding: 0 0.5rem;
 }
-.topcoat-grid__column--5 {
-  flex-basis: 41.66666666666667%;
+.column-1--hand {
+  -webkit-box-flex: 0;
+  -webkit-flex: 0 0 8.333%;
+  -ms-flex: 0 0 8.333%;
+  flex: 0 0 8.333%;
 }
-.topcoat-grid__column--6 {
-  flex-basis: 50%;
+.column-2--hand {
+  -webkit-box-flex: 0;
+  -webkit-flex: 0 0 16.667%;
+  -ms-flex: 0 0 16.667%;
+  flex: 0 0 16.667%;
 }
-.topcoat-grid__column--7 {
-  flex-basis: 58.333333333333336%;
+.column-3--hand {
+  -webkit-box-flex: 0;
+  -webkit-flex: 0 0 25%;
+  -ms-flex: 0 0 25%;
+  flex: 0 0 25%;
 }
-.topcoat-grid__column--8 {
-  flex-basis: 66.66666666666667%;
+.column-4--hand {
+  -webkit-box-flex: 0;
+  -webkit-flex: 0 0 33.333%;
+  -ms-flex: 0 0 33.333%;
+  flex: 0 0 33.333%;
 }
-.topcoat-grid__column--9 {
-  flex-basis: 75%;
+.column-5--hand {
+  -webkit-box-flex: 0;
+  -webkit-flex: 0 0 41.667%;
+  -ms-flex: 0 0 41.667%;
+  flex: 0 0 41.667%;
 }
-.topcoat-grid__column--10 {
-  flex-basis: 83.33333333333334%;
+.column-6--hand {
+  -webkit-box-flex: 0;
+  -webkit-flex: 0 0 50%;
+  -ms-flex: 0 0 50%;
+  flex: 0 0 50%;
 }
-.topcoat-grid__column--11 {
-  flex-basis: 91.66666666666667%;
+.column-7--hand {
+  -webkit-box-flex: 0;
+  -webkit-flex: 0 0 58.333%;
+  -ms-flex: 0 0 58.333%;
+  flex: 0 0 58.333%;
 }
-.topcoat-grid__column--12 {
-  flex-basis: 100%;
+.column-8--hand {
+  -webkit-box-flex: 0;
+  -webkit-flex: 0 0 66.667%;
+  -ms-flex: 0 0 66.667%;
+  flex: 0 0 66.667%;
 }
-.topcoat-grid__offset--1 {
-  margin-left: 8.333333333333334%;
+.column-9--hand {
+  -webkit-box-flex: 0;
+  -webkit-flex: 0 0 75%;
+  -ms-flex: 0 0 75%;
+  flex: 0 0 75%;
 }
-.topcoat-grid__offset--2 {
-  margin-left: 16.666666666666668%;
+.column-10--hand {
+  -webkit-box-flex: 0;
+  -webkit-flex: 0 0 83.333%;
+  -ms-flex: 0 0 83.333%;
+  flex: 0 0 83.333%;
 }
-.topcoat-grid__offset--3 {
+.column-11--hand {
+  -webkit-box-flex: 0;
+  -webkit-flex: 0 0 91.667%;
+  -ms-flex: 0 0 91.667%;
+  flex: 0 0 91.667%;
+}
+.column-12--hand {
+  -webkit-box-flex: 0;
+  -webkit-flex: 0 0 100%;
+  -ms-flex: 0 0 100%;
+  flex: 0 0 100%;
+}
+.column-auto--hand {
+  -webkit-box-flex: 1;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+}
+.offset-1--hand {
+  margin-left: 8.333%;
+}
+.offset-2--hand {
+  margin-left: 16.667%;
+}
+.offset-3--hand {
   margin-left: 25%;
 }
-.topcoat-grid__offset--4 {
-  margin-left: 33.333333333333336%;
+.offset-4--hand {
+  margin-left: 33.333%;
 }
-.topcoat-grid__offset--5 {
-  margin-left: 41.66666666666667%;
+.offset-5--hand {
+  margin-left: 41.667%;
 }
-.topcoat-grid__offset--6 {
+.offset-6--hand {
   margin-left: 50%;
 }
-.topcoat-grid__offset--7 {
-  margin-left: 58.333333333333336%;
+.offset-7--hand {
+  margin-left: 58.333%;
 }
-.topcoat-grid__offset--8 {
-  margin-left: 66.66666666666667%;
+.offset-8--hand {
+  margin-left: 66.667%;
 }
-.topcoat-grid__offset--9 {
+.offset-9--hand {
   margin-left: 75%;
 }
-.topcoat-grid__offset--10 {
-  margin-left: 83.33333333333334%;
+.offset-10--hand {
+  margin-left: 83.333%;
 }
-.topcoat-grid__offset--11 {
-  margin-left: 91.66666666666667%;
+.offset-11--hand {
+  margin-left: 91.667%;
 }
-.topcoat-grid__column--auto {
-  flex: 1 1 0;
+.start {
+  -webkit-box-pack: start;
+  -webkit-justify-content: flex-start;
+  -ms-flex-pack: start;
+  justify-content: flex-start;
+}
+.center {
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+}
+.end {
+  -webkit-box-pack: end;
+  -webkit-justify-content: flex-end;
+  -ms-flex-pack: end;
+  justify-content: flex-end;
+}
+.top {
+  -webkit-box-align: start;
+  -webkit-align-items: flex-start;
+  -ms-flex-align: start;
+  align-items: flex-start;
+}
+.middle {
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+.bottom {
+  -webkit-box-align: end;
+  -webkit-align-items: flex-end;
+  -ms-flex-align: end;
+  align-items: flex-end;
+}
+.around {
+  -webkit-justify-content: space-around;
+  -ms-flex-pack: distribute;
+  justify-content: space-around;
+}
+.between {
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+}
+.first {
+  -webkit-box-ordinal-group: 0;
+  -webkit-order: -1;
+  -ms-flex-order: -1;
+  order: -1;
+}
+.last {
+  -webkit-box-ordinal-group: 2;
+  -webkit-order: 1;
+  -ms-flex-order: 1;
+  order: 1;
+}
+@media only screen and (min-width: 48rem) {
+  .column-1--lap {
+    -webkit-box-flex: 0;
+    -webkit-flex: 0 0 8.333%;
+    -ms-flex: 0 0 8.333%;
+    flex: 0 0 8.333%;
+  }
+  .column-2--lap {
+    -webkit-box-flex: 0;
+    -webkit-flex: 0 0 16.667%;
+    -ms-flex: 0 0 16.667%;
+    flex: 0 0 16.667%;
+  }
+  .column-3--lap {
+    -webkit-box-flex: 0;
+    -webkit-flex: 0 0 25%;
+    -ms-flex: 0 0 25%;
+    flex: 0 0 25%;
+  }
+  .column-4--lap {
+    -webkit-box-flex: 0;
+    -webkit-flex: 0 0 33.333%;
+    -ms-flex: 0 0 33.333%;
+    flex: 0 0 33.333%;
+  }
+  .column-5--lap {
+    -webkit-box-flex: 0;
+    -webkit-flex: 0 0 41.667%;
+    -ms-flex: 0 0 41.667%;
+    flex: 0 0 41.667%;
+  }
+  .column-6--lap {
+    -webkit-box-flex: 0;
+    -webkit-flex: 0 0 50%;
+    -ms-flex: 0 0 50%;
+    flex: 0 0 50%;
+  }
+  .column-7--lap {
+    -webkit-box-flex: 0;
+    -webkit-flex: 0 0 58.333%;
+    -ms-flex: 0 0 58.333%;
+    flex: 0 0 58.333%;
+  }
+  .column-8--lap {
+    -webkit-box-flex: 0;
+    -webkit-flex: 0 0 66.667%;
+    -ms-flex: 0 0 66.667%;
+    flex: 0 0 66.667%;
+  }
+  .column-9--lap {
+    -webkit-box-flex: 0;
+    -webkit-flex: 0 0 75%;
+    -ms-flex: 0 0 75%;
+    flex: 0 0 75%;
+  }
+  .column-10--lap {
+    -webkit-box-flex: 0;
+    -webkit-flex: 0 0 83.333%;
+    -ms-flex: 0 0 83.333%;
+    flex: 0 0 83.333%;
+  }
+  .column-11--lap {
+    -webkit-box-flex: 0;
+    -webkit-flex: 0 0 91.667%;
+    -ms-flex: 0 0 91.667%;
+    flex: 0 0 91.667%;
+  }
+  .column-12--lap {
+    -webkit-box-flex: 0;
+    -webkit-flex: 0 0 100%;
+    -ms-flex: 0 0 100%;
+    flex: 0 0 100%;
+  }
+  .column-auto--lap {
+    -webkit-box-flex: 1;
+    -webkit-flex: 1;
+    -ms-flex: 1;
+    flex: 1;
+  }
+  .offset-1--lap {
+    margin-left: 8.333%;
+  }
+  .offset-2--lap {
+    margin-left: 16.667%;
+  }
+  .offset-3--lap {
+    margin-left: 25%;
+  }
+  .offset-4--lap {
+    margin-left: 33.333%;
+  }
+  .offset-5--lap {
+    margin-left: 41.667%;
+  }
+  .offset-6--lap {
+    margin-left: 50%;
+  }
+  .offset-7--lap {
+    margin-left: 58.333%;
+  }
+  .offset-8--lap {
+    margin-left: 66.667%;
+  }
+  .offset-9--lap {
+    margin-left: 75%;
+  }
+  .offset-10--lap {
+    margin-left: 83.333%;
+  }
+  .offset-11--lap {
+    margin-left: 91.667%;
+  }
+}
+@media only screen and (min-width: 62rem) {
+  .column-1--desk {
+    -webkit-box-flex: 0;
+    -webkit-flex: 0 0 8.333%;
+    -ms-flex: 0 0 8.333%;
+    flex: 0 0 8.333%;
+  }
+  .column-2--desk {
+    -webkit-box-flex: 0;
+    -webkit-flex: 0 0 16.667%;
+    -ms-flex: 0 0 16.667%;
+    flex: 0 0 16.667%;
+  }
+  .column-3--desk {
+    -webkit-box-flex: 0;
+    -webkit-flex: 0 0 25%;
+    -ms-flex: 0 0 25%;
+    flex: 0 0 25%;
+  }
+  .column-4--desk {
+    -webkit-box-flex: 0;
+    -webkit-flex: 0 0 33.333%;
+    -ms-flex: 0 0 33.333%;
+    flex: 0 0 33.333%;
+  }
+  .column-5--desk {
+    -webkit-box-flex: 0;
+    -webkit-flex: 0 0 41.667%;
+    -ms-flex: 0 0 41.667%;
+    flex: 0 0 41.667%;
+  }
+  .column-6--desk {
+    -webkit-box-flex: 0;
+    -webkit-flex: 0 0 50%;
+    -ms-flex: 0 0 50%;
+    flex: 0 0 50%;
+  }
+  .column-7--desk {
+    -webkit-box-flex: 0;
+    -webkit-flex: 0 0 58.333%;
+    -ms-flex: 0 0 58.333%;
+    flex: 0 0 58.333%;
+  }
+  .column-8--desk {
+    -webkit-box-flex: 0;
+    -webkit-flex: 0 0 66.667%;
+    -ms-flex: 0 0 66.667%;
+    flex: 0 0 66.667%;
+  }
+  .column-9--desk {
+    -webkit-box-flex: 0;
+    -webkit-flex: 0 0 75%;
+    -ms-flex: 0 0 75%;
+    flex: 0 0 75%;
+  }
+  .column-10--desk {
+    -webkit-box-flex: 0;
+    -webkit-flex: 0 0 83.333%;
+    -ms-flex: 0 0 83.333%;
+    flex: 0 0 83.333%;
+  }
+  .column-11--desk {
+    -webkit-box-flex: 0;
+    -webkit-flex: 0 0 91.667%;
+    -ms-flex: 0 0 91.667%;
+    flex: 0 0 91.667%;
+  }
+  .column-12--desk {
+    -webkit-box-flex: 0;
+    -webkit-flex: 0 0 100%;
+    -ms-flex: 0 0 100%;
+    flex: 0 0 100%;
+  }
+  .column-auto--desk {
+    -webkit-box-flex: 1;
+    -webkit-flex: 1;
+    -ms-flex: 1;
+    flex: 1;
+  }
+  .offset-1--desk {
+    margin-left: 8.333%;
+  }
+  .offset-2--desk {
+    margin-left: 16.667%;
+  }
+  .offset-3--desk {
+    margin-left: 25%;
+  }
+  .offset-4--desk {
+    margin-left: 33.333%;
+  }
+  .offset-5--desk {
+    margin-left: 41.667%;
+  }
+  .offset-6--desk {
+    margin-left: 50%;
+  }
+  .offset-7--desk {
+    margin-left: 58.333%;
+  }
+  .offset-8--desk {
+    margin-left: 66.667%;
+  }
+  .offset-9--desk {
+    margin-left: 75%;
+  }
+  .offset-10--desk {
+    margin-left: 83.333%;
+  }
+  .offset-11--desk {
+    margin-left: 91.667%;
+  }
+}
+@media only screen and (min-width: 75rem) {
+  .column-1--wall {
+    -webkit-box-flex: 0;
+    -webkit-flex: 0 0 8.333%;
+    -ms-flex: 0 0 8.333%;
+    flex: 0 0 8.333%;
+  }
+  .column-2--wall {
+    -webkit-box-flex: 0;
+    -webkit-flex: 0 0 16.667%;
+    -ms-flex: 0 0 16.667%;
+    flex: 0 0 16.667%;
+  }
+  .column-3--wall {
+    -webkit-box-flex: 0;
+    -webkit-flex: 0 0 25%;
+    -ms-flex: 0 0 25%;
+    flex: 0 0 25%;
+  }
+  .column-4--wall {
+    -webkit-box-flex: 0;
+    -webkit-flex: 0 0 33.333%;
+    -ms-flex: 0 0 33.333%;
+    flex: 0 0 33.333%;
+  }
+  .column-5--wall {
+    -webkit-box-flex: 0;
+    -webkit-flex: 0 0 41.667%;
+    -ms-flex: 0 0 41.667%;
+    flex: 0 0 41.667%;
+  }
+  .column-6--wall {
+    -webkit-box-flex: 0;
+    -webkit-flex: 0 0 50%;
+    -ms-flex: 0 0 50%;
+    flex: 0 0 50%;
+  }
+  .column-7--wall {
+    -webkit-box-flex: 0;
+    -webkit-flex: 0 0 58.333%;
+    -ms-flex: 0 0 58.333%;
+    flex: 0 0 58.333%;
+  }
+  .column-8--wall {
+    -webkit-box-flex: 0;
+    -webkit-flex: 0 0 66.667%;
+    -ms-flex: 0 0 66.667%;
+    flex: 0 0 66.667%;
+  }
+  .column-9--wall {
+    -webkit-box-flex: 0;
+    -webkit-flex: 0 0 75%;
+    -ms-flex: 0 0 75%;
+    flex: 0 0 75%;
+  }
+  .column-10--wall {
+    -webkit-box-flex: 0;
+    -webkit-flex: 0 0 83.333%;
+    -ms-flex: 0 0 83.333%;
+    flex: 0 0 83.333%;
+  }
+  .column-11--wall {
+    -webkit-box-flex: 0;
+    -webkit-flex: 0 0 91.667%;
+    -ms-flex: 0 0 91.667%;
+    flex: 0 0 91.667%;
+  }
+  .column-12--wall {
+    -webkit-box-flex: 0;
+    -webkit-flex: 0 0 100%;
+    -ms-flex: 0 0 100%;
+    flex: 0 0 100%;
+  }
+  .column-auto--wall {
+    -webkit-box-flex: 1;
+    -webkit-flex: 1;
+    -ms-flex: 1;
+    flex: 1;
+  }
+  .offset-1--wall {
+    margin-left: 8.333%;
+  }
+  .offset-2--wall {
+    margin-left: 16.667%;
+  }
+  .offset-3--wall {
+    margin-left: 25%;
+  }
+  .offset-4--wall {
+    margin-left: 33.333%;
+  }
+  .offset-5--wall {
+    margin-left: 41.667%;
+  }
+  .offset-6--wall {
+    margin-left: 50%;
+  }
+  .offset-7--wall {
+    margin-left: 58.333%;
+  }
+  .offset-8--wall {
+    margin-left: 66.667%;
+  }
+  .offset-9--wall {
+    margin-left: 75%;
+  }
+  .offset-10--wall {
+    margin-left: 83.333%;
+  }
+  .offset-11--wall {
+    margin-left: 91.667%;
+  }
 }
 /* ----- basic layout ----- */
 body {
