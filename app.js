@@ -55,7 +55,7 @@ function packageSearch (doc) {
         d = d.toLowerCase();
         while (d.indexOf('.') !== -1) d = d.replace('.', '');
         while (d.indexOf('\n') !== -1) d = d.replace('\n', '');
-        while (d.indexOf('\r') !== -1) d = d.replace('\n', '');
+        while (d.indexOf('\r') !== -1) d = d.replace('\r', '');
         while (d.indexOf('`') !== -1) d = d.replace('`', '');
         while (d.indexOf('_') !== -1) d = d.replace('_', '');
         while (d.indexOf('"') !== -1) d = d.replace('"', '');

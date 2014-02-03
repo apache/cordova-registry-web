@@ -28,4 +28,4 @@ echo $URL
 #curl -u $CREDS -X PUT $SURL/registry && \
 
 # pushing new registry
-couchapp push app.js "$SURL/registry"
+couchapp push app.js "$URL/registry"
