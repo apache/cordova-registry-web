@@ -2729,7 +2729,7 @@ div.left {
     visibility: hidden;
   }
   .visible--lap {
-    display: block;
+    display: flex;
     visibility: visible;
   }
 }
@@ -2867,6 +2867,7 @@ div.left {
   margin: 40px auto 20px auto;
   width: 280px;
   font-size: 20px;
+  text-align: center;
 }
 .cordova-grid-bg {
   background: url(../images/grid.png);
