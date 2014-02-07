@@ -2807,6 +2807,9 @@ div.left {
   font-weight: 600;
 }
 /* ----- footer ---- */
+#footer {
+  border-top: dotted 2px #bfb7b9;
+}
 /* ==========================================================================
    MEDIA QUERIES
    ========================================================================== */
@@ -2904,16 +2907,16 @@ div.left {
   margin: 20px auto;
   position: relative;
   text-align: center;
-  height: 209px;
+  height: 220px;
 }
 .call-to-action-mid-spacer {
-  flex-basis: 3%;
+  flex-basis: 8%;
   position: relative;
 }
 .call-to-action-mid-spacer div {
   color: #F0F0F0;
   font-size: 45px;
-  left: 13%;
+  left: 75%;
   position: absolute;
   top: 40%;
 }
