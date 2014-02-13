@@ -70,26 +70,26 @@
 		</div>
 
 		<div class="row home-plugin-listing-headers">
-			<div class="column-4--desk offset-2--desk">
+			<div class="column-4--hand offset-2--hand">
 				<h3>Most Downloaded</h3>
 			</div>
 			<div class="call-to-action-mid-spacer">
 			</div>
-			<div class="column-4--desk">
+			<div class="column-4--hand">
 				<h3>Last Updated</h3>
 			</div>
 		</div>		
 
 		<div class="row home-plugin-listing">
-			<div class="column-4--desk offset-2--desk">
+			<div class="column-4--hand offset-2--hand">
 				<div ng-repeat="plugin in mostDownloaded">
 					<div class="row">
-						<div class="column-1--desk">
+						<div class="column-1--hand">
 							{{plugin.download_count}}
 						</div>
-						<div class="column-1--desk">
+						<div class="column-1--hand">
 						</div>
-						<div class="column-10--desk">
+						<div class="column-10--hand">
 							<a href="/#/package/{{plugin.bundle_id}}">
 								{{plugin.bundle_id}}
 							</a>
@@ -99,15 +99,15 @@
 			</div>
 			<div class="call-to-action-mid-spacer">
 			</div>
-			<div class="column-4--desk">
+			<div class="column-4--hand">
 				<div ng-repeat="plugin in lastUpdated">
 					<div class="row">
-						<div class="column-1--desk">
+						<div class="column-1--hand">
 							{{plugin.updated}}
 						</div>
-						<div class="column-1--desk">
+						<div class="column-1--hand">
 						</div>
-						<div class="column-10--desk">
+						<div class="column-10--hand">
 							<a href="/#/package/{{plugin.bundle_id}}">
 								{{plugin.bundle_id}}
 							</a>
