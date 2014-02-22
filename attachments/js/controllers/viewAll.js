@@ -1,6 +1,7 @@
-angular.module('registry.controllers').controller('ViewAllController', ['$rootScope', '$scope', '$location', '$http', function($rootScope, $scope, $location, $http) {
+angular.module('registry.controllers').controller('ViewAllController', ['$rootScope', '$scope', '$location', '$http', 'Downloads' , function($rootScope, $scope, $location, $http, Downloads) {
     
     $scope.totalPlugins = null;
+    $scope.downloads = Downloads.data;
     
     $scope.getPlugins = function(){
         $http({method: 'GET', url:('/api/_all_docs?include_docs=true&limit=100&skip=3')}).

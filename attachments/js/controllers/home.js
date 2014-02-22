@@ -1,4 +1,4 @@
-angular.module('registry.controllers').controller('HomeController', ['$rootScope', '$scope', '$location', '$http', function($rootScope, $scope, $location, $http) {
+angular.module('registry.controllers').controller('HomeController', ['$rootScope', '$scope', '$location', '$http','Downloads', function($rootScope, $scope, $location, $http, Downloads) {
     
     $scope.totalPlugins = 0;
 
