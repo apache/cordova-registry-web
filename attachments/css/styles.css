@@ -2400,13 +2400,8 @@ a.dep-link {
   background: transparent url('../images/pluggy.svg') no-repeat top left;
   background-size: contain;
 }
-.logo-link {
-  width: 100%;
-}
 .top-logo {
-  float: left;
   height: 50px;
-  margin-right: 10px;
   width: 32px;
 }
 /* ----- content ---- */
@@ -2809,6 +2804,14 @@ div.left {
 /* ----- footer ---- */
 #footer {
   border-top: dotted 2px #bfb7b9;
+}
+#footer p {
+  margin-left: 10px;
+  font-size: 12px;
+  color: #a5a5a5;
+}
+#footer a {
+  color: #169fc7;
 }
 /* ==========================================================================
    MEDIA QUERIES
