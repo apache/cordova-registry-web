@@ -24,18 +24,9 @@ angular.module('registry.controllers').controller('HomeController', ['$rootScope
     };
 
     $scope.getMostDownloaded = function() {
-        $scope.mostDownloaded = [ 
-            { download_count: 21865, bundle_id: 'org.apache.cordova.device' }, 
-            { download_count: 15250, bundle_id: 'org.apache.cordova.inappbrowser' }, 
-            { download_count: 14761, bundle_id: 'org.apache.cordova.file' }, 
-            { download_count: 12974, bundle_id: 'org.apache.cordova.console' }, 
-            { download_count: 11459, bundle_id: 'org.apache.cordova.camera' }, 
-            { download_count: 10755, bundle_id: 'org.apache.cordova.splashscreen' }, 
-            { download_count: 10441, bundle_id: 'org.apache.cordova.network-information' }, 
-            { download_count: 10307, bundle_id: 'org.apache.cordova.dialogs' }, 
-            { download_count: 9016, bundle_id: 'org.apache.cordova.geolocation' }, 
-            { download_count: 6139, bundle_id: 'org.apache.cordova.file-transfer' }
-        ];
+        Downloads.getDownloads().then(function(obj){
+            $scope.mostDownloaded = obj.slice(0, 9);
+        });
     };
 
     $scope.getLastUpdated = function() {
@@ -56,5 +47,4 @@ angular.module('registry.controllers').controller('HomeController', ['$rootScope
     $scope.getTotalPlugins();
     $scope.getMostDownloaded();
     $scope.getLastUpdated();
-
 }]);
