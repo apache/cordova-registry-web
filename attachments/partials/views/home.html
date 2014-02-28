@@ -84,10 +84,10 @@
 			<div class="column-12--hand column-6--lap center">
 				<div ng-repeat="plugin in mostDownloaded">
 					<div class="row">
-						<div class="column-3--hand">
+						<div class="column-4--hand">
 							{{plugin.value}}
 						</div>
-						<div class="column-9--hand left">
+						<div class="column-8--hand left">
 							<a href="/#/package/{{plugin.key}}">
 								{{plugin.key}}
 							</a>
@@ -106,12 +106,12 @@
 			<div class="column-12--hand column-6--lap center">
 				<div ng-repeat="plugin in lastUpdated">
 					<div class="row">
-						<div class="column-3--hand">
-							{{plugin.updated}}
+						<div class="column-4--hand">
+							{{plugin.key}}
 						</div>
-						<div class="column-9--hand left">
-							<a href="/#/package/{{plugin.bundle_id}}">
-								{{plugin.bundle_id}}
+						<div class="column-8--hand left">
+							<a href="/#/package/{{plugin.id}}">
+								{{plugin.id}}
 							</a>
 						</div>
 					</div>
@@ -119,5 +119,4 @@
 			</div>
 		</div>
     </div>
-    {{mostDownloaded}}
 </div>

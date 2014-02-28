@@ -1,10 +1,12 @@
-angular.module('registry.controllers').controller('HomeController', ['$rootScope', '$scope', '$location', '$http','Downloads', function($rootScope, $scope, $location, $http, Downloads) {
+angular.module('registry.controllers').controller('HomeController', ['$rootScope', '$scope', '$location', '$http','Downloads', 'prettyDate',  function($rootScope, $scope, $location, $http, Downloads, prettyDate) {
     
     $scope.totalPlugins = 0;
 
     $scope.mostDownloaded = [];
     $scope.lastUpdated = [];
     
+    
+
     $scope.getTotalPlugins = function(){
         //console.log($scope.packageID);
         var apiCallUrl = '/api/_all_docs?limit=0';
@@ -30,18 +32,12 @@ angular.module('registry.controllers').controller('HomeController', ['$rootScope
     };
 
     $scope.getLastUpdated = function() {
-        $scope.lastUpdated = [
-            { updated: 21865, bundle_id: 'org.apache.cordova.device' }, 
-            { updated: 15250, bundle_id: 'org.apache.cordova.inappbrowser' }, 
-            { updated: 14761, bundle_id: 'org.apache.cordova.file' }, 
-            { updated: 12974, bundle_id: 'org.apache.cordova.console' }, 
-            { updated: 11459, bundle_id: 'org.apache.cordova.camera' }, 
-            { updated: 10755, bundle_id: 'org.apache.cordova.splashscreen' }, 
-            { updated: 10441, bundle_id: 'org.apache.cordova.network-information' }, 
-            { updated: 10307, bundle_id: 'org.apache.cordova.dialogs' }, 
-            { updated: 9016, bundle_id: 'org.apache.cordova.geolocation' }, 
-            { updated: 6139, bundle_id: 'org.apache.cordova.file-transfer' }
-        ];
+        $http.get('/_view/updated?descending=true&limit=10&include_docs=false').then(function(promise){
+            promise.data.rows.forEach(function(obj){
+                obj.key = prettyDate(obj.key);
+            });
+            $scope.lastUpdated = promise.data.rows;
+        })
     };
 
     $scope.getTotalPlugins();
