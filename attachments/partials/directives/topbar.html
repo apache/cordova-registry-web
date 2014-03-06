@@ -1,0 +1,16 @@
+<div class="row center topbar-row">
+    <div class="column-12--hand column-5--lap">
+        <form ng-submit="search()">
+            <div class="row center">
+            <input id="search-text" type="search" ng-model="searchText" class="column-8--hand topbar-search" placeholder="Find a plugin..." />
+            <input type="submit" id="submit" value="" class="column-1--hand topbar-button"/>
+            </div>
+        </form>
+    </div>
+    <div class="column-12--hand column-1--lap topbar-spacer invisible--hand visible--lap">
+        OR
+    </div>
+    <div class="column-12--hand column-4--lap topbar-browse">   
+        <a href="/#/viewAll" class="">Browse all {{totalPlugins}} plugins</a> 
+    </div>
+</div>

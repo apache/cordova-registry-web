@@ -2812,6 +2812,7 @@ div.left {
 }
 #footer a {
   color: #169fc7;
+  font-weight: bold;
 }
 /* ==========================================================================
    MEDIA QUERIES
@@ -2867,13 +2868,6 @@ div.left {
   background: -moz-linear-gradient(top, transparent, #ededed);
   background: -ms-linear-gradient(top, transparent, #ededed);
   background: -o-linear-gradient(top, transparent, #ededed);
-}
-.home-browse-all {
-  display: block;
-  margin: 40px auto 20px auto;
-  width: 280px;
-  font-size: 20px;
-  text-align: center;
 }
 .cordova-grid-bg {
   background: url(../images/grid.png);
@@ -2959,3 +2953,30 @@ div.left {
 /* Package Details styles */
 /* View all page styles */
 /* Search styles */
+.topbar-row {
+  padding-top: 5px;
+  padding-bottom: 5px;
+  background-color: #ededed;
+}
+.topbar-search {
+  height: 35px;
+  border: 2px solid #4cc2e4;
+}
+.topbar-button {
+  background-color: #4cc2e4;
+  height: 35px;
+  background-position: center;
+  background-image: url('/img/search_light.svg');
+  background-size: 20px 25px;
+  background-repeat: no-repeat;
+  margin-left: -5px;
+  border: 2px solid #4cc2e4;
+}
+.topbar-spacer {
+  padding-top: 10px;
+}
+.topbar-browse {
+  display: block;
+  font-size: 20px;
+  padding-top: 5px;
+}

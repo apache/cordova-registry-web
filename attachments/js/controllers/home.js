@@ -1,4 +1,4 @@
-angular.module('registry.controllers').controller('HomeController', ['$rootScope', '$scope', '$location', '$http','Downloads', 'prettyDate',  function($rootScope, $scope, $location, $http, Downloads, prettyDate) {
+angular.module('registry.controllers').controller('HomeController', ['$rootScope', '$scope', '$location', '$http','Downloads', 'prettyDate', function($rootScope, $scope, $location, $http, Downloads, prettyDate) {
     
     $scope.totalPlugins = 0;
 
@@ -6,24 +6,6 @@ angular.module('registry.controllers').controller('HomeController', ['$rootScope
     $scope.lastUpdated = [];
     
     
-
-    $scope.getTotalPlugins = function(){
-        //console.log($scope.packageID);
-        var apiCallUrl = '/api/_all_docs?limit=0';
-        //var apiCallUrl = '/plugins.json';
-
-        $http({method: 'GET', url:(apiCallUrl)}).
-                success(function(data, status, headers, config) {
-                    $scope.totalPlugins = data.total_rows - 3;
-                }).
-                error(function(data, status){
-                    if (status === 404){
-                        console.log('need to redirect to a 404 page')
-                    }
-                    console.log(status)
-                });
-
-    };
 
     $scope.getMostDownloaded = function() {
         Downloads.getDownloads().then(function(obj){
@@ -40,7 +22,6 @@ angular.module('registry.controllers').controller('HomeController', ['$rootScope
         })
     };
 
-    $scope.getTotalPlugins();
     $scope.getMostDownloaded();
     $scope.getLastUpdated();
 }]);

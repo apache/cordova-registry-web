@@ -4,16 +4,7 @@ angular.module('registry.controllers').controller('SearchController', ['$rootSco
     var currentSearch, currentTerms;
     var searchResults = {};
     $scope.plugins = null;
-
     $scope.searchText = '';
-
-    $scope.searchResults = [{
-    	package_id: 'org.apache.cordova.device', 
-    	name: 'Device',
-    	description: 'Pulls device information',
-    	version: '0.5.1',
-    	downloads: 25617
-    }];
 
     $scope.searchPlugins = function() {
         //console.log($scope.searchText);
@@ -36,6 +27,12 @@ angular.module('registry.controllers').controller('SearchController', ['$rootSco
                     })
             }
         })
-    };
+    }
+
+    if ($routeParams.search){
+        console.log($routeParams.search);
+        $scope.searchText = $routeParams.search;
+        $scope.searchPlugins();
+    }
 
 }]);
