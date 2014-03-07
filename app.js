@@ -9,6 +9,7 @@ ddoc =
     , {from:"/favicon.ico", to:'../../npm/favicon.ico'}
     , {from:"/api", to:'../../'}
     , {from:"/api/*", to:'../../*'}
+    , {from: "/downloads/*", to: '../../../downloads/*'}
     , {from:"/*", to:'*'}
     ]
   , lists : {}
