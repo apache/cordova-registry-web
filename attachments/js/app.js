@@ -10,9 +10,8 @@ angular.module('registry', ['ngRoute', 'registry.controllers', 'ngSanitize', 're
             when('/package/:id', {templateUrl:'/partials/views/packageDetails.html', controller:'PackageDetailsController'}).
             when('/search', {templateUrl:'/partials/views/search.html', controller:'SearchController'});
            // otherwise({redirectTo: '/'});
-       //$location.html5Mode(true); // use pushState instead of hash for urls
        
       }]).
-    // Initialization function for the app
-    run(['$rootScope', function ($rootScope) {
-}]);
+
+// Initialization function for the app
+run(['$rootScope', function ($rootScope) {}]);

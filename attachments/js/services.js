@@ -5,12 +5,6 @@ service.factory('Downloads', function($http, $window, $q) {
     var promise;
     var Downloads = {
     getDownloads:function(){
-        //var downloads = $window.sessionStorage.getItem("Downloads") ? JSON.parse($window.sessionStorage.getItem("Downloads")) : {data:{}, arrData:[]};
-        //var a_week_ago = 1000*60*60*24*7;
-        //var now = new Date().valueOf();
-                    
-        //console.log("arraylength: " + downloads.arrData.length);
-        //if (downloads.arrData.length === 0 || !downloads.timestamp || (downloads.timestamp < (now - a_week_ago)))
         if (!promise){
             promise = $http.get('/downloads/_design/downloads/_view/byId?group=true').then(function(data) {
                 var downloads = {data:{}, arrData:[]};
@@ -36,7 +30,6 @@ service.factory('Downloads', function($http, $window, $q) {
         return promise;
     }
     };
-
     return Downloads;
 });
 

@@ -1,10 +1,7 @@
-angular.module('registry.controllers').controller('ViewAllController', ['$rootScope', '$scope', '$location', '$http', 'Downloads' , function($rootScope, $scope, $location, $http, Downloads) {
-    
-    $scope.totalPlugins = null;
-    $scope.downloads = Downloads.data;
-    
+angular.module('registry.controllers').controller('ViewAllController', ['$rootScope', '$scope', '$http', function($rootScope, $scope, $http) {
+        
     $scope.getPlugins = function(){
-        $http({method: 'GET', url:('/api/_all_docs?include_docs=true&limit=100&skip=3')}).
+        $http({method: 'GET', url:('/api/_all_docs?include_docs=true&skip=3')}).
                 success(function(data, status, headers, config) {
                     console.log(data);
                     $scope.plugins = data.rows;
@@ -14,6 +11,7 @@ angular.module('registry.controllers').controller('ViewAllController', ['$rootSc
                 }).
                 error(function(data, status){
                     if (status === 404){
+                        //todo: setup a 404 page
                         console.log('need to redirect to a 404 page')
                     }
                     console.log(status)
@@ -21,5 +19,4 @@ angular.module('registry.controllers').controller('ViewAllController', ['$rootSc
 
     }
     $scope.getPlugins();
-
 }]);
