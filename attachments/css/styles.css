@@ -2951,8 +2951,28 @@ div.left {
   margin-top: 20px;
 }
 /* Package Details styles */
+.space {
+  padding-top: 10px;
+  padding-bottom: 10px;
+  border-bottom: solid 2px #bfb7b9;
+}
+.toprow {
+  padding-top: 10px;
+}
 /* View all page styles */
+.viewContainer {
+  padding-left: 10px;
+}
 /* Search styles */
+.searchContainer {
+  padding-left: 10px;
+}
+.found {
+  font-size: 25px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  border-bottom: dotted 2px #bfb7b9;
+}
 .topbar-row {
   padding-top: 5px;
   padding-bottom: 5px;
@@ -2960,7 +2980,7 @@ div.left {
 }
 .topbar-search {
   height: 35px;
-  border: 2px solid #4cc2e4;
+  border: 1px solid #4cc2e4;
 }
 .topbar-button {
   background-color: #4cc2e4;
@@ -2979,4 +2999,12 @@ div.left {
   display: block;
   font-size: 20px;
   padding-top: 5px;
+}
+.pluginHeader {
+  border-bottom: solid 2px black;
+}
+.pluginItem {
+  border-bottom: solid 2px #bfb7b9;
+  padding-top: 10px;
+  padding-bottom: 10px;
 }

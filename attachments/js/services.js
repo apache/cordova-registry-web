@@ -30,7 +30,7 @@ service.factory('Downloads', function($http, $window, $q) {
                     return 0;
                 });
                 //$window.sessionStorage.setItem("Downloads", JSON.stringify(downloads));
-                return downloads.arrData;
+                return downloads;
             });
         }
         return promise;

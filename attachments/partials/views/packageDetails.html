@@ -1,33 +1,49 @@
-<div class="package-label">Plugin ID</div>
-<div class="package-title">{{packageID}}</div>
-<div class="spacer"></div>
+<div class="viewContainer">
+    <div class="row toprow">
+        <div class="package-label column-8--hand">Plugin ID</div>
+        <div class="column-4--hand right">
+            <select ng-model="currentVersion" ng-options="key as key for (key, value) in versions">
+                <option value="{{currentVersion}}">{{currentVersion}}</option> 
+            </select>
+        </div>
 
-<div ng-show="description">
-    <div class="package-label">Description</div>
-    <div class="package-title">{{description}}</div>
-    <div class="spacer"></div>
-</div>
+    </div>
+    <div class="row">
+        <div class="package-title column-12--hand">{{packageID}}</div>
+    </div>
 
-<div>
-    <select ng-model="currentVersion" ng-options="key as key for (key, value) in versions">
-        <option value="{{currentVersion}}">{{currentVersion}}</option> 
-    </select>
-</div>
+    <div ng-show="description" class="space">
+        <div class="row">
+            <div class="package-label column-12--hand">Description</div>
+        </div>
+        <div class="row">
+            <div class="package-title column-12--hand">{{description}}</div>
+        </div>
+    </div>
 
 
-<div ng-show="repo">
-    <div class="package-label">Repository</div>
-    <div class="package-title"><a href={{repo}}>{{repo}}</a></div>
-    <div class="spacer"></div>
-</div>
 
-<div ng-show="issue">
-    <div class="package-label">Issue tracker</div>
-    <div class="package-title"><a href={{issue}}>{{issue}}</a></div>
-    <div class="spacer"></div>
-</div>
+    <div ng-show="repo" class="space">
+        <div class="row">
+            <div class="package-label column-12--hand">Repository</div>
+        </div>
+        <div class="row">
+            <div class="column-12--hand"><a href={{repo}}>{{repo}}</a></div>
+        </div>
+    </div>
 
-<div ng-show="readme">
-    <div class="package-readme" ng-bind-html="readme"></div>
+    <div ng-show="issue" class="space">
+        <div class="row">
+            <div class="package-label column-12--hand">Issue tracker</div>
+        </div>
+        <div class="row">
+            <div class="column-12--hand"><a href={{issue}}>{{issue}}</a></div>
+        </div>
+    </div>
+
+    <div ng-show="readme" class="readme">
+        <div class="package-readme">Read Me</div>
+        <div class="" ng-bind-html="readme"></div>
+    </div>
 </div>
 

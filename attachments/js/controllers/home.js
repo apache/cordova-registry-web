@@ -9,7 +9,7 @@ angular.module('registry.controllers').controller('HomeController', ['$rootScope
 
     $scope.getMostDownloaded = function() {
         Downloads.getDownloads().then(function(obj){
-            $scope.mostDownloaded = obj.slice(0, 9);
+            $scope.mostDownloaded = obj.arrData.slice(0, 9);
         });
     };
 

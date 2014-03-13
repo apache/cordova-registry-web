@@ -1,63 +1,19 @@
-<div class="">
-    <div class="">
-        <div class="">
-            <a href="/#/viewAll">Browse all {{totalPlugins}} plugins</a>    
+<topbar></topbar>
+<div class="searchContainer">
+    <div class="row">
+        <div class="column-12--hand found">
+        <ng-pluralize count="plugins.length"
+            when="{'0': 'No plugins found',
+                '1': '1 plugin found',
+                'other': '{{plugins.length}} plugins found'}">
+        </ng-pluralize>
         </div>
     </div>
-    <div class="">
-        <div class="">
-            <input id="search-text" type="search" ng-model="searchText" placeholder="Find a plugin..." ng-change="searchPlugins()" />
-        </div>
-    </div>
-    <div class="">
-        <div class="">
-            <ng-pluralize count="searchResults.length"
-                    when="{'0': 'No plugins found.',
-                           'one': '1 plugin found.',
-                           'other': '{} plugins found.'}">
-            </ng-pluralize>
-        </div>
-    </div>
-    <div class="">
-        <div class="">
-            <a href="#Filter">Filter by Platform:</a> All
-        </div>
-    </div>
-    <div ng-repeat="plugin in plugins">
-        <div class="left">
-            <div><a ng-href="#/package/{{plugin.key}}">{{plugin.key}}</a></div>
-            <div>{{plugin.value.description}}</div>
-        </div>
-        <div class="right">
-            <div class="left">{{plugin.value['dist-tags'].latest}}</div>
-            <div class="right">count</div>
-        </div>
-        <div style="clear:both"></div>
-        <div class="lightline"></div>
-    </div>
-    <div ng-show="searchResults.length > 0">
-        <div class="row">
-            <div class="column-9--hand offset-1--hand">
-                <h3>Plugin Name and Description</h3>
-            </div>
-            <div class="column-1--hand">
-                <h3>Version</h3>
-            </div>
-            <div class="column-1--hand">
-                <h3>Downloads</h3>
-            </div>
-        </div>
-        <div class="row" ng-repeat="result in searchResults">
-            <div class="column-9--hand offset-1--hand">
-                <a href="/#/package/{{result.package_id}}"><h4>{{result.name}}</h4></a>
-                <h5>{{result.description}}</h5>
-            </div>
-            <div class="column-1--hand">
-                <h3>{{result.version}}</h3>
-            </div>
-            <div class="column-1--hand">
-                <h3>{{result.downloads}}</h3>
-            </div>
-        </div>
-    </div>
+
+<!--<div class="row">
+        <a href="">Filter by Platform:</a> All
+    </div>-->
+
+    <pluginlist></pluginlist>
 </div>
+
