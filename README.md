@@ -8,7 +8,7 @@ Setup
 ```bash
 git clone https://git-wip-us.apache.org/repos/asf/cordova-registry-web.git
 ```
-In your terminal, navigate to the cordova-registry-web directory and run `npm install`. This will install the dependencies required to deploy locally. 
+In your terminal, navigate to the cordova-registry-web directory and run `git checkout refactor` and `npm install`. This will install the dependencies required to deploy locally for the refactor branch. 
 
 ### Clone Cordova-Registry repo
 If you are interested in publishing plugins to your local repo, you will need this repo.
