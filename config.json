@@ -1,0 +1,12 @@
+{
+    "cloudant":{
+        "username":"username",
+        "password":"password",
+        "url":"apachecordova.cloudant.com"
+    },
+    "iriscouch":{
+        "username":"username",
+        "password":"password",
+        "url":"cordova.iriscouch.com"
+    }
+}

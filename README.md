@@ -1,88 +1,125 @@
-# Cordova Registry UI
-This repo contains the assets for [plugins.cordova.io](http://plugins.cordova.io). Everything is located in the attachments folder. Below we go over the steps of getting setup and running locally.
+Cordova Registry UI
+===================
+This repo contains the assets for [plugins.cordova.io](http://plugins.cordova.io). The site is located in the attachments folder. Below we go over the steps of getting setup, running locally and pushing to the server. The main UI files for the site can be found in the `attachments` directory.
 
-## Setup
-
-### Install COUCHDB
-
-`brew install couchdb`
-
-You can find more documentation 
-
-### Create registry database in couch
-curl -X PUT http://localhost:5984/registry
-
-### npmjs
-git clone https://github.com/imhotep/npmjs.org
-
-### cordova registry web
+Setup
+=====
+### Clone this repo & install dependencies
+```bash
 git clone https://git-wip-us.apache.org/repos/asf/cordova-registry-web.git
+```
+In your terminal, navigate to the cordova-registry-web directory and run `npm install`. This will install the dependencies required to deploy locally. 
 
-cd npmjs
-npm install -g couchapp
-npm install couchapp
-npm install semver
+### Clone Cordova-Registry repo
+If you are interested in publishing plugins to your local repo, you will need this repo.
+```bash
+git clone https://git-wip-us.apache.org/repos/asf/cordova-registry-web.git
+```
+Navigate to the cordova-registry directory and run `npm install`.
 
-couchapp push registry/app.js http://localhost:5984/registry
-cd ../cordova-registry-web
+### Install & Start CouchDB
+```bash
+brew install couchdb
+```
+Once installed, start CouchDB. You can do this by running 'couchdb' in your terminal. 
+Go to `http://localhost:5984` in your browser to confirm it is working.
+
+### Create databases in couch
+
+* Registry - holds plugins, views and site ui
+
+```bash
+curl -X PUT http://localhost:5984/registry
+```
+
+* Downloads - holds download counts
+
+```bash
+curl -X PUT http://localhost:5984/downloads
+```
+
+### Replicate remote databases
+If you want to see actual plugins and download counts when you are working locally, you will have to replicate the remote dbs. This could take a while as they are large. An alternative to replicating is to publish plugins locally for testing purposes.
+
+Note: We are in the process of moving over form IrisCouch to Cloudant. IrisCouch seems to have better replication support.
+
+* IrisCouch
+
+```bash
+curl -X POST -d '{"source":"http://cordova.iriscouch.com/registry", "target":"http://localhost:5984/registry"}' http://localhost:5984/_replicate -H "Content-Type: application/json"
+```
+
+```bash
+curl -X POST -d '{"source":"http://cordova.iriscouch.com/downloads", "target":"http://localhost:5984/downloads"}' http://localhost:5984/_replicate -H "Content-Type: application/json"
+```
+
+* Cloudant
+
+```bash
+curl -X POST -d '{"source":"http://apachecordova.cloudant.com/registry", "target":"http://localhost:5984/registry"}' http://localhost:5984/_replicate -H "Content-Type: application/json"
+```
+
+```bash
+curl -X POST -d '{"source":"http://apachecordova.cloudant.com/downloads", "target":"http://localhost:5984/downloads"}' http://localhost:5984/_replicate -H "Content-Type: application/json"
+```
+
+Note: A possible error may be that you don't have a local `_replicate` db. You can create one with:
+```bash
+curl -X PUT http://localhost:5984/_replicate
+```
+
+Deploy Locally
+==============
+
+### Cordova-registy
+Navigate to cordova-registy directory in your terminal and run the following command.
+```bash
 couchapp push app.js http://localhost:5984/registry
+```
 
-Pretty much all of the work you need to do is in cordova-registry-web
+### Cordova-registy-web
+Navigate to cordova-registy-web directory in your terminal and run the following command.
+```bash
+grunt server
+```
 
-Enter this into your terminal because legacy.
-curl http://localhost:5984/registry/_design/scratch -X COPY  -H destination:'_design/app'
+You show now be able to view the site at http://localhost:5000 in your browser.
+The site is setup to use livereload. As you modify & save files in the `attachments` directory, the browser will automatically reload the page.
 
-## Displaying on localhost
-
-cd /etc/apache2/users
-sudo vim YOURCOMPUTERUSERNAME.conf (mine was stevengill.conf)
-
-Paste the following rewrite rules into it.
-
-<VirtualHost *:80>
-  ServerName localhost
-  RewriteEngine on
-  RewriteRule ^/((?!downloads).*)$ /registry/_design/ui/_rewrite/$1 [PT]
-  ProxyPassMatch ^/downloads/(.*)$ http://cordova.iriscouch.com/downloads/$1
-  ProxyPassMatch ^/registry/(.*)$ http://localhost:5984/registry/$1
-  RewriteLog "/var/log/apache2/plugins.cordova.io-rewrite.log"
-  RewriteLogLevel 3
-  LogLevel debug
-  ErrorLog "/var/log/apache2/plugins.cordova.io-error_log"
-  CustomLog "/var/log/apache2/plugins.cordova.io-access_log" common
-</VirtualHost>
-
-back to terminal, start apache with:
-sudo apachectl start\
-
-go to localhost in your browser and bam! should be working.
+NOTE - The Grunt server & watch commands are set up to use livereload - this will automatically reload your browser after the server is done reloading - no more needing to click the refresh button on your browser. The livereload script is put in the HEAD of the index.html page - if you wish to not use it, you will need to comment or remove that from the index.html page.
 
 ## Publish Plugins to your local instance
+```bash
 plugman config set registry http://localhost:5984/registry/_design/app/_rewrite
+```
+Now you can run commands like `plugman publish` and the plugins will install locally.
 
-##Potential Errors
+## Potential Errors
 If you keep seeing `POST /_session 401` when you try to publish a plugin locally, you need to go delete your user info. In terminal type `rm -rf ~/.plugman`. Then go to the plugin you want to add and go `plugman adduser`. Enter in your username, password and email.
 
-##Alternative
-couchapp serve app.js http://localhost:5984/registry -p 3000 -l -d attachments/
+Deploy Remotely
+==============
+Contact Steve or Anis to get username and passwords for remote couchdb instances. Any Cordova committers will be given the information if requested. Currently [plugins.cordova.io](http://plugins.cordova.io) is hosted on irisCouch and [stage.plugins.cordova.io](http://stage.plugins.cordova.io) is hosted on CloudAnt. The plan is to move over to cloudant when this site launches. This will require setting up the default plugman registry to cloudant.
 
-## Changes to LESS
+### Cordova-registy
+Navigate to cordova-registy directory in your terminal and run the following command.
+```bash
+couchapp push app.js http://username:password@apachecordova.cloudant.com/registry
+```
+or
+```bash
+couchapp push app.js http://username:password@cordova.irishcouch.com/registry
+```
 
-The project is now heavily using LESS using imports
+### Cordova-registy-web
+Navigate to cordova-registy-web directory in your terminal and run the following command.
+```bash
+grunt cloudant
+```
+or
+```bash
+grunt iriscouch
+```
 
-To get started, take a peak into styles.less - this contains @import statements to pull in other stylesheets to help organize the styles. Compile it with your favorite less compiler or use `grunt less` if you'd wish.
 
-## Using Grunt
 
-Grunt has been added to help with some mundane tasks.
-
-To get started, `npm install` this should install Grunt and its plugins.
-
-You can run a few commands with grunt.
-
-* View Grunt tasks available `grunt --help`
-* JSHint the javascript files `grunt jshint`
-* Compile the LESS `grunt less`
-* Watch all HTML/JS/CSS/LESS files - and if changes are made, auto compile LESS and reload the server with latest code `grunt watch`
-
-NOTE - The Grunt watch command is set up to use livereload - this will automatically reload your browser after the server is done reloading - no more needing to click the refresh button on your browser. The livereload script is put in the HEAD of the index.html page - if you wish to not use it, you will need to comment or remove that from the index.html page.
