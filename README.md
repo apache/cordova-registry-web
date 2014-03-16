@@ -71,14 +71,14 @@ curl -X PUT http://localhost:5984/_replicate
 Deploy Locally
 ==============
 
-### Cordova-registy
-Navigate to cordova-registy directory in your terminal and run the following command.
+### Cordova-registry
+Navigate to cordova-registry directory in your terminal and run the following command.
 ```bash
 couchapp push app.js http://localhost:5984/registry
 ```
 
-### Cordova-registy-web
-Navigate to cordova-registy-web directory in your terminal and run the following command.
+### Cordova-registry-web
+Navigate to cordova-registry-web directory in your terminal and run the following command.
 ```bash
 grunt server
 ```
@@ -88,21 +88,21 @@ The site is setup to use livereload. As you modify & save files in the `attachme
 
 NOTE - The Grunt server & watch commands are set up to use livereload - this will automatically reload your browser after the server is done reloading - no more needing to click the refresh button on your browser. The livereload script is put in the HEAD of the index.html page - if you wish to not use it, you will need to comment or remove that from the index.html page.
 
-## Publish Plugins to your local instance
+### Publish Plugins to your local instance
 ```bash
 plugman config set registry http://localhost:5984/registry/_design/app/_rewrite
 ```
 Now you can run commands like `plugman publish` and the plugins will install locally.
 
-## Potential Errors
+### Potential Errors
 If you keep seeing `POST /_session 401` when you try to publish a plugin locally, you need to go delete your user info. In terminal type `rm -rf ~/.plugman`. Then go to the plugin you want to add and go `plugman adduser`. Enter in your username, password and email.
 
 Deploy Remotely
 ==============
 Contact Steve or Anis to get username and passwords for remote couchdb instances. Any Cordova committers will be given the information if requested. Currently [plugins.cordova.io](http://plugins.cordova.io) is hosted on irisCouch and [stage.plugins.cordova.io](http://stage.plugins.cordova.io) is hosted on CloudAnt. The plan is to move over to cloudant when this site launches. This will require setting up the default plugman registry to cloudant.
 
-### Cordova-registy
-Navigate to cordova-registy directory in your terminal and run the following command.
+### Cordova-registry
+Navigate to cordova-registry directory in your terminal and run the following command.
 ```bash
 couchapp push app.js http://username:password@apachecordova.cloudant.com/registry
 ```
@@ -111,8 +111,10 @@ or
 couchapp push app.js http://username:password@cordova.irishcouch.com/registry
 ```
 
-### Cordova-registy-web
-Navigate to cordova-registy-web directory in your terminal and run the following command.
+We shouldn't need to update push cordova-registry very often.
+
+### Cordova-registry-web
+Navigate to cordova-registry-web directory in your terminal and run the following command.
 ```bash
 grunt cloudant
 ```
@@ -121,5 +123,6 @@ or
 grunt iriscouch
 ```
 
+If you update your local config.json with credentials and don't want to push those changes up to git (so we don't accidentally commit passwords), run `git update-index --assume-unchanged config.json` after you have modified your config.json.
 
 
