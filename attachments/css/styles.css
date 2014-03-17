@@ -2407,7 +2407,6 @@ a.dep-link {
 /* ----- content ---- */
 #content-wrapper {
   padding-top: 0;
-  width: 100%;
 }
 #content,
 #tabs a,
@@ -2772,12 +2771,14 @@ div.left {
 #header .top-project-text,
 #header .top-plugins-registry-text {
   text-transform: uppercase;
+  font-family: 'Lato', sans-serif;
+  font-weight: 300;
 }
 #header .top-project-text {
-  font-size: 16px;
+  font-size: 12px;
 }
 #header .top-plugins-registry-text {
-  font-size: 20px;
+  font-size: 28px;
 }
 #header .header-links {
   font-size: 18px;
