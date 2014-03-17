@@ -1,6 +1,6 @@
 Cordova Registry UI
 ===================
-This repo contains the assets for [plugins.cordova.io](http://plugins.cordova.io). The site is located in the attachments folder. Below we go over the steps of getting setup, running locally and pushing to the server. The main UI files for the site can be found in the `attachments` directory.
+This repo contains the assets for [stage.plugins.cordova.io](http://stage.plugins.cordova.io). The site is located in the attachments folder. Below we go over the steps of getting setup, running locally and pushing to the server. The main UI files for the site can be found in the `attachments` directory.
 
 Setup
 =====
@@ -21,7 +21,7 @@ Navigate to the cordova-registry directory and run `npm install`.
 ```bash
 brew install couchdb
 ```
-Once installed, start CouchDB. You can do this by running 'couchdb' in your terminal. 
+Once installed, start CouchDB. You can do this by running `couchdb` in your terminal. 
 Go to `http://localhost:5984` in your browser to confirm it is working.
 
 ### Create databases in couch
@@ -41,29 +41,30 @@ curl -X PUT http://localhost:5984/downloads
 ### Replicate remote databases
 If you want to see actual plugins and download counts when you are working locally, you will have to replicate the remote dbs. This could take a while as they are large. An alternative to replicating is to publish plugins locally for testing purposes.
 
-Note: We are in the process of moving over form IrisCouch to Cloudant. IrisCouch seems to have better replication support.
+Note: We are in the process of moving over form IrisCouch to Cloudant. Iris Couch seems to have better replication support. Replicate from either.
 
 * IrisCouch
 
 ```bash
 curl -X POST -d '{"source":"http://cordova.iriscouch.com/registry", "target":"http://localhost:5984/registry"}' http://localhost:5984/_replicate -H "Content-Type: application/json"
 ```
-
+and
 ```bash
 curl -X POST -d '{"source":"http://cordova.iriscouch.com/downloads", "target":"http://localhost:5984/downloads"}' http://localhost:5984/_replicate -H "Content-Type: application/json"
 ```
-
+or
 * Cloudant
 
 ```bash
 curl -X POST -d '{"source":"http://apachecordova.cloudant.com/registry", "target":"http://localhost:5984/registry"}' http://localhost:5984/_replicate -H "Content-Type: application/json"
 ```
-
+and
 ```bash
 curl -X POST -d '{"source":"http://apachecordova.cloudant.com/downloads", "target":"http://localhost:5984/downloads"}' http://localhost:5984/_replicate -H "Content-Type: application/json"
 ```
 
-Note: A possible error may be that you don't have a local `_replicate` db. You can create one with:
+### Potential Errors
+A possible error may be that you don't have a local `_replicate` db. You can create one with:
 ```bash
 curl -X PUT http://localhost:5984/_replicate
 ```
@@ -92,17 +93,19 @@ NOTE - The Grunt server & watch commands are set up to use livereload - this wil
 ```bash
 plugman config set registry http://localhost:5984/registry/_design/app/_rewrite
 ```
-Now you can run commands like `plugman publish` and the plugins will install locally.
+Now you can run commands like `plugman publish` and the plugins will be published to your local registry db.
 
 ### Potential Errors
 If you keep seeing `POST /_session 401` when you try to publish a plugin locally, you need to go delete your user info. In terminal type `rm -rf ~/.plugman`. Then go to the plugin you want to add and go `plugman adduser`. Enter in your username, password and email.
 
 Deploy Remotely
 ==============
-Contact Steve or Anis to get username and passwords for remote couchdb instances. Any Cordova committers will be given the information if requested. Currently [plugins.cordova.io](http://plugins.cordova.io) is hosted on irisCouch and [stage.plugins.cordova.io](http://stage.plugins.cordova.io) is hosted on CloudAnt. The plan is to move over to cloudant when this site launches. This will require setting up the default plugman registry to cloudant.
+Contact Steve or Anis to get username and passwords for remote couchdb instances. Any Cordova committers will be given the information if requested. Currently [plugins.cordova.io](http://plugins.cordova.io) is hosted on Iris Couch and [stage.plugins.cordova.io](http://stage.plugins.cordova.io) is hosted on Cloudant. The plan is to move over to Cloudant when this site launches. This will require setting up the default plugman registry to Cloudant.
 
 ### Cordova-registry
 Navigate to cordova-registry directory in your terminal and run the following command.
+
+Note: I don't believe we will be updating cordova-registry often. These commands probably won't be needed much.
 ```bash
 couchapp push app.js http://username:password@apachecordova.cloudant.com/registry
 ```
@@ -111,7 +114,6 @@ or
 couchapp push app.js http://username:password@cordova.irishcouch.com/registry
 ```
 
-We shouldn't need to update push cordova-registry very often.
 
 ### Cordova-registry-web
 Navigate to cordova-registry-web directory in your terminal and run the following command.
