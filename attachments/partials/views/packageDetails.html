@@ -1,49 +1,85 @@
-<div class="viewContainer">
-    <div class="row toprow">
-        <div class="package-label column-8--hand">Plugin ID</div>
-        <div class="column-4--hand right">
-            <select ng-model="currentVersion" ng-options="key as key for (key, value) in versions">
-                <option value="{{currentVersion}}">{{currentVersion}}</option> 
-            </select>
-        </div>
+<div class="viewContainer row">
+    <div class="column-8--hand offset-2--hand">
 
-    </div>
-    <div class="row">
-        <div class="package-title column-12--hand">{{packageID}}</div>
-    </div>
+        <a ng-click="backToSearch()">Back to search results</a>
 
-    <div ng-show="description" class="space">
-        <div class="row">
-            <div class="package-label column-12--hand">Description</div>
+        <div class="row toprow">
+            <div class="package-label column-8--hand">Plugin ID</div>
+            <div class="column-4--hand right">
+                <select ng-model="currentVersion" ng-options="key as key for (key, value) in versions">
+                    <option value="{{currentVersion}}">{{currentVersion}}</option> 
+                </select>
+            </div>
+
         </div>
         <div class="row">
-            <div class="package-title column-12--hand">{{description}}</div>
+            <div class="package-title column-12--hand">{{packageID}}</div>
         </div>
-    </div>
 
-
-
-    <div ng-show="repo" class="space">
-        <div class="row">
-            <div class="package-label column-12--hand">Repository</div>
+        <div ng-show="description" class="space">
+            <div class="row">
+                <div class="package-label column-12--hand">Description</div>
+            </div>
+            <div class="row">
+                <div class="package-title column-12--hand">{{description}}</div>
+            </div>
         </div>
-        <div class="row">
-            <div class="column-12--hand"><a href={{repo}}>{{repo}}</a></div>
-        </div>
-    </div>
 
-    <div ng-show="issue" class="space">
-        <div class="row">
-            <div class="package-label column-12--hand">Issue tracker</div>
+        <div ng-show="maintainers" class="space">
+            <div class="row">
+                <div class="package-label column-12--hand">Maintainers</div>
+            </div>
+            <div class="row">
+                <div class="column-12--hand">
+                    <span class="" ng-repeat="maintainer in maintainers">{{maintainer.name}}<span ng-show="{{maintainers.length -1 != $index}}">, &nbsp;</span></span>
+                </div>
+            </div>
         </div>
-        <div class="row">
-            <div class="column-12--hand"><a href={{issue}}>{{issue}}</a></div>
-        </div>
-    </div>
 
-    <div ng-show="readme" class="readme">
-        <div class="package-readme">Read Me</div>
-        <div class="" ng-bind-html="readme"></div>
+        <div ng-show="platforms" class="space">
+            <div class="row">
+                <div class="package-label column-12--hand">Platforms</div>
+            </div>
+            <div class="row">
+                <div class="column-12--hand">
+                    <span class="" ng-repeat="platform in platforms">{{platform}}<span ng-show="{{platforms.length -1 != $index}}">, &nbsp;</span></span>
+                </div>
+            </div>
+        </div>
+
+        <div ng-show="repo" class="space">
+            <div class="row">
+                <div class="package-label column-12--hand">Repository</div>
+            </div>
+            <div class="row">
+                <div class="column-12--hand"><a href="{{repo}}">{{repo}}</a></div>
+            </div>
+        </div>
+
+        <div ng-show="issue" class="space">
+            <div class="row">
+                <div class="package-label column-12--hand">Issue tracker</div>
+            </div>
+            <div class="row">
+                <div class="column-12--hand"><a href="{{issue}}">{{issue}}</a></div>
+            </div>
+        </div>
+
+        <div ng-show="platforms" class="space">
+            <div class="row">
+                <div class="package-label column-12--hand">Keywords</div>
+            </div>
+            <div class="row">
+                <div class="column-12--hand">
+                    <span class="" ng-repeat="keyword in keywords">{{keyword}}<span ng-show="{{keywords.length -1 != $index}}">, &nbsp;</span></span>
+                </div>
+            </div>
+        </div>
+
+        <div ng-show="readme" class="readme">
+            <div class="package-readme">Read Me</div>
+            <div class="" ng-bind-html="readme"></div>
+        </div>
     </div>
 </div>
 

@@ -1,19 +1,21 @@
 <topbar></topbar>
-<div class="searchContainer">
-    <div class="row">
-        <div class="column-12--hand found">
-        <ng-pluralize count="plugins.length"
-            when="{'0': 'No plugins found',
-                '1': '1 plugin found',
-                'other': '{{plugins.length}} plugins found'}">
-        </ng-pluralize>
+<div class="searchContainer row">
+    <div class="offset-2--hand column-8--hand">
+        <div class="row">
+            <div class="column-12--hand found">
+            <ng-pluralize count="plugins.length"
+                when="{'0': 'No plugins found',
+                    '1': '1 plugin found',
+                    'other': '{{plugins.length}} plugins found'}">
+            </ng-pluralize>
+            </div>
         </div>
+
+    <!--<div class="row">
+            <a href="">Filter by Platform:</a> All
+        </div>-->
+
+        <pluginlist></pluginlist>
     </div>
-
-<!--<div class="row">
-        <a href="">Filter by Platform:</a> All
-    </div>-->
-
-    <pluginlist></pluginlist>
 </div>
 

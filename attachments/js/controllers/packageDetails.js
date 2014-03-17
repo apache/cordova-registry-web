@@ -14,6 +14,8 @@ angular.module('registry.controllers').controller('PackageDetailsController', ['
     $scope.downloads = null;
     $scope.latestVersion = null;
     $scope.currentVersion = "0.2.6";
+    $scope.platforms = null;
+    $scope.keywords = null;
 
     $scope.getPackage = function(){
         console.log($scope.packageID);
@@ -25,6 +27,9 @@ angular.module('registry.controllers').controller('PackageDetailsController', ['
                     $scope.currentVersion = $scope.latestVersion;
                     $scope.issue = $scope.data.versions[$scope.currentVersion].issue;
                     $scope.repo = $scope.data.versions[$scope.currentVersion].repo;
+                    $scope.maintainers = $scope.data.versions[$scope.currentVersion].maintainers;
+                    $scope.platforms = $scope.data.versions[$scope.currentVersion].platforms;
+                    $scope.keywords = $scope.data.versions[$scope.currentVersion].keywords;
                     $scope.versions = $scope.data.versions;
                     console.log(data); 
                     console.log($scope.versions);
@@ -46,6 +51,10 @@ angular.module('registry.controllers').controller('PackageDetailsController', ['
             $scope.issue = $scope.data.versions[$scope.currentVersion].issue;
             $scope.repo = $scope.data.versions[$scope.currentVersion].repo;
             $scope.description = $scope.data.versions[$scope.currentVersion].description;
+            $scope.maintainers = $scope.data.versions[$scope.currentVersion].maintainers;
+            $scope.platforms = $scope.data.versions[$scope.currentVersion].platforms;
+            $scope.keywords = $scope.data.versions[$scope.currentVersion].keywords;
+
             if($scope.currentVersion === $scope.latestVersion){
                 $scope.packageID = $routeParams.id
             }else{
