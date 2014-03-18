@@ -100,7 +100,7 @@ If you keep seeing `POST /_session 401` when you try to publish a plugin locally
 
 Deploy Remotely
 ==============
-Contact Steve or Anis to get username and passwords for remote couchdb instances. Any Cordova committers will be given the information if requested. Currently [plugins.cordova.io](http://plugins.cordova.io) is hosted on Iris Couch and [stage.plugins.cordova.io](http://stage.plugins.cordova.io) is hosted on Cloudant. The plan is to move over to Cloudant when this site launches. This will require setting up the default plugman registry to Cloudant.
+Contact Steve or Anis to get username and passwords for remote couchdb instances. Any Cordova committers will be given the information if requested. Currently [plugins.cordova.io](http://plugins.cordova.io) is hosted on Iris Couch and [stage.plugins.cordova.io](http://stage.plugins.cordova.io) is hosted on Cloudant. The plan is to move over to Cloudant when this site launches. This will require setting up the default plugman registry to Cloudant. This should be doable by changing the DNS for `registry.cordova.io`
 
 ### Cordova-registry
 Navigate to cordova-registry directory in your terminal and run the following command.

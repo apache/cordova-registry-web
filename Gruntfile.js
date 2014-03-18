@@ -1,7 +1,6 @@
 'use strict';
 module.exports = function(grunt) {
 
-  var rewriteRulesSnippet = require('grunt-connect-rewrite/lib/utils').rewriteRequest;
   var proxySnippet = require('grunt-connect-proxy/lib/utils').proxyRequest;
 
   grunt.initConfig({
