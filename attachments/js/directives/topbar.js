@@ -46,7 +46,7 @@ angular.module('registry.controllers').directive('topbar', function ($http, $loc
                 //todo: use sessionstorage or turn this into a service to cache results
                 $http({method: 'GET', url:('/api/_all_docs?limit=0')}).
                     success(function(data, status, headers, config) {
-                        $scope.totalPlugins = data.total_rows - 4;
+                        $scope.totalPlugins = data.total_rows - 2;
                     }).
                     error(function(data, status){
                         if (status === 404){
