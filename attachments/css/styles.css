@@ -2398,7 +2398,7 @@ a.dep-link {
   color: #fff;
 }
 .pluggy-logo {
-  background: transparent url('../images/pluggy.svg') no-repeat top left;
+  background: transparent url('../img/pluggy.svg') no-repeat top left;
   background-size: contain;
 }
 .top-logo {
@@ -2876,7 +2876,7 @@ div.left {
   background: -o-linear-gradient(top, transparent, #ededed);
 }
 .cordova-grid-bg {
-  background: url(../images/grid.png);
+  background: url(../img/grid.png);
 }
 .discover-message {
   background-color: white;

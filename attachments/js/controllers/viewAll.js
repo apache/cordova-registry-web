@@ -1,13 +1,16 @@
 angular.module('registry.controllers').controller('ViewAllController', ['$rootScope', '$scope', '$http', function($rootScope, $scope, $http) {
-        
+    
+    $scope.loading = true;    
+
     $scope.getPlugins = function(){
         $http({method: 'GET', url:('/api/_all_docs?include_docs=true&skip=3')}).
                 success(function(data, status, headers, config) {
                     console.log(data);
                     $scope.plugins = data.rows;
-                    console.log($scope.plugins)
-                    console.log($scope.plugins[0].doc.description)
-                    console.log($scope.plugins[0].doc['dist-tags'].latest)
+                    $scope.loading = false;
+                    // console.log($scope.plugins);
+                    // console.log($scope.plugins[0].doc.description);
+                    // console.log($scope.plugins[0].doc['dist-tags'].latest);
                 }).
                 error(function(data, status){
                     if (status === 404){
