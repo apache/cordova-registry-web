@@ -15,22 +15,22 @@
 	<div class="">
 
 		<div class="row" class="call-to-action-panes">
-			<div class="column-10--hand offset-1--hand column-4--lap">
+			<div class="column-10--hand offset-1--hand column-4--lap offset-2--lap">
 				<div class="call-to-action-pane">
 					<div class="call-to-action-pane-left-triangle"><div></div></div>
 					<div class="call-to-action-pane-right-triangle"><div></div></div>
 					<div class="row">
-						<div class="column-12--hand">
-							<img class="call-to-action-img" title="Contrib flyer" src="/images/contribute.png" />
+						<div class="column-12--hand center">
+							<img class="call-to-action-img" title="Contrib flyer" src="/img/contribute.png" />
 						</div>
 					</div>
 					<div class="row">
-						<div class="column-12--hand">
+						<div class="column-12--hand center">
 							<h2>Contribute</h2>
 						</div>
 					</div>
 					<div class="row">
-						<div class="column-10--hand offset-1--hand">
+						<div class="column-12--hand">
 							<h4>Want to <span> author &amp; publish</span> plugins?</h4>
 							<a href="pleaseread.html">Please read our docs.</a>
 						</div>
@@ -40,13 +40,13 @@
 			<div class="call-to-action-mid-spacer visible--lap invisible--hand">
 				<div class="icon-cordova logo"></div>
 			</div>
-			<div class="column-10--hand offset-1--hand column-4--lap">
+			<div class="column-10--hand offset-1--hand column-4--lap offset-0--lap">
 				<div class="call-to-action-pane">
 					<div class="call-to-action-pane-left-triangle"><div></div></div>
 					<div class="call-to-action-pane-right-triangle"><div></div></div>
 					<div class="row">
 						<div class="column-12--hand">
-							<img class="call-to-action-img" title="Utilize wrench" src="/images/utilize.png" />
+							<img class="call-to-action-img" title="Utilize wrench" src="/img/utilize.png" />
 						</div>
 					</div>
 					<div class="row">
@@ -89,6 +89,7 @@
 						</div>
 					</div>
 				</div>
+				<div ng-show="mostDownloaded.length == 0">No data available</div>
             </div>
             <div class="column-12--hand visible--hand invisible--lap">
 		        <div class="row home-plugin-listing-headers">

@@ -1,7 +1,9 @@
 <div class="viewContainer row">
     <div class="column-8--hand offset-2--hand">
 
-        <a ng-click="backToSearch()">Back to search results</a>
+        <div class="row top-button"
+            <a ng-click="backToSearch()"><i class="icon-left-dir"></i>Back to search results</a>
+        </div>
 
         <div class="row toprow">
             <div class="package-label column-8--hand">Plugin ID</div>
@@ -30,19 +32,22 @@
                 <div class="package-label column-12--hand">Maintainers</div>
             </div>
             <div class="row">
-                <div class="column-12--hand">
+                <div class="column-12--hand ">
                     <span class="" ng-repeat="maintainer in maintainers">{{maintainer.name}}<span ng-show="{{maintainers.length -1 != $index}}">, &nbsp;</span></span>
                 </div>
             </div>
         </div>
 
-        <div ng-show="platforms" class="space">
+        <div class="space">
             <div class="row">
                 <div class="package-label column-12--hand">Platforms</div>
             </div>
             <div class="row">
-                <div class="column-12--hand">
+                <div class="column-12--hand" ng-show="platforms">
                     <span class="" ng-repeat="platform in platforms">{{platform}}<span ng-show="{{platforms.length -1 != $index}}">, &nbsp;</span></span>
+                </div>
+                <div class="column-12--hand" ng-hide="platforms">
+                    Not specified
                 </div>
             </div>
         </div>
@@ -65,7 +70,7 @@
             </div>
         </div>
 
-        <div ng-show="platforms" class="space">
+        <div ng-show="keywords" class="space">
             <div class="row">
                 <div class="package-label column-12--hand">Keywords</div>
             </div>
@@ -73,6 +78,15 @@
                 <div class="column-12--hand">
                     <span class="" ng-repeat="keyword in keywords">{{keyword}}<span ng-show="{{keywords.length -1 != $index}}">, &nbsp;</span></span>
                 </div>
+            </div>
+        </div>
+
+        <div class="space">
+            <div class="row">
+                <div class="package-label column-12--hand">Install {{description}} using the <a href="http://cordova.apache.org/docs/en/edge/guide_cli_index.md.html#The%20Command-line%20Interface">Cordova CLI:</a></div>
+            </div>
+            <div class="row">
+            <span>$</span> cordova plugin add {{packageID}}
             </div>
         </div>
 
