@@ -1,4 +1,4 @@
-@import "../font/style.css";
+@import "../css/fontello.css";
 /* ----- font ----- */
 html {
   font-size: 17px;
@@ -2354,6 +2354,7 @@ body {
 body {
   background: #fff;
   margin: 0;
+  font-family: 'Lato', sans-serif;
 }
 .wrap,
 #tabs {
@@ -2559,7 +2560,7 @@ div.package-title {
   float: left;
 }
 div.package-label {
-  font-size: 17px;
+  font-size: 14px;
   color: #999999;
 }
 div.pkg-link {
@@ -2771,7 +2772,6 @@ div.left {
 #header .top-project-text,
 #header .top-plugins-registry-text {
   text-transform: uppercase;
-  font-family: 'Lato', sans-serif;
   font-weight: 300;
 }
 #header .top-project-text {
@@ -2804,7 +2804,13 @@ div.left {
 }
 /* ----- footer ---- */
 #footer {
-  border-top: dotted 2px #bfb7b9;
+  border-top: solid 2px #bfb7b9;
+  padding-top: 20px;
+  margin-top: 20px;
+}
+#footer a {
+  font-size: 14px;
+  font-weight: 500;
 }
 #footer p {
   margin-left: 10px;
@@ -2953,12 +2959,17 @@ div.left {
 }
 /* Package Details styles */
 .space {
-  padding-top: 10px;
-  padding-bottom: 10px;
+  padding: 20px 0px;
   border-bottom: solid 2px #bfb7b9;
 }
 .toprow {
   padding-top: 10px;
+}
+.top-button {
+  border-bottom: dotted 1px blue;
+  color: #4cc2e4;
+  cursor: pointer;
+  padding: 20px 0px;
 }
 /* View all page styles */
 .viewContainer {
@@ -2994,6 +3005,7 @@ div.left {
   border: 2px solid #4cc2e4;
 }
 .topbar-spacer {
+  color: #bfb7b9;
   padding-top: 10px;
 }
 .topbar-browse {
