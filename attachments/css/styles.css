@@ -2804,7 +2804,7 @@ div.left {
 }
 /* ----- footer ---- */
 #footer {
-  border-top: solid 2px #bfb7b9;
+  border-top: solid 1px #bfb7b9;
   padding-top: 20px;
   margin-top: 20px;
 }
@@ -2813,7 +2813,6 @@ div.left {
   font-weight: 500;
 }
 #footer p {
-  margin-left: 10px;
   font-size: 12px;
   color: #a5a5a5;
 }
@@ -2984,9 +2983,9 @@ div.left {
 }
 .found {
   font-size: 25px;
-  padding-top: 10px;
-  padding-bottom: 10px;
-  border-bottom: dotted 2px #bfb7b9;
+  color: #3b4854;
+  padding: 15px 0px;
+  border-bottom: dotted 1px #bfb7b9;
 }
 .topbar-row {
   padding-top: 5px;
@@ -3017,10 +3016,23 @@ div.left {
   padding-top: 5px;
 }
 .pluginHeader {
-  border-bottom: solid 2px black;
+  border-bottom: solid 1px #3b4854;
+  padding: 15px 0px;
+  color: #3b4854;
 }
 .pluginItem {
-  border-bottom: solid 2px #bfb7b9;
-  padding-top: 10px;
-  padding-bottom: 10px;
+  border-bottom: solid 1px #eeeeee;
+  padding: 15px 0px;
+}
+.pluginItem a {
+  font-weight: 300;
+}
+.pluginItemDescription {
+  color: #a0a0a0;
+  font-weight: 200;
+}
+.pluginItemDownloads,
+.pluginItemVersion {
+  color: #3b4854;
+  font-weight: 400;
 }
