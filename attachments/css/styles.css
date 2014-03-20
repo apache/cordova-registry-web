@@ -2987,6 +2987,20 @@ div.left {
   padding: 15px 0px;
   border-bottom: dotted 1px #bfb7b9;
 }
+.filter-list {
+  padding: 10px;
+}
+.filter-list label {
+  padding: 10px;
+}
+.filter-list label span {
+  padding-left: 5px;
+}
+.filter-platform-note {
+  color: gray;
+  font-size: 12px;
+  padding-left: 10px;
+}
 .topbar-row {
   padding-top: 5px;
   padding-bottom: 5px;

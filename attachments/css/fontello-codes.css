@@ -1,7 +1,9 @@
 
 .icon-cordova:before { content: '\e807'; } /* '' */
+.icon-minus-circled:before { content: '\e809'; } /* '' */
 .icon-github-circled:before { content: '\e800'; } /* '' */
 .icon-search:before { content: '\e805'; } /* '' */
+.icon-plus-circled:before { content: '\e808'; } /* '' */
 .icon-left-dir:before { content: '\e806'; } /* '' */
 .icon-clipboard-1:before { content: '\e804'; } /* '' */
 .icon-github-circled-alt:before { content: '\e802'; } /* '' */
