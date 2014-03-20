@@ -1,4 +1,4 @@
-angular.module('registry.controllers').controller('PackageDetailsController', ['$rootScope', '$scope', '$location', '$routeParams', '$http', function($rootScope, $scope, $location, $routeParams, $http) 
+angular.module('registry.controllers').controller('PackageDetailsController', ['$rootScope', '$scope', '$location', '$routeParams', '$http', 'SearchService', function($rootScope, $scope, $location, $routeParams, $http, SearchService) 
 {
     $scope.packageID = $routeParams.id
     $scope.description = null;
@@ -16,6 +16,10 @@ angular.module('registry.controllers').controller('PackageDetailsController', ['
     $scope.currentVersion = "0.2.6";
     $scope.platforms = null;
     $scope.keywords = null;
+
+    $scope.backToSearch = function backToSearch() {
+        window.location.href = '/#/search?search=' + SearchService.getSearch();
+    };
 
     $scope.getPackage = function(){
         console.log($scope.packageID);
