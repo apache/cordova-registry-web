@@ -11,6 +11,7 @@ angular.module('registry.controllers').controller('SearchController', ['$rootSco
 	$scope.filterWindows8 = false;
 	$scope.filterFirefox = false;
 	$scope.filterBlackberry = false;
+	$scope.filterUbuntu = false;
 
 	$scope.searchTerm = SearchService.getSearch();
 

@@ -1,11 +1,16 @@
 
 .icon-cordova:before { content: '\e807'; } /* '' */
+.icon-clipboard:before { content: '\e803'; } /* '' */
+.icon-firefox:before { content: '\e80d'; } /* '' */
 .icon-minus-circled:before { content: '\e809'; } /* '' */
+.icon-android:before { content: '\e80b'; } /* '' */
 .icon-github-circled:before { content: '\e800'; } /* '' */
-.icon-search:before { content: '\e805'; } /* '' */
+.icon-windows:before { content: '\e80c'; } /* '' */
+.icon-blackberry:before { content: '\e80e'; } /* '' */
 .icon-plus-circled:before { content: '\e808'; } /* '' */
 .icon-left-dir:before { content: '\e806'; } /* '' */
+.icon-mobile:before { content: '\e80a'; } /* '' */
 .icon-clipboard-1:before { content: '\e804'; } /* '' */
 .icon-github-circled-alt:before { content: '\e802'; } /* '' */
 .icon-github-circled-alt2:before { content: '\e801'; } /* '' */
-.icon-clipboard:before { content: '\e803'; } /* '' */
+.icon-search:before { content: '\e805'; } /* '' */
