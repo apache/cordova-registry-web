@@ -18,7 +18,12 @@ angular.module('registry.controllers').controller('PackageDetailsController', ['
     $scope.keywords = null;
 
     $scope.backToSearch = function backToSearch() {
-        window.location.href = '/#/search?search=' + SearchService.getSearch();
+        if(SearchService.getSearch() == '') {
+            window.location.href = '/';    
+        } else {
+            window.location.href = '/#/search?search=' + SearchService.getSearch();
+        }
+        
     };
 
     $scope.getPackage = function(){
