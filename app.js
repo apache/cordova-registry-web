@@ -86,8 +86,28 @@ function dependencies (doc) {
   }
 }
 
+function searcher(doc) {
+  if (doc['dist-tags'] && doc['dist-tags'].latest) {
+    var dist = doc.versions[doc['dist-tags'].latest];
+    //We have latest version, now get the platforms available.
+    var engines = dist && dist.engines ? dist.engines : '';
+    var platforms = dist && dist.platforms ? dist.platforms : '';
+    var downloads = 0;
+    var obj = { 
+              name: doc.name
+              , description: doc.description
+              , version: doc.dist
+              , downloads: downloads
+              , platforms: platforms
+              , engines: engines 
+    };
+    emit(doc._id, obj);
+  }
+}
+
 ddoc.views =
   { search: { map: packageSearch }
+  , searcher: { map: searcher }
   , dependencies: {map: dependencies, reduce:"_count"}
   , updated: {map: function (doc) {
       var l = doc["dist-tags"].latest
