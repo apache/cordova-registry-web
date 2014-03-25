@@ -19,7 +19,7 @@ angular.module('registry.controllers').controller('PackageDetailsController', ['
 
     $scope.backToSearch = function backToSearch() {
         if(SearchService.getSearch() == '') {
-            window.location.href = '/';    
+            window.history.back();    
         } else {
             window.location.href = '/#/search?search=' + SearchService.getSearch();
         }
