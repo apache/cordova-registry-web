@@ -1,19 +1,78 @@
 <topbar></topbar>
-<div class="searchContainer">
-    <div class="row">
-        <div class="column-12--hand found">
-        <ng-pluralize count="plugins.length"
-            when="{'0': 'No plugins found',
-                '1': '1 plugin found',
-                'other': '{{plugins.length}} plugins found'}">
-        </ng-pluralize>
+<div class="searchContainer row">
+    <div class="offset-2--hand column-8--hand">
+        <div class="row">
+            <div class="column-12--hand found">
+            <ng-pluralize count="plugins.length"
+                when="{'0': 'No plugins found',
+                    '1': '1 plugin found',
+                    'other': '{{(plugins|platformFilter: selectedPlatforms()).length}} plugins found'}">
+            </ng-pluralize>
+            </div>
         </div>
+        <div class="row">
+            <a ng-click="toggleFilters()"><i ng-class="{'icon-minus-circled': showFilters, 'icon-plus-circled': hideFilters}"></i>Filter by Platform:</a> <span ng-show="showFilters" class="filter-platform-note">* Note, if the plugin developer did not specify platforms available, it will be filtered out. Sorry!</span>
+        </div>
+        <div class="row filter-list" ng-show="showFilters">
+            <div class="column-3--lap">
+                <label class="topcoat-checkbox">
+                    <input type="checkbox" ng-model="filteriOS" />
+                    <div class="topcoat-checkbox__checkmark"></div>
+                    <span>iOS <i class="icon-mobile"></i></span>
+                </label>
+            </div>
+            <div class="column-3--lap">
+                <label class="topcoat-checkbox">
+                    <input type="checkbox" ng-model="filterAndroid" />
+                    <div class="topcoat-checkbox__checkmark"></div>
+                    <span>Android <i class="icon-android"></i></span>
+                </label>
+            </div>
+            <div class="column-3--lap">
+                <label class="topcoat-checkbox">
+                    <input type="checkbox" ng-model="filterWindowsPhone7" />
+                    <div class="topcoat-checkbox__checkmark"></div>
+                    <span>Windows Phone 7 <i class="icon-windowsphone7"></i></span>
+                </label>
+            </div>
+            <div class="column-3--lap">
+                <label class="topcoat-checkbox">
+                    <input type="checkbox" ng-model="filterWindowsPhone8" />
+                    <div class="topcoat-checkbox__checkmark"></div>
+                    <span>Windows Phone 8 <i class="icon-windowsphone8"></i></span>
+                </label>
+            </div>
+            <div class="column-3--lap">
+                <label class="topcoat-checkbox">
+                    <input type="checkbox" ng-model="filterWindows8" />
+                    <div class="topcoat-checkbox__checkmark"></div>
+                    <span>Windows 8 <i class="icon-windows8"></i></span>
+                </label>
+            </div>
+            <div class="column-3--lap">
+                <label class="topcoat-checkbox">
+                    <input type="checkbox" ng-model="filterFirefox" />
+                    <div class="topcoat-checkbox__checkmark"></div>
+                    <span>Firefox OS <i class="icon-firefox"></i></span>
+                </label>
+            </div>
+            <div class="column-3--lap">
+                <label class="topcoat-checkbox">
+                    <input type="checkbox" ng-model="filterBlackberry" />
+                    <div class="topcoat-checkbox__checkmark"></div>
+                    <span>Blackberry <i class="icon-blackberry"></i></span>
+                </label>
+            </div>
+            <div class="column-3--lap">
+                <label class="topcoat-checkbox">
+                    <input type="checkbox" ng-model="filterUbuntu" />
+                    <div class="topcoat-checkbox__checkmark"></div>
+                    <span>Ubuntu <i class="icon-ubuntu"></i></span>
+                </label>
+            </div>
+        </div>
+
+        <pluginlist></pluginlist>
     </div>
-
-<!--<div class="row">
-        <a href="">Filter by Platform:</a> All
-    </div>-->
-
-    <pluginlist></pluginlist>
 </div>
 

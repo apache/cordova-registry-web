@@ -1,5 +1,13 @@
 service = angular.module('registry.services', []);
 
+angular.module('registry').service('SearchService', function(){
+    this.searchTerm = '';
+
+    this.getSearch = function() {
+        return this.searchTerm;
+    };
+});
+
 service.factory('Downloads', function($http, $window, $q) {
     
     var promise;

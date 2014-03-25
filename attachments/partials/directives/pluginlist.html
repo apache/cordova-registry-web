@@ -1,25 +1,26 @@
 <div ng-show="plugins.length > 0">
     <div class="row pluginHeader">
         <div class="column-9--hand column-8--lap">
-            <h3>Plugin ID & description</h3>
+            Plugin ID &amp; description
         </div>
         <div class="column-3--hand column-2--lap center">
-            <h3>Version</h3>
+            Version
         </div>
         <div class="column-2--hand center invisible--hand visible--lap">
-            <h3>Downloads</h3>
+            Downloads
         </div>
     </div>
-    <div ng-repeat="plugin in plugins" class="row pluginItem">
+    <div ng-repeat="plugin in plugins | platformFilter: selectedPlatforms()" class="row pluginItem">
         <div class="column-9--hand column-8--lap">
             <div><a ng-href="#/package/{{plugin.key}}">{{plugin.key}}</a></div>
-            <div>{{((plugin.value.description)||(plugin.doc.description))}}</div>
+            <div class="pluginItemDescription">{{((plugin.value.description)||(plugin.doc.description))}}</div>
         </div>
         <div class="column-3--hand column-2--lap center">
-            <div class="">{{((plugin.value['dist-tags'].latest)||(plugin.doc['dist-tags'].latest))}}</div>
+            <div class="pluginItemVersion">{{((plugin.value['dist-tags'].latest)||(plugin.doc['dist-tags'].latest))}}</div>
+            <span ng-repeat="pf in plugin.value.versions[plugin.value['dist-tags'].latest].platforms">{{pf}}&nbsp;</span>
         </div>
         <div class="column-2--hand invisible--hand visible--lap center">
-            <div class="">{{downloads[plugin.key]}}</div>
+            <div class="pluginItemDownloads">{{downloads[plugin.key]}}</div>
         </div>
     </div>
 </div>

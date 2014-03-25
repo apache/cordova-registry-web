@@ -1,8 +1,8 @@
-angular.module('registry.controllers').directive('topbar', function ($http, $location, $window, $rootScope, $routeParams) {
+angular.module('registry.controllers').directive('topbar', ['$http', '$location', '$window', '$rootScope', '$routeParams', function ($http, $location, $window, $rootScope, $routeParams) {
     return {
         restrict: 'E',
         templateUrl: '/partials/directives/topbar.html',
-        controller:['$scope', '$rootScope', function($scope, $rootScope){
+        controller:['$scope', '$rootScope', 'SearchService', function($scope, $rootScope, SearchService){
             var currentSearch, currentTerms;
             var searchResults = {};
             $scope.plugins = [];
@@ -12,6 +12,7 @@ angular.module('registry.controllers').directive('topbar', function ($http, $loc
             $scope.search = function(evt) {
                 if($location.url().indexOf("search") != -1){
                     currentSearch = $scope.searchText.toLowerCase();
+                    SearchService.searchTerm = currentSearch;
                     currentTerms = currentSearch.trim().split(' ');
 
                     //todo: add a short timeout to lower number of requests
@@ -66,4 +67,4 @@ angular.module('registry.controllers').directive('topbar', function ($http, $loc
         link: function(scope, element, attrs, controller){
         }
     };
-});
+}]);

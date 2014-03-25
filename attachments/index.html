@@ -13,13 +13,14 @@
   <!-- <link rel="stylesheet" type="text/css" href="css/topcoat-mobile-light.min.css" /> -->
   <!-- <link rel="stylesheet" type="text/css" href="css/grid.min.css"> -->
   <link href="css/styles.css" rel="stylesheet" type="text/css">
+  <link href="font/styles.css" rel="stylesheet" type="text/css">
   <link href="images/favicon.ico" rel="shortcut icon" type="image/x-icon">
 
   <script src="http://localhost:35729/livereload.js"></script>
 
 </head>
 
-<body ng-app='registry'>
+<body ng-app="registry">
 
   <div id="header" class="">
     <div class="header-content row">
@@ -50,15 +51,15 @@
 
   <div id="footer" class="">
     <div class="row">
-      <div class="column-6--hand column-4--lap center">
+      <div class="column-10--hand offset-1--hand column-2--lap offset-2--lap">
         <a href="https://issues.apache.org/jira/browse/CB/component/12321101">Plugin Registry Issue Tracker</a>
       </div>
-      <div class="column-6--hand column-3--lap center">
+      <div class="column-10--hand offset-1--hand column-2--lap">
         <a href="http://cordova.apache.org/">Apache Cordova Home</a>
       </div>
     </div>
     <div class="row">
-      <div class="column-12--hand start">
+      <div class="column-10--hand offset-1--hand column-10--lap offset-2--lap left">
         <p>Copyright &copy; 2012, 2013, 2014 The Apache Software Foundation, Licensed under the Apache License, Version 2.0</p>
         <p>Apache and the Apache feather logos are trademarks of The Apache Software Foundation.</p>
       </div>
@@ -78,5 +79,6 @@
   <script type="text/javascript" src="js/controllers/search.js"></script>
   <script type="text/javascript" src="js/directives/topbar.js"></script>
   <script type="text/javascript" src="js/directives/pluginlist.js"></script>
+  <script type="text/javascript" src="js/filters/platformFilter.js"></script>
 </body>
 </html>
