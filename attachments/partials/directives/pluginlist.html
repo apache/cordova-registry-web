@@ -17,7 +17,6 @@
         </div>
         <div class="column-3--hand column-2--lap center">
             <div class="pluginItemVersion">{{((plugin.value['dist-tags'].latest)||(plugin.doc['dist-tags'].latest))}}</div>
-            <span ng-repeat="pf in plugin.value.versions[plugin.value['dist-tags'].latest].platforms">{{pf}}&nbsp;</span>
         </div>
         <div class="column-2--hand invisible--hand visible--lap center">
             <div class="pluginItemDownloads">{{downloads[plugin.key]}}</div>
