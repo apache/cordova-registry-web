@@ -1,7 +1,7 @@
 <div id="home-container">
 	<div class="cordova-grid-bg">
         <div class="row discover-message-container visible--lap invisible--hand">
-			<div class="column-7--lap column-5--desk offset-2--lap">
+			<div class="column-7--lap column-6--desk column-5--wall offset-2--lap">
 				<p class="discover-message">Discover plugins for your </h1>
 				<p class="discover-message">Apache Cordova project.</h1>
 			</div>
@@ -47,11 +47,11 @@
 		</div>
 
 		<div class="row home-plugin-listing-headers">
-			<div class="column-12--hand column-3--lap offset-2--lap center" >
+			<div class="column-12--hand column-4--lap offset-2--lap center" >
 				<h3>Most Downloaded</h3>
             </div>
             <div class="call-to-action-mid-spacer visible--lap invisible--hand"></div>
-			<div class="column-12--hand column-3--lap offset-1--lap center visible--lap invisible--hand">
+			<div class="column-12--hand column-4--lap column-3--desk offset-1--lap center visible--lap invisible--hand">
 				<h3>Last Updated</h3>
             </div>
             <div class="column-12--hand"  style="border-bottom:dotted 1px #bfb7b9;"></div>
@@ -62,7 +62,7 @@
 			<div class="column-12--hand column-6--lap center" ng-model="mostDownloaded">
 				<div ng-repeat="plugin in mostDownloaded">
 					<div class="row">
-						<div class="column-4--hand column-1--lap offset-4--lap">
+						<div class="column-4--hand column-3--lap offset-2--lap">
 							{{plugin.value}}
 						</div>
 						<div class="column-8--hand column-5--lap left">
@@ -85,7 +85,7 @@
 			<div class="column-12--hand column-6--lap center">
 				<div ng-repeat="plugin in lastUpdated">
 					<div class="row">
-						<div class="column-4--hand column-2--lap offset-2--lap">
+						<div class="column-4--hand column-4--lap">
 							{{plugin.key}}
 						</div>
 						<div class="column-8--hand column-5--lap left">

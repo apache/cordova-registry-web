@@ -2778,7 +2778,7 @@ div.left {
   font-size: 12px;
 }
 #header .top-plugins-registry-text {
-  font-size: 28px;
+  font-size: 16px;
 }
 #header .header-links {
   font-size: 18px;
@@ -2801,6 +2801,11 @@ div.left {
   left: 0;
   font-size: 10px;
   font-weight: 600;
+}
+@media only screen and (min-width: 48rem) {
+  #header .top-plugins-registry-text {
+    font-size: 26px;
+  }
 }
 /* ----- footer ---- */
 #footer {
@@ -2909,6 +2914,8 @@ div.left {
   position: relative;
   text-align: center;
   height: 220px;
+  padding-left: 13px;
+  padding-right: 13px;
 }
 .call-to-action-mid-spacer {
   flex-basis: 8%;
