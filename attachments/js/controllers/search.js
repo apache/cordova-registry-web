@@ -15,6 +15,14 @@ angular.module('registry.controllers').controller('SearchController', ['$rootSco
 
 	$scope.searchTerm = SearchService.getSearch();
 
+	$scope.reverse = null;
+	$scope.orderValue = 'key';
+
+	$scope.setOrderBy = function setOrderBy (value) {
+		$scope.orderValue = value;
+		$scope.reverse = !$scope.reverse;
+	};
+
 	$scope.selectedPlatforms = function() {
 		//send back null if we arent showing filters
 		if(!$scope.showFilters) {
