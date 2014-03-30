@@ -8,15 +8,15 @@ module.exports = function(grunt) {
     config:grunt.file.readJSON('config.json'),
     watch: {
       reloadServer: {
+        options: {
+          livereload: true
+        },
         files: ['attachments/*.html', 'attachments/partials/**/*.html', 'attachments/css/styles.css', 'attachments/js/**/*.js'],
         tasks: ['shell:reloadServer']
       },
       stylesheets: {
         files: ['attachments/css/**/*.less'],
         tasks: ['less']
-      },
-      options: {
-        livereload: true
       }
     },
     shell: {
