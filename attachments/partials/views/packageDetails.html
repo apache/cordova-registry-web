@@ -1,16 +1,18 @@
-<div class="viewContainer row">
+<div class="viewContainer row package-detail-rows">
     <div class="column-8--hand offset-2--hand">
 
-        <div class="row top-button"
+        <div class="top-button">
             <a ng-click="backToSearch()"><i class="icon-left-dir"></i>Back to search results</a>
         </div>
 
         <div class="row toprow">
             <div class="package-label column-8--hand">Plugin ID</div>
             <div class="column-4--hand right">
-                <select ng-model="currentVersion" ng-options="key as key for (key, value) in versions">
+                <label class="dropdown">
+                <select class="version-dropdown" ng-model="currentVersion" ng-options="key as key for (key, value) in versions">
                     <option value="{{currentVersion}}">{{currentVersion}}</option> 
                 </select>
+                </label>
             </div>
 
         </div>
@@ -76,7 +78,7 @@
             </div>
             <div class="row">
                 <div class="column-12--hand">
-                    <span class="" ng-repeat="keyword in keywords">{{keyword}}<span ng-show="{{keywords.length -1 != $index}}">, &nbsp;</span></span>
+                    <span class="" ng-repeat="keyword in keywords"><a href="/#/search?search={{keyword}}">{{keyword}}</a><span ng-show="{{keywords.length -1 != $index}}">,&nbsp;</span></span>
                 </div>
             </div>
         </div>
@@ -86,7 +88,9 @@
                 <div class="package-label column-12--hand">Install {{description}} using the <a href="http://cordova.apache.org/docs/en/edge/guide_cli_index.md.html#The%20Command-line%20Interface">Cordova CLI:</a></div>
             </div>
             <div class="row">
-                cordova plugin add {{packageID}}
+                <div class="column-12--hand">
+                    cordova plugin add {{packageID}}
+                </div>
             </div>
         </div>
 
