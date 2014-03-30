@@ -49,10 +49,10 @@ angular.module('registry.controllers').controller('SearchController', ['$rootSco
 		if($scope.filterBlackberry) {
 			platformFilters.push('blackberry10');
 		}
-		if($scope.filterWindows7) {
+		if($scope.filterWindowsPhone7) {
 			platformFilters.push('wp7');
 		}
-		if($scope.filterWindows8) {
+		if($scope.filterWindowsPhone8) {
 			platformFilters.push('wp8');
 		}
 		if($scope.filterWindows8) {
