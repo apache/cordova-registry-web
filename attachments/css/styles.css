@@ -14,7 +14,7 @@ h2 {
   font-weight: normal;
 }
 select {
-  padding: 3px;
+  padding: 5px;
   margin: 0;
   -webkit-border-radius: 4px;
   -moz-border-radius: 4px;
@@ -22,7 +22,7 @@ select {
   -webkit-box-shadow: 0 3px 0 #cccccc, 0 -1px #656f78 inset;
   -moz-box-shadow: 0 3px 0 #cccccc, 0 -1px #656f78 inset;
   box-shadow: 0 3px 0 #cccccc, 0 -1px #656f78 inset;
-  background: #effbfe;
+  background: #eeeeee;
   color: #656f78;
   border: none;
   outline: none;
@@ -53,7 +53,7 @@ label.dropdown:after {
   right: 8px;
   top: 2px;
   padding: 0 0 2px;
-  border-bottom: 1px solid #bfb7b9;
+  border-bottom: 1px solid #eeeeee;
   position: absolute;
   pointer-events: none;
 }
@@ -63,7 +63,7 @@ label.dropdown:before {
   top: 0px;
   width: 20px;
   height: 15px;
-  background: #effbfe;
+  background: #eeeeee;
   position: absolute;
   pointer-events: none;
   display: block;
@@ -3021,7 +3021,7 @@ div.left {
 /* Package Details styles */
 .space {
   padding: 5px 0px;
-  border-bottom: solid 2px #bfb7b9;
+  border-bottom: solid 2px #eeeeee;
 }
 .toprow {
   padding-top: 10px;
@@ -3037,6 +3037,16 @@ div.left {
 }
 .package-detail-rows div.row {
   padding: 5px 0px;
+  word-wrap: break-word;
+}
+.package-downloads {
+  background: #eeeeee;
+  margin: -10px;
+  text-align: right;
+  font-weight: lighter;
+}
+.package-downloads .package-label {
+  font-weight: normal;
 }
 .readme {
   margin-top: 10px;
@@ -3095,7 +3105,7 @@ div.left {
   border: 2px solid #4cc2e4;
 }
 .topbar-spacer {
-  color: #bfb7b9;
+  color: #eeeeee;
   padding-top: 10px;
 }
 .topbar-browse {
