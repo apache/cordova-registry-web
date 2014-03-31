@@ -15,6 +15,14 @@ angular.module('registry.controllers').controller('SearchController', ['$rootSco
 
 	$scope.searchTerm = SearchService.getSearch();
 
+	$scope.reverse = null;
+	$scope.orderValue = 'key';
+
+	$scope.setOrderBy = function setOrderBy (value) {
+		$scope.orderValue = value;
+		$scope.reverse = !$scope.reverse;
+	};
+
 	$scope.selectedPlatforms = function() {
 		//send back null if we arent showing filters
 		if(!$scope.showFilters) {
@@ -49,10 +57,10 @@ angular.module('registry.controllers').controller('SearchController', ['$rootSco
 		if($scope.filterBlackberry) {
 			platformFilters.push('blackberry10');
 		}
-		if($scope.filterWindows7) {
+		if($scope.filterWindowsPhone7) {
 			platformFilters.push('wp7');
 		}
-		if($scope.filterWindows8) {
+		if($scope.filterWindowsPhone8) {
 			platformFilters.push('wp8');
 		}
 		if($scope.filterWindows8) {

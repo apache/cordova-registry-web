@@ -1,8 +1,8 @@
 /* Package Details styles */
 
 .space {
-	padding: 20px 0px;
-    border-bottom:solid 2px #bfb7b9;
+	padding: 5px 0px;
+    border-bottom:solid 2px @border-faded-color;
 }
 
 .toprow {
@@ -14,4 +14,31 @@
 	color: @highlight-color;
 	cursor: pointer;
 	padding: 20px 0px;
+}
+
+.version-dropdown {
+	width: 100%;
+}
+
+.package-detail-rows {
+
+	div.row {
+		padding: 5px 0px;
+		word-wrap: break-word;
+	}
+}
+
+.package-downloads {
+	background: @border-faded-color;
+	margin: -10px;
+	text-align: right;
+	font-weight: lighter;
+
+	.package-label {
+		font-weight: normal;
+	}
+}
+
+.readme {
+	margin-top: 10px;
 }
