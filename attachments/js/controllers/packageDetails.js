@@ -9,7 +9,7 @@ angular.module('registry.controllers').controller('PackageDetailsController', ['
     $scope.keywords = null;
     $scope.readme = null;
     $scope.license = null;
-    $scope.engine = null;
+    $scope.engines = null;
     $scope.lastupdated = null;
     $scope.downloads = null;
     $scope.latestVersion = null;
@@ -40,8 +40,11 @@ angular.module('registry.controllers').controller('PackageDetailsController', ['
                     $scope.platforms = $scope.data.versions[$scope.currentVersion].platforms;
                     $scope.keywords = $scope.data.versions[$scope.currentVersion].keywords;
                     $scope.versions = $scope.data.versions;
-                    console.log(data); 
-                    console.log($scope.versions);
+                    $scope.engines = $scope.data.versions[$scope.currentVersion].engines;
+                    $scope.license = $scope.data.versions[$scope.currentVersion].license;
+                    $scope.lastupdated = moment($scope.data.time.modified).fromNow();
+                    // console.log(data); 
+                    // console.log($scope.versions);
                     $scope.readme = marked($scope.data.readme);
                 }).
                 error(function(data, status){

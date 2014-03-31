@@ -122,9 +122,9 @@
                         Last Updated
                     </div>
                 </div>
-                <div class="row">
+                <div class="row" ng-show="lastupdated">
                     <div class="column-12--hand">
-                        01/01/1987
+                        {{lastupdated}}
                     </div>
                 </div>
                 <div class="row">
@@ -132,9 +132,9 @@
                         Engine Number
                     </div>
                 </div>
-                <div class="row">
+                <div class="row" ng-show="engines">
                     <div class="column-12--hand">
-                        >=3.0
+                        <span ng-repeat="engine in engines">{{engine.version}}</span>
                     </div>
                 </div>
                 <div class="row">
@@ -143,8 +143,8 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="package-label column-12--hand">
-                        MIT
+                    <div class="column-12--hand">
+                        {{license}}
                     </div>
                 </div>
             </div>
