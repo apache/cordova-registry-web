@@ -7,12 +7,16 @@ module.exports = function(grunt) {
     pkg: grunt.file.readJSON('package.json'),
     config:grunt.file.readJSON('config.json'),
     watch: {
-      changeFiles: {
-        files: ['attachments/*.html', 'attachments/partials/**/*.html', 'attachments/css/**/*.less', 'attachments/css/**/*.css', 'attachments/js/**/*.js'],
-        tasks: ['less', 'shell:reloadServer']
+      reloadServer: {
+        options: {
+          livereload: true
+        },
+        files: ['attachments/*.html', 'attachments/partials/**/*.html', 'attachments/css/styles.css', 'attachments/js/**/*.js'],
+        tasks: ['shell:reloadServer']
       },
-      options: {
-        livereload: true
+      stylesheets: {
+        files: ['attachments/css/**/*.less'],
+        tasks: ['less']
       }
     },
     shell: {
