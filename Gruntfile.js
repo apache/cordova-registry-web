@@ -89,6 +89,7 @@ module.exports = function(grunt) {
       grunt.task.run([
           'configureProxies:localRegistry',
           'connect:develop',
+          'shell:reloadServer',
           'watch'
       ]);
   });
