@@ -71,7 +71,7 @@ A possible error may be that you don't have a local `_replicate` db. You can cre
 curl -X PUT http://localhost:5984/_replicate
 ```
 
-You could also run into the `insecure rewrite rule` error. Fix this by setting `secure_rewrites` to `false` in your `local.ini' CouchDB configuriation file. Mine was at `/usr/local/etc/couchdb/local.ini`.
+You could also run into the `insecure rewrite rule` error. Fix this by setting `secure_rewrites` to `false` in your `local.ini` under `[httpd]` CouchDB configuriation file. Mine was at `/usr/local/etc/couchdb/local.ini`.
 
 Deploy Locally
 ==============
