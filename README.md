@@ -8,7 +8,7 @@ Setup
 ```bash
 git clone https://git-wip-us.apache.org/repos/asf/cordova-registry-web.git
 ```
-In your terminal, navigate to the cordova-registry-web directory and run `git checkout refactor` and `npm install`. This will install the dependencies required to deploy locally for the refactor branch.
+In your terminal, navigate to the cordova-registry-web directory and `npm install`. This will install the dependencies required to deploy locally.
 
 We also need to install the `grunt-cli` and `couchapp` globally. Type `npm install grunt-cli -g` and `npm install couchapp -g`. 
 
