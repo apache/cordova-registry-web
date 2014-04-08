@@ -1,5 +1,7 @@
+    <topbar></topbar>
 <div class="viewContainer row package-detail-rows">
     <div class="column-8--lap column-12--hand offset-2--lap">
+
 
         <div class="top-button">
             <a ng-click="backToSearch()"><i class="icon-left-dir"></i>Back to search results</a>
@@ -117,7 +119,7 @@
                         {{currentVersion}}
                     </div>
                 </div>
-                <div class="row">
+                <div class="row" ng-show="lastupdated">
                     <div class="package-label column-12--hand">
                         Last Updated
                     </div>
@@ -127,7 +129,7 @@
                         {{lastupdated}}
                     </div>
                 </div>
-                <div class="row">
+                <div class="row" ng-show="engines">
                     <div class="package-label column-12--hand">
                         Engine Number
                     </div>
