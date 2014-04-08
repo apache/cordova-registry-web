@@ -1,4 +1,4 @@
-angular.module('registry.controllers').controller('PackageDetailsController', ['$rootScope', '$scope', '$location', '$routeParams', '$http', 'SearchService', function($rootScope, $scope, $location, $routeParams, $http, SearchService) 
+angular.module('registry.controllers').controller('PackageDetailsController', ['$rootScope', '$scope', '$location', '$routeParams', '$http', 'SearchService', 'Downloads', function($rootScope, $scope, $location, $routeParams, $http, SearchService, Downloads) 
 {
     $scope.packageID = $routeParams.id
     $scope.description = null;
@@ -26,11 +26,16 @@ angular.module('registry.controllers').controller('PackageDetailsController', ['
         
     };
 
+    Downloads.getDownloads().then(function(obj){
+        $scope.downloads = obj.data;
+    });
+
     $scope.getPackage = function(){
         console.log($scope.packageID);
         $http({method: 'GET', url:('/api/' + $scope.packageID)}).
                 success(function(data, status, headers, config) {
                     $scope.data = data;
+                    console.log($scope.data);
                     $scope.description = $scope.data.description;
                     $scope.latestVersion = $scope.data['dist-tags'].latest;
                     $scope.currentVersion = $scope.latestVersion;
