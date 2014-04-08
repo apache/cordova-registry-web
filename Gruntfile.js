@@ -83,6 +83,18 @@ module.exports = function(grunt) {
                 },
             }
         }
+    },
+    preprocess: {
+      livereloadout: {
+        options: {
+          context: {
+            LIVERELOAD: true
+          }
+        },
+        files: {
+          'attachments/index.html' : 'attachments/index.html'
+        }
+      }
     }
   });
   
@@ -101,12 +113,14 @@ module.exports = function(grunt) {
   grunt.registerTask('cloudant', function (target) {
       grunt.task.run([
           'less',
+          'preprocess:livereloadout',
           'shell:cloudant'   
       ]);
   });
   grunt.registerTask('iriscouch', function (target) {
       grunt.task.run([
           'less',
+          'preprocess:livereloadout',
           'shell:iriscouch'   
       ]);
   });
