@@ -138,5 +138,5 @@ module.exports = function(grunt) {
           'shell:iriscouch'   
       ]);
   });
-  grunt.registerTask('pre', ['copy:before', 'preprocess']);
+  grunt.registerTask('pre', ['copy:before', 'preprocess', 'copy:after']);
 };
