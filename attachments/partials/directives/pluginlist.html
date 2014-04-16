@@ -9,8 +9,8 @@
             Version
         </div>
         <div class="column-2--hand center invisible--hand visible--lap">
-            <a ng-click="setOrderBy('downloads[key]')">Downloads</a>
-            <span ng-show="orderValue == 'downloads[plugin.key]' "><i ng-show="reverse" class="icon-up-dir"></i><i ng-hide="reverse" class="icon-down-dir"></i></span>
+            <a ng-click="setOrderBy('downloads')">Downloads</a>
+            <span ng-show="orderValue == 'downloads' "><i ng-show="reverse" class="icon-up-dir"></i><i ng-hide="reverse" class="icon-down-dir"></i></span>
         </div>
     </div>
     <div ng-repeat="plugin in plugins | platformFilter: selectedPlatforms() | orderBy:orderValue:reverse" class="row pluginItem">
@@ -22,7 +22,7 @@
             <div class="pluginItemVersion">{{((plugin.value['dist-tags'].latest)||(plugin.doc['dist-tags'].latest))}}</div>
         </div>
         <div class="column-2--hand invisible--hand visible--lap center">
-            <div class="pluginItemDownloads">{{downloads[plugin.key]}}</div>
+            <div class="pluginItemDownloads">{{plugin.downloads}}</div>
         </div>
     </div>
 </div>

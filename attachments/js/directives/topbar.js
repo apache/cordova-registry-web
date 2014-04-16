@@ -21,8 +21,16 @@ angular.module('registry.controllers').directive('topbar', ['$http', '$location'
                             $http.get('/_list/search/search?startkey='+JSON.stringify(term)+'&endkey='+JSON.stringify(term+'ZZZZZZZZZZZZZZ')+'&limit=25').
                                 success(function(data, status, headers, config){
                                     $scope.plugins = data.rows;
+                                    $scope.plugins.forEach(function(element, index, array){
+                                        if(!($scope.downloads[element.key])){
+                                            array[index].downloads = 0;
+                                        }else{
+                                            array[index].downloads = $scope.downloads[element.key];
+                                        }
+                                    });
+
                                     //todo: save this in session storage instead of object?
-                                    searchResults[term] = data.rows;
+                                    searchResults[term] = $scope.plugins;
                                 }).
                                 error(function(data,status){
                                     console.log(data);

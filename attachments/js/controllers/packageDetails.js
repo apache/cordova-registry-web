@@ -13,7 +13,7 @@ angular.module('registry.controllers').controller('PackageDetailsController', ['
     $scope.lastupdated = null;
     $scope.downloads = null;
     $scope.latestVersion = null;
-    $scope.currentVersion = "0.2.6";
+    $scope.currentVersion = null;
     $scope.platforms = null;
     $scope.keywords = null;
 
@@ -51,6 +51,7 @@ angular.module('registry.controllers').controller('PackageDetailsController', ['
                     // console.log(data); 
                     // console.log($scope.versions);
                     $scope.readme = marked($scope.data.readme);
+                    $scope.englishdoc = marked($scope.data.versions[$scope.currentVersion].englishdoc);
                 }).
                 error(function(data, status){
                     if (status === 404){

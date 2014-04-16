@@ -5,12 +5,15 @@ angular.module('registry.controllers').controller('ViewAllController', ['$rootSc
     $scope.getPlugins = function(){
         $http({method: 'GET', url:('/api/_all_docs?include_docs=true&skip=3')}).
                 success(function(data, status, headers, config) {
-                    console.log(data);
                     $scope.plugins = data.rows;
                     $scope.loading = false;
-                    // console.log($scope.plugins);
-                    // console.log($scope.plugins[0].doc.description);
-                    // console.log($scope.plugins[0].doc['dist-tags'].latest);
+                    $scope.plugins.forEach(function(element, index, array){
+                        if(!($scope.downloads[element.id])){
+                            array[index].downloads = 0;
+                        }else{
+                            array[index].downloads = $scope.downloads[element.id];
+                        }
+                    });
                 }).
                 error(function(data, status){
                     if (status === 404){
