@@ -5,8 +5,6 @@ angular.module('registry.controllers').controller('HomeController', ['$rootScope
     $scope.mostDownloaded = [];
     $scope.lastUpdated = [];
     
-    
-
     $scope.getMostDownloaded = function() {
         Downloads.getDownloads().then(function(obj){
             $scope.mostDownloaded = obj.arrData.slice(0, 9);

@@ -15,6 +15,27 @@ ddoc =
   , lists : {}
   }
 
+function searcher(doc) {
+  
+//if(word) ? id = word : id=doc._id;
+
+  if (doc['dist-tags'] && doc['dist-tags'].latest) {
+    var dist = doc.versions[doc['dist-tags'].latest];
+    //We have latest version, now get the platforms available.
+    var version = doc['dist-tags'].latest;
+    var engines = dist && dist.engines ? dist.engines : '';
+    var platforms = dist && dist.platforms ? dist.platforms : '';
+    var obj = { 
+              name: doc.name
+              , description: doc.description
+              , version: version
+              , platforms: platforms
+              , engines: engines 
+    };
+    log('emit ' + doc._id);
+    emit(doc._id, obj);
+  }
+}
 
 function packageSearch (doc) {
   var descriptionBlacklist =
@@ -32,25 +53,51 @@ function packageSearch (doc) {
     , "as"
     ]
 
+  if (doc['dist-tags'] && doc['dist-tags'].latest) {
+    var dist = doc.versions[doc['dist-tags'].latest];
+    //We have latest version, now get the platforms available.
+    var version = doc['dist-tags'].latest;
+    var engines = dist && dist.engines ? dist.engines : '';
+    var platforms = dist && dist.platforms ? dist.platforms : '';
+    var obj = { 
+              name: doc.name
+              , description: doc.description
+              , version: version
+              , platforms: platforms
+              , engines: engines 
+    };
+    log('packagesearch ' + doc._id);
+  }
+
   if (doc.name) { // There aren't any better attributes for check if isPackage()
     if (doc.name) {
       var names = [doc.name];
       if (doc.name.indexOf('-') !== -1) doc.name.split('-').forEach(function (n) {names.push(n)});
       if (doc.name.indexOf('_') !== -1) doc.name.split('_').forEach(function (n) {names.push(n)});
       names.forEach(function (n) {
-        if (n.length > 1) emit(n.toLowerCase(), doc);
+        if (n.length > 1) emit(n.toLowerCase(), obj);
       });
     }
+    if (doc._id) {
+      //log(doc._id);
+      var ids = [doc._id];
+      if (doc._id.indexOf('.') !== -1) doc._id.split('.').forEach(function (n) {ids.push(n)});
+      //if (doc.name.indexOf('.') !== -1) doc.name.split('_').forEach(function (n) {names.push(n)});
+      ids.forEach(function (id) {
+        if (id.length > 1) emit(id.toLowerCase(), obj);
+      });
+    }
+
     if (doc['dist-tags'] && doc['dist-tags'].latest && (
-        doc.versions[doc['dist-tags'].latest].keywords || doc.versions[doc['dist-tags'].latest].tags
-        )) {
-      var tags = (doc.versions[doc['dist-tags'].latest].keywords || doc.versions[doc['dist-tags'].latest].tags)
-      tags.forEach(function (tag) {
-        tag.split(' ').forEach(function (t) {
-          if (t.length > 0) emit(t.toLowerCase(), doc);
+        doc.versions[doc['dist-tags'].latest].keywords)) {
+      var keywords = (doc.versions[doc['dist-tags'].latest].keywords)
+      keywords.forEach(function (keyword) {
+        keyword.split(' ').forEach(function (k) {
+          if (k.length > 0) emit(k.toLowerCase(), obj);
         });
       })
     }
+
     if (doc.description) {
       doc.description.split(' ').forEach(function (d) {
         d = d.toLowerCase();
@@ -71,7 +118,7 @@ function packageSearch (doc) {
         while (d.indexOf('%') !== -1) d = d.replace('%', '');
         while (d.indexOf('+') !== -1) d = d.replace('+', '');
         if (descriptionBlacklist.indexOf(d) !== -1) d = '';
-        if (d.length > 1) emit(d, doc);
+        if (d.length > 1) emit(d, obj);
       })
     }
   }
@@ -86,42 +133,17 @@ function dependencies (doc) {
   }
 }
 
-function searcher(doc) {
-  if (doc['dist-tags'] && doc['dist-tags'].latest) {
-    var dist = doc.versions[doc['dist-tags'].latest];
-    //We have latest version, now get the platforms available.
-    var engines = dist && dist.engines ? dist.engines : '';
-    var platforms = dist && dist.platforms ? dist.platforms : '';
-    var downloads = 0;
-    var obj = { 
-              name: doc.name
-              , description: doc.description
-              , version: doc.dist
-              , downloads: downloads
-              , platforms: platforms
-              , engines: engines 
-    };
-    emit(doc._id, obj);
-  }
-}
+
 
 ddoc.views =
   { search: { map: packageSearch }
-  , searcher: { map: searcher }
+  , searcher: { map: searcher}
   , dependencies: {map: dependencies, reduce:"_count"}
   , updated: {map: function (doc) {
       var l = doc["dist-tags"].latest
         , t = doc.time && doc.time[l]
       if (t) emit(t, 1)
     }}
-  , tags:
-    { map: function (doc) {
-             if (doc['dist-tags'] && doc['dist-tags'].latest) {
-              doc.versions[doc['dist-tags'].latest].tags.forEach(function (t) {emit(t, 1)})
-             }
-           }
-    , reduce: "_sum"
-    }
   , author:
     { map: function (doc) {
              if (doc.author && doc.author.name) {

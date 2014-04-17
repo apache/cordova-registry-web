@@ -16,10 +16,10 @@
     <div ng-repeat="plugin in plugins | platformFilter: selectedPlatforms() | orderBy:orderValue:reverse" class="row pluginItem">
         <div class="column-9--hand column-8--lap">
             <div><a ng-href="#/package/{{plugin.key}}">{{plugin.key}}</a></div>
-            <div class="pluginItemDescription">{{((plugin.value.description)||(plugin.doc.description))}}</div>
+            <div class="pluginItemDescription">{{plugin.value.description}}</div>
         </div>
         <div class="column-3--hand column-2--lap center">
-            <div class="pluginItemVersion">{{((plugin.value['dist-tags'].latest)||(plugin.doc['dist-tags'].latest))}}</div>
+            <div class="pluginItemVersion">{{plugin.value.version}}</div>
         </div>
         <div class="column-2--hand invisible--hand visible--lap center">
             <div class="pluginItemDownloads">{{plugin.downloads}}</div>
