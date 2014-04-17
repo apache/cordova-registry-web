@@ -1,4 +1,4 @@
-angular.module('registry.controllers').controller('ViewAllController', ['$rootScope', '$scope', '$http', function($rootScope, $scope, $http) {
+angular.module('registry.controllers').controller('ViewAllController', ['$rootScope', '$scope', '$http', 'Downloads', function($rootScope, $scope, $http, Downloads) {
     
     $scope.loading = true;    
 
@@ -8,14 +8,16 @@ angular.module('registry.controllers').controller('ViewAllController', ['$rootSc
                     $scope.plugins = data.rows;
                     $scope.loading = false;
                     //hacky way to assign download counts to plugin
-                    $scope.plugins.forEach(function(element, index, array){
-                        if(!($scope.downloads[element.id])){
-                            array[index].downloads = 0;
-                        }else{
-                            array[index].downloads = $scope.downloads[element.id];
-                        }
+                    Downloads.getDownloads().then(function(obj){
+                        $scope.downloads = obj.data;
+                        $scope.plugins.forEach(function(element, index, array){
+                            if(!($scope.downloads[element.id])){
+                                array[index].downloads = 0;
+                            }else{
+                                array[index].downloads = $scope.downloads[element.id];
+                            }
+                        });
                     });
-                    console.log($scope.plugins);
                 }).
                 error(function(data, status){
                     if (status === 404){

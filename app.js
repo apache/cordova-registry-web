@@ -32,7 +32,6 @@ function searcher(doc) {
               , platforms: platforms
               , engines: engines 
     };
-    log('emit ' + doc._id);
     emit(doc._id, obj);
   }
 }
@@ -66,7 +65,6 @@ function packageSearch (doc) {
               , platforms: platforms
               , engines: engines 
     };
-    log('packagesearch ' + doc._id);
   }
 
   if (doc.name) { // There aren't any better attributes for check if isPackage()
@@ -79,10 +77,8 @@ function packageSearch (doc) {
       });
     }
     if (doc._id) {
-      //log(doc._id);
       var ids = [doc._id];
       if (doc._id.indexOf('.') !== -1) doc._id.split('.').forEach(function (n) {ids.push(n)});
-      //if (doc.name.indexOf('.') !== -1) doc.name.split('_').forEach(function (n) {names.push(n)});
       ids.forEach(function (id) {
         if (id.length > 1) emit(id.toLowerCase(), obj);
       });

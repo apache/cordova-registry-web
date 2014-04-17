@@ -1,4 +1,4 @@
-angular.module('registry.controllers').directive('topbar', ['$http', '$location', '$window', '$rootScope', '$routeParams', function ($http, $location, $window, $rootScope, $routeParams) {
+angular.module('registry.controllers').directive('topbar', ['$http', '$location', '$window', '$rootScope', '$routeParams', 'Downloads', function ($http, $location, $window, $rootScope, $routeParams, Downloads) {
     return {
         restrict: 'E',
         templateUrl: '/partials/directives/topbar.html',
@@ -8,6 +8,7 @@ angular.module('registry.controllers').directive('topbar', ['$http', '$location'
             $scope.plugins = [];
 
             $scope.searchText = '';
+
            
             $scope.search = function(evt) {
                 if($location.url().indexOf("search") != -1){
@@ -21,12 +22,16 @@ angular.module('registry.controllers').directive('topbar', ['$http', '$location'
                             $http.get('/_list/search/search?startkey='+JSON.stringify(term)+'&endkey='+JSON.stringify(term+'ZZZZZZZZZZZZZZ')+'&limit=25').
                                 success(function(data, status, headers, config){
                                     $scope.plugins = data.rows;
-                                    $scope.plugins.forEach(function(element, index, array){
-                                        if(!($scope.downloads[element.key])){
-                                            array[index].downloads = 0;
-                                        }else{
-                                            array[index].downloads = $scope.downloads[element.key];
-                                        }
+                                    //hacky way to assign download counts to plugin
+                                    Downloads.getDownloads().then(function(obj){
+                                        $scope.downloads = obj.data;
+                                        $scope.plugins.forEach(function(element, index, array){
+                                            if(!($scope.downloads[element.key])){
+                                                array[index].downloads = 0;
+                                            }else{
+                                                array[index].downloads = $scope.downloads[element.key];
+                                            }     
+                                        });
                                     });
 
                                     //todo: save this in session storage instead of object?
