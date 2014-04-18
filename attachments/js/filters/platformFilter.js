@@ -3,8 +3,6 @@ angular.module('registry').filter('platformFilter', function () {
         if(platformFilters == null || platformFilters.length == 0) {
             return items;//short circuit, if no filter, return original list.
         }
-        console.log(items);
-        console.log(platformFilters);
         var newItems = [];
 
         // "firefoxos"
@@ -20,21 +18,21 @@ angular.module('registry').filter('platformFilter', function () {
         for(var i = 0, j = items.length -1; i < j; i++) {
 
             var item = items[i];
-            if(!item.value || !item.value.versions)
+            if(!item.value || !item.value.version)
                 continue;//cant do anything & we dont want in list if it doenst exist, right?
 
-            var latestVersion = item.value.versions[item.value['dist-tags'].latest];
+            var latestVersion = item.value.version;
 
             if(!latestVersion)
                 continue; //no latest version, what can you do?
 
-            if(!latestVersion.platforms)
+            if(!item.value.platforms)
                 continue;
 
             var platformCount = 0;
 
             for(platform in platformFilters) {
-                if(latestVersion.platforms.indexOf(platformFilters[platform]) != -1)
+                if(item.value.platforms.indexOf(platformFilters[platform]) != -1)
                     platformCount++;
             }
             if(platformCount <= 0)
