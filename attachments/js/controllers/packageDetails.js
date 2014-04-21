@@ -1,4 +1,4 @@
-angular.module('registry.controllers').controller('PackageDetailsController', ['$rootScope', '$scope', '$location', '$routeParams', '$http', 'SearchService', 'Downloads', function($rootScope, $scope, $location, $routeParams, $http, SearchService, Downloads) 
+angular.module('registry.controllers').controller('PackageDetailsController', ['$rootScope', '$scope', '$location', '$routeParams', '$http', 'SearchService', 'Downloads', 'prettyDate', function($rootScope, $scope, $location, $routeParams, $http, SearchService, Downloads, prettyDate) 
 {
     $scope.packageID = $routeParams.id
     $scope.description = null;
@@ -35,7 +35,7 @@ angular.module('registry.controllers').controller('PackageDetailsController', ['
         $http({method: 'GET', url:('/api/' + $scope.packageID)}).
                 success(function(data, status, headers, config) {
                     $scope.data = data;
-                    console.log($scope.data);
+                    //console.log($scope.data);
                     $scope.description = $scope.data.description;
                     $scope.latestVersion = $scope.data['dist-tags'].latest;
                     $scope.currentVersion = $scope.latestVersion;
@@ -47,8 +47,8 @@ angular.module('registry.controllers').controller('PackageDetailsController', ['
                     $scope.versions = $scope.data.versions;
                     $scope.engines = $scope.data.versions[$scope.currentVersion].engines;
                     $scope.license = $scope.data.versions[$scope.currentVersion].license;
-                    $scope.lastupdated = moment($scope.data.time.modified).fromNow();
-                    // console.log(data); 
+                    $scope.lastupdated = prettyDate($scope.data.time.modified);
+                    //console.log(data); 
                     // console.log($scope.versions);
                     $scope.readme = marked($scope.data.readme);
                     //$scope.englishdoc = marked($scope.data.versions[$scope.currentVersion].englishdoc);
