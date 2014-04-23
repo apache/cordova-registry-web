@@ -32,11 +32,10 @@ angular.module('registry.controllers').controller('PackageDetailsController', ['
     });
 
     $scope.getPackage = function(){
-        //console.log($scope.packageID);
         $http({method: 'GET', url:('/api/' + $scope.packageID)}).
                 success(function(data, status, headers, config) {
                     $scope.data = data;
-                    console.log($scope.data);
+                    //console.log($scope.data);
                     $scope.description = $scope.data.description;
                     $scope.latestVersion = $scope.data['dist-tags'].latest;
                     $scope.currentVersion = $scope.latestVersion;

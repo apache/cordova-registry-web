@@ -125,8 +125,8 @@ module.exports = function(grunt) {
           'less',
           'copy:before', //Copy index.html to tmp, to save the preprocess directives
           'preprocess', //Preprocess out the livereload script.
-          'copy:after', //Copy index.html back to attachments, with the preprocess directives as seved.
-          'shell:cloudant'   
+          'shell:cloudant', 
+          'copy:after' //Copy index.html back to attachments, with the preprocess directives as seved.
       ]);
   });
   grunt.registerTask('iriscouch', function (target) {
@@ -134,8 +134,8 @@ module.exports = function(grunt) {
           'less',
           'copy:before', //Copy index.html to tmp, to save the preprocess directives
           'preprocess', //Preprocess out the livereload script.
-          'copy:after', //Copy index.html back to attachments, with the preprocess directives as seved.
-          'shell:iriscouch'   
+          'shell:iriscouch',   
+          'copy:after' //Copy index.html back to attachments, with the preprocess directives as seved.
       ]);
   });
   grunt.registerTask('pre', ['copy:before', 'preprocess', 'copy:after']);
