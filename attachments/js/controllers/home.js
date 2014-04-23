@@ -1,4 +1,4 @@
-angular.module('registry.controllers').controller('HomeController', ['$rootScope', '$scope', '$location', '$http','Downloads', 'prettyDate', function($rootScope, $scope, $location, $http, Downloads, prettyDate) {
+angular.module('registry.controllers').controller('HomeController', ['$rootScope', '$scope', '$location', '$http','Downloads', function($rootScope, $scope, $location, $http, Downloads) {
     
     $scope.totalPlugins = 0;
 
@@ -14,7 +14,7 @@ angular.module('registry.controllers').controller('HomeController', ['$rootScope
     $scope.getLastUpdated = function() {
         $http.get('/_view/updated?descending=true&limit=10&include_docs=false').then(function(promise){
             promise.data.rows.forEach(function(obj){
-                obj.key = prettyDate(obj.key);
+                obj.key = moment(obj.key).fromNow();
             });
             $scope.lastUpdated = promise.data.rows;
         })

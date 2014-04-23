@@ -1,4 +1,4 @@
-angular.module('registry.controllers').controller('PackageDetailsController', ['$rootScope', '$scope', '$location', '$routeParams', '$http', 'SearchService', 'Downloads', 'prettyDate', function($rootScope, $scope, $location, $routeParams, $http, SearchService, Downloads, prettyDate) 
+angular.module('registry.controllers').controller('PackageDetailsController', ['$rootScope', '$scope', '$location', '$routeParams', '$http', 'SearchService', 'Downloads', function($rootScope, $scope, $location, $routeParams, $http, SearchService, Downloads) 
 {
     $scope.packageID = $routeParams.id
     $scope.description = null;
@@ -8,6 +8,7 @@ angular.module('registry.controllers').controller('PackageDetailsController', ['
     $scope.issue = null;
     $scope.keywords = null;
     $scope.readme = null;
+    $scope.englishdoc = null;
     $scope.license = null;
     $scope.engines = null;
     $scope.lastupdated = null;
@@ -31,11 +32,11 @@ angular.module('registry.controllers').controller('PackageDetailsController', ['
     });
 
     $scope.getPackage = function(){
-        console.log($scope.packageID);
+        //console.log($scope.packageID);
         $http({method: 'GET', url:('/api/' + $scope.packageID)}).
                 success(function(data, status, headers, config) {
                     $scope.data = data;
-                    //console.log($scope.data);
+                    console.log($scope.data);
                     $scope.description = $scope.data.description;
                     $scope.latestVersion = $scope.data['dist-tags'].latest;
                     $scope.currentVersion = $scope.latestVersion;
@@ -47,11 +48,11 @@ angular.module('registry.controllers').controller('PackageDetailsController', ['
                     $scope.versions = $scope.data.versions;
                     $scope.engines = $scope.data.versions[$scope.currentVersion].engines;
                     $scope.license = $scope.data.versions[$scope.currentVersion].license;
-                    $scope.lastupdated = prettyDate($scope.data.time.modified);
-                    //console.log(data); 
-                    // console.log($scope.versions);
+                    $scope.lastupdated = moment($scope.data.time.modified).fromNow();
                     $scope.readme = marked($scope.data.readme);
-                    //$scope.englishdoc = marked($scope.data.versions[$scope.currentVersion].englishdoc);
+                    if($scope.data.versions[$scope.currentVersion].englishdoc){
+                        $scope.englishdoc = marked($scope.data.versions[$scope.currentVersion].englishdoc);
+                    }
                 }).
                 error(function(data, status){
                     if (status === 404){

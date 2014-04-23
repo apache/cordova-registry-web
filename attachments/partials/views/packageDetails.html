@@ -151,10 +151,16 @@
                 </div>
             </div>
         </div>
-        <div ng-show="readme" class="readme row">
+        <div ng-show="readme" ng-hide="englishdoc" class="readme row">
             <div class="column-12--hand">
                 <div class="package-readme">Read Me</div>
                 <div class="" ng-bind-html="readme"></div>
+            </div>
+        </div>
+        <div ng-show="englishdoc" class="readme row">
+            <div class="column-12--hand">
+                <div class="package-readme">Docs</div>
+                <div class="" ng-bind-html="englishdoc"></div>
             </div>
         </div>
     </div>
