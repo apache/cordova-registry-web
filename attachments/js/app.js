@@ -8,8 +8,8 @@ angular.module('registry', ['ngRoute', 'registry.controllers', 'ngSanitize', 're
             when('/', {templateUrl:'/partials/views/home.html', controller:'HomeController'}).
             when('/viewAll', {templateUrl:'/partials/views/viewAll.html', controller:'ViewAllController'}).
             when('/package/:id', {templateUrl:'/partials/views/packageDetails.html', controller:'PackageDetailsController'}).
-            when('/search', {templateUrl:'/partials/views/search.html', controller:'SearchController'});
-           // otherwise({redirectTo: '/'});
+            when('/search', {templateUrl:'/partials/views/search.html', controller:'SearchController'}).
+           otherwise({redirectTo: '/'});
        
       }]).
 
