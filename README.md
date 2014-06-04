@@ -1,6 +1,6 @@
 Cordova Registry UI
 ===================
-This repo contains the assets for [stage.plugins.cordova.io](http://stage.plugins.cordova.io). The site is located in the attachments folder. Below we go over the steps of getting setup, running locally and pushing to the server. The main UI files for the site can be found in the `attachments` directory.
+This repo contains the assets for [stage.plugins.cordova.io](http://stage.plugins.cordova.io). The site is located in the attachments folder. Below we go over the steps of getting setup, running locally and pushing to the server. The main UI files for the site can be found in the `attachments` directory. 
 
 Setup
 =====
