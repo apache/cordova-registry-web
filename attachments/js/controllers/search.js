@@ -12,6 +12,7 @@ angular.module('registry.controllers').controller('SearchController', ['$rootSco
 	$scope.filterFirefox = false;
 	$scope.filterBlackberry = false;
 	$scope.filterUbuntu = false;
+	$scope.filterBrowser = false;
 
 	$scope.searchTerm = SearchService.getSearch();
 /*
@@ -66,6 +67,9 @@ angular.module('registry.controllers').controller('SearchController', ['$rootSco
 		}
 		if($scope.filterWindows8) {
 			platformFilters.push('windows8');
+		}
+		if($scope.filterBrowser) {
+			platformFilters.push('browser');
 		}
 
 		return platformFilters;
