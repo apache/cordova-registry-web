@@ -16,6 +16,12 @@ angular.module('registry.controllers').directive('topbar', ['$http', '$location'
                     SearchService.searchTerm = currentSearch;
                     currentTerms = currentSearch.trim().split(' ');
 
+					//handle updating the url for modern browsers
+					if(document.querySelector) {
+						$window.location.href = '/#/search?search='+currentSearch;
+						document.querySelector("#search-text").focus();
+					}
+					
                     //todo: add a short timeout to lower number of requests
                     currentTerms.forEach(function(term){
                         if(!searchResults[term]){
@@ -48,6 +54,7 @@ angular.module('registry.controllers').directive('topbar', ['$http', '$location'
                 }else{
                     //check to see if user pressed enter or hit submit button
                     if ((evt.keyCode === 13) || evt.type === "submit" ){
+						console.log('doing this one...');
                         currentSearch = encodeURIComponent($scope.searchText.toLowerCase());
                         //send to search page
                         $window.location.href = '/#/search?search='+currentSearch;
