@@ -54,7 +54,6 @@ angular.module('registry.controllers').directive('topbar', ['$http', '$location'
                 }else{
                     //check to see if user pressed enter or hit submit button
                     if ((evt.keyCode === 13) || evt.type === "submit" ){
-						console.log('doing this one...');
                         currentSearch = encodeURIComponent($scope.searchText.toLowerCase());
                         //send to search page
                         $window.location.href = '/#/search?search='+currentSearch;
