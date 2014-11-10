@@ -43,8 +43,6 @@ curl -X PUT http://localhost:5984/downloads
 ### Replicate remote databases
 If you want to see actual plugins and download counts when you are working locally, you will have to replicate the remote dbs. This could take a while as they are large. An alternative to replicating is to publish plugins locally for testing purposes.
 
-Note: We are in the process of moving over form IrisCouch to Cloudant. Iris Couch seems to have better replication support. Replicate from either.
-
 * IrisCouch
 
 ```bash
@@ -55,7 +53,7 @@ and
 curl -X POST -d '{"source":"http://cordova.iriscouch.com/downloads", "target":"http://localhost:5984/downloads"}' http://localhost:5984/_replicate -H "Content-Type: application/json"
 ```
 or
-* Cloudant
+* Cloudant (Actually this got shut down)
 
 ```bash
 curl -X POST -d '{"source":"http://apachecordova.cloudant.com/registry", "target":"http://localhost:5984/registry"}' http://localhost:5984/_replicate -H "Content-Type: application/json"
