@@ -2,7 +2,7 @@
     <div class="column-12--hand column-4--lap column-3--desk offset-1--lap offset-2--desk">
         <form ng-submit="search($event)">
             <div class="row center">
-            <input id="search-text" type="search" ng-model="searchText" class="column-8--hand topbar-search" placeholder="Find a plugin..." ng-keyup="search($event)"/>
+            <input id="search-text" type="search" ng-model="searchText" class="column-8--hand topbar-search" placeholder="Find a plugin..." ng-enter="search()"/>
             <input type="submit" id="submit" value="" class="column-1--hand topbar-button"/>
             </div>
         </form>
