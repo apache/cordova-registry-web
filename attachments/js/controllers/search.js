@@ -10,7 +10,7 @@ angular.module('registry.controllers').controller('SearchController', ['$rootSco
 	$scope.filterWindowsPhone8 = false;
 	$scope.filterWindows8 = false;
 	$scope.filterFirefox = false;
-	$scope.filterBlackberry = false;
+	$scope.filterBlackBerry = false;
 	$scope.filterUbuntu = false;
 	$scope.filterBrowser = false;
 
@@ -56,7 +56,7 @@ angular.module('registry.controllers').controller('SearchController', ['$rootSco
 		if($scope.filteriOS) {
 			platformFilters.push('ios');
 		}
-		if($scope.filterBlackberry) {
+		if($scope.filterBlackBerry) {
 			platformFilters.push('blackberry10');
 		}
 		if($scope.filterWindowsPhone7) {
