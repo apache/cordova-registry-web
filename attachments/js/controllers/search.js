@@ -47,7 +47,7 @@ angular.module('registry.controllers').controller('SearchController', ['$rootSco
 		if($scope.filterAndroid) {
 			platformFilters.push('android');
 		}
-		if($scope.filterFireOs) {
+		if($scope.filterFireOS) {
 			platformFilters.push('amazon-fireos');
 		}
 		if($scope.filterUbuntu) {
