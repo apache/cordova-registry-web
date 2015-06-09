@@ -1,0 +1,148 @@
+h1 {
+  text-align: center;
+}
+
+body {
+  margin: 0;
+}
+
+/*  HEADER RELATED  */
+
+/*PLUG AND MSG*/
+#headerBackground {
+  background: url('img/grid.png');
+}
+
+#topContent {
+  margin-top: 25px;
+}
+
+#pluggy {
+  background: transparent url('img/pluggy.png') no-repeat center;
+  background-size: contain;
+  height: 200px;
+  margin-left: 25px;
+}
+
+.discover-message {
+  background-color: white;
+  font-size: 48px;
+  margin: 5px;
+  text-align: left;
+  display: inline-block;
+  padding: 0px 8px;
+  font-family: 'Segoe UI', tahoma, arial, helvetica, sans-serif;
+}
+
+/*SEARCHBOX*/
+
+#searchwrapper {
+  margin: 25px 0px;
+  border: 2px solid gray;
+  background-color: white;
+}
+
+#searchwrapper .searchBox {
+  display: block;
+  height: 35px;
+  width: 100%;
+  border: 0;
+  background: none;
+  outline: 0;
+  /*margin-left: 5px;*/
+  font-size: 14px;
+}
+
+/* Plugin List */
+
+#pluginList {
+  list-style-type: none;
+  padding: 0px;
+}
+
+#pluginList li {
+  border: 1px solid #363636;
+  /*padding: 5px;*/
+  margin-bottom: 10px;
+  position: relative;
+  background: white;
+}
+
+#pluginList li:before {
+  content: "";
+  position:absolute;
+  z-index: -1;
+  width:96%;
+  bottom: 0;
+  height: 10px;
+  left: 2%;
+  border-radius: 20px;
+  box-shadow:0 0 18px rgba(0,0,0,0.6);
+}
+
+/* Plugin Cards */
+
+.pluginCardContents {
+  overflow: hidden;
+}
+
+#pluginInfo {
+  padding: 5px 20px;
+  display: block;
+  font-family: 'Segoe UI', tahoma, arial, helvetica, sans-serif;
+}
+
+#pluginInfo a {
+  font-size: 21px;
+  font-weight: bold;
+  color: black;
+  text-decoration: none;
+}
+
+#pluginInfo a:hover {
+    text-decoration: underline;
+}
+
+#pluginInfo .author {
+  font-weight: bold;
+  font-size: 14px;
+}
+
+p.license {
+  text-align: right;
+  display: block;
+  margin: 0;
+  font-style: italic;
+  color: #363636;
+  font-size: 14px;
+}
+
+p.version {
+  text-align: right;
+  display: block;
+  margin: 0;
+}
+
+
+#featured {
+  padding-bottom:100%;
+  margin-bottom:-100%;
+  float: left;
+  width: 10px;
+  background-color: #71B9F9;
+}
+
+#supportedPlatforms {
+  display: flex;
+}
+
+#supportedPlatforms div {
+  margin: 12px 2px 2px 0;
+  border: 1px solid #363636;
+  border-radius: 8px;
+  padding: .4em .5em;
+  font-size: 9px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

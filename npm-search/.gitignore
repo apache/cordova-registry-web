@@ -1,0 +1,10 @@
+# npm stuff
+npm-debug.log
+node_modules/*
+
+# OSX
+Thumbs.db
+.DS_Store
+
+# ignores specific to this repo
+build/
