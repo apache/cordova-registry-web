@@ -132,17 +132,16 @@ p.version {
   background-color: #71B9F9;
 }
 
-#supportedPlatforms {
-  display: flex;
-}
+#supportedPlatforms { }
 
 #supportedPlatforms div {
   margin: 12px 2px 2px 0;
   border: 1px solid #363636;
   border-radius: 8px;
   padding: .4em .5em;
-  font-size: 9px;
-  display: flex;
-  justify-content: center;
+  height: 11px;
+  font-size: 11px;
+  line-height: 11px;
+  display: inline-block;
   align-items: center;
 }

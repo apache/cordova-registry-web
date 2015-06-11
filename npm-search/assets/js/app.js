@@ -97,7 +97,7 @@ var Plugin = React.createClass({
                     <div id="pluginInfo">
                         <div><a href={
                             'https://www.npmjs.com/package/' + this.props.plugin.name
-                        }>{this.props.plugin.name}</a> by <span className="author">{this.props.plugin.author}</span></div>
+                        }>{this.props.plugin.name}</a> by <span className="author">{this.props.plugin.author}</span> (last updated {this.props.plugin.modified} days ago)</div>
                         <div id="pluginDesc">{this.props.plugin.description}</div>
                         <div className="row">
                             <SupportedPlatforms keywords={this.props.plugin.keywords}/>
@@ -115,9 +115,11 @@ var Plugin = React.createClass({
 
 var PluginList = React.createClass({
     render: function() {
-        var plugins = [];
+        var plugins = [],
+            filterText = this.props.filterText.toLowerCase();
+
         this.props.plugins.forEach(function(plugin) {
-            if (plugin.name[0].indexOf(this.props.filterText) > -1) {
+            if (plugin.name[0].indexOf(filterText) > -1) {
                 plugins.push(<Plugin plugin={plugin} key={plugin.author + plugin.name}/>);
             }
         }.bind(this));
@@ -148,33 +150,54 @@ var App = React.createClass({
 
     componentDidMount: function() {
         var plugins = [],
-            officialPlugins = [],
+            officialPlugins = require('./official-plugins.json').plugins,
             pluginCount = 0,
-            self = this;
+            self = this,
+            queryHost = "http://npmsearch.com/query",
+            queryFields = "fields=name,keywords,license,description,author,modified,homepage,version",
+            queryKeywords = "q=keywords:%22ecosystem:cordova%22",
+            queryInitialSize = 300;
 
-        xhrRequest("http://npmsearch.com/query?fields=name,keywords,license,description,author,modified,homepage,version&q=keywords:%22ecosystem:cordova%22&size=20&start=0", function(xhrResult) {
+        xhrRequest(queryHost + "?" + queryFields + "&" + queryKeywords + "&size=" + queryInitialSize + "&start=0", function(xhrResult) {
             plugins = xhrResult.results;
             pluginCount = xhrResult.total;
-            xhrRequest("http://npmsearch.com/query?fields=name,keywords,license,description,author,modified,homepage,version&q=keywords:%22ecosystem:cordova%22&size=" + (pluginCount - 20) + "&start=20", function(xhrResult) {
-                plugins = [].concat(plugins, xhrResult.results);
-                officialPlugins = require('./official-plugins.json').plugins;
-                officialPlugins.forEach(function(plugin) {
-                    for (var i = 0; i < plugins.length; i++) {
-                        if (plugins[i].name[0] === plugin) {
-                            plugins[i].isOfficial = true;
-                            return;
-                        }
-                    };
-                })
-
-                if (this.isMounted()) {
-                    this.setState({
-                      plugins: plugins,
-                      placeHolderText: 'Search ' + pluginCount + ' plugins...'
-                    });
-                }
-            }.bind(self), function() { console.log('xhr err'); });
+            if (pluginCount <= queryInitialSize) {
+                processPlugins.bind(self, officialPlugins, plugins)();
+            } else {
+                xhrRequest(queryHost + "?" + queryFields + "&" + queryKeywords + "&size=" + (pluginCount - queryInitialSize) + "&start=" + queryInitialSize, function(xhrResult) {
+                        plugins = [].concat(plugins, xhrResult.results);
+                        processPlugins.bind(self, officialPlugins, plugins)();
+                }, function() { console.log('xhr err'); });
+            }
         }, function() { console.log('xhr err'); });
+
+        function processPlugins(officialPlugins, plugins) {
+            var pluginCount = plugins.length,
+                dateNow = new Date(),
+                oneDay = 1000*60*60*24;
+
+            officialPlugins.forEach(function(plugin) {
+                for (var i = 0; i < plugins.length; i++) {
+                    // Check if plugin name is in official list
+                    if (plugins[i].name[0] === plugin) {
+                        plugins[i].isOfficial = true;
+                        return;
+                    }
+                };
+            });
+
+            for (var i = 0; i < plugins.length; i++) {
+                // Calculate last time plugin is modified (in days)
+                plugins[i].modified = Math.ceil((dateNow - new Date(plugins[i].modified)) / oneDay);
+            };
+
+            if (this.isMounted()) {
+                this.setState({
+                  plugins: plugins,
+                  placeHolderText: 'Search ' + pluginCount + ' plugins...'
+                });
+            }
+        }
     },
 
     render: function() {

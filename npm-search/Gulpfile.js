@@ -1,8 +1,6 @@
 var gulp       = require('gulp'),
     concat     = require('gulp-concat'),
     imagemin   = require('gulp-imagemin'),
-    sourcemaps = require('gulp-sourcemaps'),
-    uglify     = require('gulp-uglify'),
     gutil      = require('gulp-util'),
     buffer     = require('vinyl-buffer'),
     source     = require('vinyl-source-stream'),
@@ -17,23 +15,15 @@ gulp.task('styles', function () {
 });
 
 gulp.task('scripts', function () {
-    var b = browserify({
-        entries: './assets/js/app.js',
-        debug: true,
-        transform: [ reactify ]
-    });
-
-    return b.bundle()
+    browserify('./assets/js/app.js', { debug: true })
+        .transform(reactify)
+        .bundle()
+        .on('error', gutil.log)
         .pipe(source('app.js'))
         .pipe(buffer())
-        .pipe(sourcemaps.init({loadMaps: true}))
-            // Add transformation tasks to the pipeline here.
-            .pipe(uglify())
-            .on('error', gutil.log)
-        .pipe(sourcemaps.write('./'))
         .pipe(gulp.dest('./build/'));
 });
-;
+
 gulp.task('images', function () {
     gulp.src(['assets/img/**/*.png', 'assets/img/**/*.gif'])
         .pipe(imagemin())
