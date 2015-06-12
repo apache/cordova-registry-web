@@ -90,6 +90,9 @@ var Plugin = React.createClass({
             license = license[0];
         }
         var officialPlugin = this.props.plugin.isOfficial;
+        var downloadField;
+        if(this.props.plugin.downloadCount)
+            downloadField = <p className="version"> {this.props.plugin.downloadCount} downloads last month</p>;
         return (
             <li>
                 <div className="pluginCardContents">
@@ -102,6 +105,7 @@ var Plugin = React.createClass({
                         <div className="row">
                             <SupportedPlatforms keywords={this.props.plugin.keywords}/>
                             <div className="col-xs-3">
+                                {downloadField}
                                 <p className="license">License: {license}</p>
                                 <p className="version">Version: {this.props.plugin.version}</p>
                             </div>
@@ -171,6 +175,27 @@ var App = React.createClass({
             }
         }, function() { console.log('xhr err'); });
 
+        var getDownloadCount = function(plugins,that) {
+            var packageNames = "";
+            for(var index=0; index < plugins.length; index++)
+            {
+                packageNames += plugins[index].name + ",";
+                if(index%50 === 0 || index === plugins.length -1)
+                {
+                    xhrRequest("https://api.npmjs.org/downloads/point/last-month/" + packageNames, function(xhrResult) {
+                        plugins.forEach(function(plugin) {
+                            if(xhrResult[plugin.name])
+                                plugin.downloadCount = xhrResult[plugin.name].downloads;
+                        });
+                        that.setState({
+                            plugins: plugins
+                        });
+                    }.bind(self), function() { console.log('xhr err'); });
+                    packageNames = "";
+                }
+            }
+        }
+
         function processPlugins(officialPlugins, plugins) {
             var pluginCount = plugins.length,
                 dateNow = new Date(),
@@ -196,6 +221,7 @@ var App = React.createClass({
                   plugins: plugins,
                   placeHolderText: 'Search ' + pluginCount + ' plugins...'
                 });
+                getDownloadCount(plugins,this);
             }
         }
     },
