@@ -12,11 +12,16 @@
           <a class="logo" href="//cordova.apache.org/"></a>
           <div class="menu">
               <a href="index.html">Home</a>
+<<<<<<< HEAD
+=======
+              <a href="developers.html">Developers</a>
+>>>>>>> CB-9194 Created faq page and added header
               <a href="faq.html">FAQ</a>
           </div>
           <form class="menu-dropdown">
               <select onchange="location = this.options[this.selectedIndex].value;">
                   <option value="index.html">Home</option>
+                  <option value="developers.html">Developers</option>
                   <option value="faq.html">FAQ</option>
               </select>
           </form>
@@ -34,18 +39,8 @@
       <p>Cordova team decided to change official plugin IDs from org.apache.cordova.* to cordova-plugin-* to better fit within the npm ecosystem. Developers can install a plugin using the command <code>cordova plugin add cordova-plugin-device</code>.</p>
       <h4>How do I know which platforms are supported for a plugin?</h4>
       <p>Plugin Search displays plugins in form of cards. Each card contains important information about the plugin. Supported platforms is represented in form of platform tags. </p>
-      <h4>How can I find official core plugins?</h4>
+      <h4>How can I identify official core plugins?</h4>
       <p>Core plugins have a blue strip on the left side of their card.</p>
-      <h4>How do I add a new plugin to Plugin Search?</h4>
-      <p>If you want your Cordova Plugin to show up in search, simply add <code>ecosystem:cordova</code> keyword to the <code>package.json</code> file of your plugin and publish it to npm registry.</p>
-      <h4>How can I tag supported platforms for my plugin?</h4>
-      <p>Similar to <code>ecosystem:cordova</code>, platform support too uses keywords. Just add the platform name prefixed with "<strong>cordova-</strong>" to plugins list of keywords. E.g.</p>
-      <pre><code>  "keywords": [
-          "ecosystem:cordova",
-          "cordova-android",
-          "cordova-ios",
-          "cordova-windows"
-        ]</code></pre>
       <h4>Can I still download plugins if I'm using Cordova CLI 4.3.0 or lower?</h4>
       <p>Yes! You can use Cordova Plugins from the <a href="http://plugins.cordova.io/" target="_blank">old plugin registry</a>.</p>
       <h4>What’s happening to the old plugin registry?</h4>
@@ -54,6 +49,8 @@
       <li>  Read-only after July 15th</li>
       <li>  End of support after October 15th</li>
       </ul>
+      <h4>Are there any additional documents to assist me with plugins?</h4>
+      <p>Yes there are. Please take a look at <a href="http://cordova.apache.org/docs/en/edge/guide_cli_index.md.html#The%20Command-Line%20Interface_add_plugin_features" target="_blank">Add Plugin Features</a> for a more detailed guide.</p>
       <h4>I don't like X. How can I help improve the website?</h4>
       <p>You can help improving this site by opening bugs on <a href="https://issues.apache.org/jira/issues/?jql=project%20%3D%20CB%20AND%20status%20%3D%20Open%20AND%20component%20%3D%20%22Registry%20Web%22" target="_blank">JIRA</a> or by sending PRs on <a href="https://github.com/apache/cordova-registry-web" target="_blank">GitHub</a>.</p>
     </div>
