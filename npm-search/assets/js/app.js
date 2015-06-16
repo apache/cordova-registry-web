@@ -10,9 +10,21 @@ var OfficialPlugin = React.createClass({
 })
 
 var SupportedPlatforms = React.createClass({
+    getInitialState: function() {
+        return {
+            moreClicked: false
+        };
+    },
+    onClick: function() {
+        this.setState({
+            moreClicked: true
+        });
+    },
     render: function() {
         var keywords = this.props.keywords;
-        var platformsSupported = [];
+        var sortedMajorPlatforms = [{present:false, text: "Android"}, {present:false, text: "iOS"}, {present:false, text: "Windows"}, {present:false, text: "Blackberry10"}];
+        var majorPlatformsSupported = [];
+        var otherPlatformsSupported = [];
         // remove windows8 & windows dupe
         if (keywords.indexOf('cordova-windows') > -1 && keywords.indexOf('cordova-windows8') > -1) {
             keywords.splice(keywords.indexOf('cordova-windows8'), 1);
@@ -20,40 +32,51 @@ var SupportedPlatforms = React.createClass({
         keywords.forEach(function(keyword) {
             switch (keyword) {
                 case 'cordova-firefoxos':
-                    platformsSupported.push(<div>FirefoxOS</div>);
+                    otherPlatformsSupported.push(<div>FirefoxOS</div>);
                     break;
                 case 'cordova-android':
-                    platformsSupported.push(<div>Android</div>);
+                    sortedMajorPlatforms[0].present = true;
                     break;
                 case 'cordova-amazon-fireos':
-                    platformsSupported.push(<div>FireOS</div>);
+                    otherPlatformsSupported.push(<div>FireOS</div>);
                     break;
                 case 'cordova-ubuntu':
-                    platformsSupported.push(<div>Ubuntu</div>);
+                    otherPlatformsSupported.push(<div>Ubuntu</div>);
                     break;
                 case 'cordova-ios':
-                    platformsSupported.push(<div>iOS</div>);
+                    sortedMajorPlatforms[1].present = true;
                     break;
                 case 'cordova-blackberry10':
-                    platformsSupported.push(<div>Blackberry10</div>);
-                    break;
-                case 'cordova-wp7':
-                    platformsSupported.push(<div>Windows Phone 7</div>);
+                    sortedMajorPlatforms[3].present = true;
                     break;
                 case 'cordova-wp8':
-                    platformsSupported.push(<div>Windows Phone 8</div>);
+                    otherPlatformsSupported.push(<div>Windows Phone 8</div>);
                     break;
                 case 'cordova-windows8':
                 case 'cordova-windows':
-                    platformsSupported.push(<div>Windows</div>);
+                    sortedMajorPlatforms[2].present = true;
                     break;
                 case 'cordova-browser':
-                    platformsSupported.push(<div>Browser</div>);
+                    otherPlatformsSupported.push(<div>Browser</div>);
                     break;
             }
         });
+        sortedMajorPlatforms.forEach(function(platform) {
+            if(platform.present)
+                majorPlatformsSupported.push(<div>{platform.text}</div>);
+        });
+        while(majorPlatformsSupported.length < 4 && otherPlatformsSupported.length > 0)
+            majorPlatformsSupported.push(otherPlatformsSupported.shift());
+
+        var moreButton;
+        if(otherPlatformsSupported.length > 0 && !this.state.moreClicked)
+            moreButton = <div onClick={this.onClick}>...</div>
         return (
-            <div id="supportedPlatforms" className="col-xs-9">{platformsSupported}</div>
+            <div id="supportedPlatforms" className="col-xs-9">
+                {majorPlatformsSupported}
+                {moreButton}
+                { this.state.moreClicked ? {otherPlatformsSupported} : null }
+            </div>
         );
     }
 })
