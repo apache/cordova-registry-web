@@ -7,6 +7,23 @@
   </head>
 
   <body>
+    <div id="header">
+      <div class="wrap">
+          <a class="logo" href="//cordova.apache.org/"></a>
+          <div class="menu">
+              <a href="index.html">Home</a>
+              <a href="faq.html">FAQ</a>
+          </div>
+          <form class="menu-dropdown">
+              <select onchange="location = this.options[this.selectedIndex].value;">
+                  <option value="index.html">Home</option>
+                  <option value="faq.html">FAQ</option>
+              </select>
+          </form>
+      </div>
+      <div class="shadow"></div>
+    </div>
+    <div class="header-placeholder"></div>
     <div id="container"></div>
     <script src="build/app.js"></script>
     <script>App.start();</script>
