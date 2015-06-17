@@ -70,7 +70,7 @@ var SupportedPlatforms = React.createClass({
 
         var moreButton;
         if(otherPlatformsSupported.length > 0 && !this.state.moreClicked)
-            moreButton = <div onClick={this.onClick}>...</div>
+            moreButton = <div className="clickable" onClick={this.onClick}>...</div>
         return (
             <div id="supportedPlatforms" className="col-xs-9">
                 {majorPlatformsSupported}
