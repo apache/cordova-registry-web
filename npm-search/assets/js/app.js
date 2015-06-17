@@ -1,4 +1,5 @@
-var React    = window.React = require('react'), // assign it to window for react chrome extension
+var React = window.React = require('react'), // assign it to window for react chrome extension
+    classNames = require('classnames'),
     App = {};
 
 var OfficialPlugin = React.createClass({
@@ -20,40 +21,40 @@ var SupportedPlatforms = React.createClass({
         keywords.forEach(function(keyword) {
             switch (keyword) {
                 case 'cordova-firefoxos':
-                    platformsSupported.push(<div>FirefoxOS</div>);
+                    platformsSupported.push(<li>FirefoxOS</li>);
                     break;
                 case 'cordova-android':
-                    platformsSupported.push(<div>Android</div>);
+                    platformsSupported.push(<li>Android</li>);
                     break;
                 case 'cordova-amazon-fireos':
-                    platformsSupported.push(<div>FireOS</div>);
+                    platformsSupported.push(<li>FireOS</li>);
                     break;
                 case 'cordova-ubuntu':
-                    platformsSupported.push(<div>Ubuntu</div>);
+                    platformsSupported.push(<li>Ubuntu</li>);
                     break;
                 case 'cordova-ios':
-                    platformsSupported.push(<div>iOS</div>);
+                    platformsSupported.push(<li>iOS</li>);
                     break;
                 case 'cordova-blackberry10':
-                    platformsSupported.push(<div>Blackberry10</div>);
+                    platformsSupported.push(<li>Blackberry10</li>);
                     break;
                 case 'cordova-wp7':
-                    platformsSupported.push(<div>Windows Phone 7</div>);
+                    platformsSupported.push(<li>Windows Phone 7</li>);
                     break;
                 case 'cordova-wp8':
-                    platformsSupported.push(<div>Windows Phone 8</div>);
+                    platformsSupported.push(<li>Windows Phone 8</li>);
                     break;
                 case 'cordova-windows8':
                 case 'cordova-windows':
-                    platformsSupported.push(<div>Windows</div>);
+                    platformsSupported.push(<li>Windows</li>);
                     break;
                 case 'cordova-browser':
-                    platformsSupported.push(<div>Browser</div>);
+                    platformsSupported.push(<li>Browser</li>);
                     break;
             }
         });
         return (
-            <div id="supportedPlatforms" className="col-xs-9">{platformsSupported}</div>
+            <ul className="supportedPlatforms">{platformsSupported}</ul>
         );
     }
 })
@@ -89,26 +90,38 @@ var Plugin = React.createClass({
         if (license && license.length > 1) {
             license = license[0];
         }
-        var officialPlugin = this.props.plugin.isOfficial;
         var downloadField;
+        
+
+        var classes = classNames({
+            'pluginCard': true,
+            'featuredPlugin': this.props.plugin.isOfficial,
+            'row': true
+        });
+        
         if(this.props.plugin.downloadCount)
-            downloadField = <p className="version"> {this.props.plugin.downloadCount} downloads last month</p>;
+            downloadField = <p><small>{this.props.plugin.downloadCount} downloads last month</small></p>;
         return (
-            <li>
-                <div className="pluginCardContents">
-                    {officialPlugin ? <OfficialPlugin/> : ''}
-                    <div id="pluginInfo">
-                        <div><a href={
-                            'https://www.npmjs.com/package/' + this.props.plugin.name
-                        }>{this.props.plugin.name}</a> by <span className="author">{this.props.plugin.author}</span> (last updated {this.props.plugin.modified} days ago)</div>
-                        <div id="pluginDesc">{this.props.plugin.description}</div>
-                        <div className="row">
-                            <SupportedPlatforms keywords={this.props.plugin.keywords}/>
-                            <div className="col-xs-3">
-                                {downloadField}
-                                <p className="license">License: {license}</p>
-                                <p className="version">Version: {this.props.plugin.version}</p>
-                            </div>
+              <li>
+                <div className={classes}>
+                    <div className="primaryContent col-xs-9">
+                        <div className="header">
+                            <h3><a href={'https://www.npmjs.com/package/' + this.props.plugin.name} target="_blank">{this.props.plugin.name}</a></h3>
+                            <small className="pluginVersion">v{this.props.plugin.version}</small>
+                            <small> by </small>
+                            <small className="pluginAuthor">{this.props.plugin.author}</small>
+                        </div>
+                        <div className="pluginDesc">{this.props.plugin.description}</div>
+                        <SupportedPlatforms keywords={this.props.plugin.keywords}/>
+                    </div>
+                    <div className="secondaryContent col-xs-3">
+                        <div className="download">
+                            <p></p>
+                        </div>
+                        <div className="extraInfo">
+                            <p><small><strong>License:</strong> {license}</small></p>
+                            {downloadField}
+                            <p><small><em>Last updated {this.props.plugin.modified} days ago</em></small></p>
                         </div>
                     </div>
                 </div>
@@ -129,7 +142,7 @@ var PluginList = React.createClass({
         }.bind(this));
         return (
             <div className="col-xs-offset-2 col-xs-8">
-                <ul id="pluginList">
+                <ul className="pluginList">
                     {plugins}
                 </ul>
             </div>
