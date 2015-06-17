@@ -75,8 +75,11 @@ li {
   border: 0;
   background: none;
   outline: 0;
-  /*margin-left: 5px;*/
   font-size: 14px;
+  padding: 0 5px 0 35px;
+  color: #363636;
+  background: url('img/search.png') no-repeat;
+  background-position: 5.5px 5.5px;
 }
 
 /*---------------------------------------------------
