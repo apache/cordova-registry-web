@@ -1,10 +1,23 @@
 var React    = window.React = require('react'), // assign it to window for react chrome extension
+    classNames = require('classnames'), 
     App = {};
 
 var OfficialPlugin = React.createClass({
     render: function() {
         return (
             <div id="featured"></div>
+        );
+    }
+})
+
+var PlatformButton = React.createClass({
+    onClick: function() {
+        var appInstance = React.render(<App />, document.getElementById('container'));
+        appInstance.addCondition("platform:" + this.props.platform);
+    },
+    render: function() {
+        return (
+            <li className = "clickable" onClick={this.onClick}> {this.props.platform} </li>
         );
     }
 })
@@ -32,16 +45,16 @@ var SupportedPlatforms = React.createClass({
         keywords.forEach(function(keyword) {
             switch (keyword) {
                 case 'cordova-firefoxos':
-                    otherPlatformsSupported.push(<div>FirefoxOS</div>);
+                    otherPlatformsSupported.push(<PlatformButton platform="FirefoxOS" />);
                     break;
                 case 'cordova-android':
                     sortedMajorPlatforms[0].present = true;
                     break;
                 case 'cordova-amazon-fireos':
-                    otherPlatformsSupported.push(<div>FireOS</div>);
+                    otherPlatformsSupported.push(<PlatformButton platform="FireOS" />);
                     break;
                 case 'cordova-ubuntu':
-                    otherPlatformsSupported.push(<div>Ubuntu</div>);
+                    otherPlatformsSupported.push(<PlatformButton platform="Ubuntu" />);
                     break;
                 case 'cordova-ios':
                     sortedMajorPlatforms[1].present = true;
@@ -50,33 +63,34 @@ var SupportedPlatforms = React.createClass({
                     sortedMajorPlatforms[3].present = true;
                     break;
                 case 'cordova-wp8':
-                    otherPlatformsSupported.push(<div>Windows Phone 8</div>);
+                    otherPlatformsSupported.push(<PlatformButton platform="Windows Phone 8" />);
                     break;
                 case 'cordova-windows8':
                 case 'cordova-windows':
                     sortedMajorPlatforms[2].present = true;
                     break;
                 case 'cordova-browser':
-                    otherPlatformsSupported.push(<div>Browser</div>);
+                    otherPlatformsSupported.push(<PlatformButton platform="Browser" />);
                     break;
             }
         });
+
         sortedMajorPlatforms.forEach(function(platform) {
             if(platform.present)
-                majorPlatformsSupported.push(<div>{platform.text}</div>);
+                majorPlatformsSupported.push(<PlatformButton platform={platform.text} />)
         });
         while(majorPlatformsSupported.length < 4 && otherPlatformsSupported.length > 0)
             majorPlatformsSupported.push(otherPlatformsSupported.shift());
 
         var moreButton;
         if(otherPlatformsSupported.length > 0 && !this.state.moreClicked)
-            moreButton = <div className="clickable" onClick={this.onClick}>...</div>
+            moreButton = <li className="clickable" onClick={this.onClick}>...</li>
         return (
-            <div id="supportedPlatforms" className="col-xs-9">
+            <ul className="supportedPlatforms">
                 {majorPlatformsSupported}
                 {moreButton}
                 { this.state.moreClicked ? {otherPlatformsSupported} : null }
-            </div>
+            </ul>
         );
     }
 })
@@ -112,29 +126,43 @@ var Plugin = React.createClass({
         if (license && license.length > 1) {
             license = license[0];
         }
-        var officialPlugin = this.props.plugin.isOfficial;
         var downloadField;
+
+        var classes = classNames({  
+            'pluginCard': true,  
+            'featuredPlugin': this.props.plugin.isOfficial,  
+            'row': true  
+        }); 
+
         if(this.props.plugin.downloadCount)
-            downloadField = <p className="version"> {this.props.plugin.downloadCount} downloads last month</p>;
+        {
+            var downloadCount = this.props.plugin.downloadCount.toLocaleString();
+            downloadField = <p><small> {downloadCount} downloads last month</small></p>;
+        }
         return (
-            <li>
-                <div className="pluginCardContents">
-                    {officialPlugin ? <OfficialPlugin/> : ''}
-                    <div id="pluginInfo">
-                        <div><a href={
-                            'https://www.npmjs.com/package/' + this.props.plugin.name
-                        }>{this.props.plugin.name}</a> by <span className="author">{this.props.plugin.author}</span> (last updated {this.props.plugin.modified} days ago)</div>
-                        <div id="pluginDesc">{this.props.plugin.description}</div>
-                        <div className="row">
-                            <SupportedPlatforms keywords={this.props.plugin.keywords}/>
-                            <div className="col-xs-3">
-                                {downloadField}
-                                <p className="license">License: {license}</p>
-                                <p className="version">Version: {this.props.plugin.version}</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+            <li> 
+                <div className={classes}> 
+                    <div className="primaryContent col-xs-9"> 
+                        <div className="header"> 
+                            <h3><a href={'https://www.npmjs.com/package/' + this.props.plugin.name} target="_blank">{this.props.plugin.name}</a></h3> 
+                            <small className="pluginVersion">v{this.props.plugin.version}</small> 
+                            <small> by </small> 
+                            <small className="pluginAuthor">{this.props.plugin.author}</small> 
+                        </div> 
+                        <div className="pluginDesc">{this.props.plugin.description}</div> 
+                        <SupportedPlatforms keywords={this.props.plugin.keywords}/> 
+                        </div> 
+                        <div className="secondaryContent col-xs-3"> 
+                        <div className="download"> 
+                            <p></p> 
+                        </div> 
+                        <div className="extraInfo"> 
+                            <p><small><strong>License:</strong> {license}</small></p> 
+                            {downloadField} 
+                            <p><small><em>Last updated {this.props.plugin.modified} days ago</em></small></p> 
+                        </div> 
+                    </div> 
+                </div> 
             </li>
         )
     }
@@ -145,14 +173,67 @@ var PluginList = React.createClass({
         var plugins = [],
             filterText = this.props.filterText.toLowerCase();
 
-        this.props.plugins.forEach(function(plugin) {
-            if (plugin.name[0].indexOf(filterText) > -1) {
-                plugins.push(<Plugin plugin={plugin} key={plugin.author + plugin.name}/>);
+        var filters = filterText.split(" ");
+        var platforms = [];
+        var authors = [];
+        var licenses = [];
+        var searchWords = [];
+
+        var ifPresent = function(values, pluginInfo) {
+            var allValuesPresent = true;
+            if(values.length == 0)
+                return allValuesPresent;
+            if(!pluginInfo)
+                return false;
+            values.forEach(function(value) {
+                var valuePresent = false;
+                for(var index=0;index<pluginInfo.length;index++)  
+                {  
+                    if(pluginInfo[index] && pluginInfo[index].toLowerCase().indexOf(value) > -1)
+                        valuePresent = true;
+                }
+                if(!valuePresent)
+                    allValuesPresent = false;    
+            });
+            return allValuesPresent;
+        };
+
+        filters.forEach(function(filter) {
+            var keywords = filter.split(":");
+            if(keywords.length == 1)
+            {
+                var param = keywords[0].trim();
+                if(param)
+                    searchWords.push(param);
             }
+            else if(keywords[1].trim())
+            {
+                var param = keywords[1].trim();
+                switch(keywords[0]) {
+                    case 'platform':
+                        platforms.push(param);
+                        break;
+                    case 'author':
+                        authors.push(param);
+                        break;
+                    case 'license':
+                        licenses.push(param);
+                        break;   
+                    default:
+                        searchWords.push(filter);         
+                }
+            }
+            else
+                searchWords.push(filter);
+        });
+        this.props.plugins.forEach(function(plugin) {
+            var fullPluginText = plugin.name.concat(plugin.author, plugin.keywords, plugin.license, plugin.description);
+            if(ifPresent(platforms, plugin.keywords) && ifPresent(authors, plugin.author) && ifPresent(licenses, plugin.license) && ifPresent(searchWords, fullPluginText))
+                plugins.push(<Plugin plugin={plugin} key={plugin.author + plugin.name}/>);
         }.bind(this));
         return (
             <div className="col-xs-offset-2 col-xs-8">
-                <ul id="pluginList">
+                <ul className="pluginList">
                     {plugins}
                 </ul>
             </div>
@@ -172,6 +253,24 @@ var App = React.createClass({
     handleUserInput: function(filterText) {
         this.setState({
             filterText: filterText
+        });
+    },
+    addCondition: function(condition) {
+        this.setState(function(previousState, currentProps) {
+            if(previousState.filterText.indexOf(condition) > -1)
+            {
+                return {
+                    filterText: previousState.filterText,
+                    plugins: previousState.plugins
+                };
+            }
+            else
+            {    
+                return {
+                    filterText: previousState.filterText + condition + ' ',
+                    plugins: previousState.plugins
+                };
+            }
         });
     },
 
@@ -283,10 +382,12 @@ var App = React.createClass({
 });
 
 App.start = function() {
-    React.render(
-        <App />,
-        document.getElementById('container')
-    )    
+    
+    React.render( 
+        <App />, 
+        document.getElementById('container') 
+     )    
+
 };
 
 function xhrRequest(url, success, fail) {
