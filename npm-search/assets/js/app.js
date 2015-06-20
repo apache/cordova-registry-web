@@ -76,15 +76,18 @@ var SupportedPlatforms = React.createClass({
         });
 
         sortedMajorPlatforms.forEach(function(platform) {
-            if(platform.present)
+            if(platform.present) {
                 majorPlatformsSupported.push(<PlatformButton platform={platform.text} />)
+            }
         });
-        while(majorPlatformsSupported.length < 4 && otherPlatformsSupported.length > 0)
+        while(majorPlatformsSupported.length < 4 && otherPlatformsSupported.length > 0) {
             majorPlatformsSupported.push(otherPlatformsSupported.shift());
+        }
 
         var moreButton;
-        if(otherPlatformsSupported.length > 0 && !this.state.moreClicked)
+        if(otherPlatformsSupported.length > 0 && !this.state.moreClicked) {
             moreButton = <li className="clickable" onClick={this.onClick}>...</li>
+        }
         return (
             <ul className="supportedPlatforms">
                 {majorPlatformsSupported}
@@ -134,8 +137,7 @@ var Plugin = React.createClass({
             'row': true  
         }); 
 
-        if(this.props.plugin.downloadCount)
-        {
+        if(this.props.plugin.downloadCount) {
             var downloadCount = this.props.plugin.downloadCount.toLocaleString();
             downloadField = <p><small> {downloadCount} downloads last month</small></p>;
         }
@@ -169,67 +171,80 @@ var Plugin = React.createClass({
 })
 
 var PluginList = React.createClass({
+    contains: function(values, pluginInfo) {
+        var allValuesPresent = true;
+        if(values.length == 0) {
+            return allValuesPresent;
+        }
+        if(!pluginInfo) {
+            return false;
+        }
+        values.forEach(function(value) {
+            var valuePresent = false;
+            for(var index=0; index < pluginInfo.length; index++) {  
+                if(pluginInfo[index] && pluginInfo[index].toLowerCase().indexOf(value) > -1) {
+                    valuePresent = true;
+                }
+            }
+            if(!valuePresent) {
+                allValuesPresent = false;
+            }
+        });
+        return allValuesPresent;
+    },
+    populateFilters: function(filterText)
+    {
+        var searchStrings = filterText.split(" ");
+        var filters = [];
+        filters['platforms'] = [];
+        filters['authors'] = [];
+        filters['licenses'] = [];
+        filters['searchWords'] = [];
+
+        searchStrings.forEach(function(searchString) {
+            var keywords = searchString.split(":");
+            if(keywords.length == 1) {
+                var param = keywords[0].trim();
+                if(param) {
+                    filters['searchWords'].push(param);
+                }
+            }
+            else if(keywords[1].trim()) {
+                var param = keywords[1].trim();
+                switch(keywords[0]) {
+                    case 'platform':
+                        filters['platforms'].push(param);
+                        break;
+                    case 'author':
+                        filters['authors'].push(param);
+                        break;
+                    case 'license':
+                        filters['licenses'].push(param);
+                        break;   
+                    default:
+                        filters['searchWords'].push(searchString);         
+                }
+            }
+            else {
+                filters['searchWords'].push(searchString);
+            }
+        });
+        return filters;
+    },
     render: function() {
         var plugins = [],
             filterText = this.props.filterText.toLowerCase();
 
-        var filters = filterText.split(" ");
-        var platforms = [];
-        var authors = [];
-        var licenses = [];
-        var searchWords = [];
+        var filters = this.populateFilters(filterText);
 
-        var ifPresent = function(values, pluginInfo) {
-            var allValuesPresent = true;
-            if(values.length == 0)
-                return allValuesPresent;
-            if(!pluginInfo)
-                return false;
-            values.forEach(function(value) {
-                var valuePresent = false;
-                for(var index=0;index<pluginInfo.length;index++)  
-                {  
-                    if(pluginInfo[index] && pluginInfo[index].toLowerCase().indexOf(value) > -1)
-                        valuePresent = true;
-                }
-                if(!valuePresent)
-                    allValuesPresent = false;    
-            });
-            return allValuesPresent;
-        };
-
-        filters.forEach(function(filter) {
-            var keywords = filter.split(":");
-            if(keywords.length == 1)
-            {
-                var param = keywords[0].trim();
-                if(param)
-                    searchWords.push(param);
-            }
-            else if(keywords[1].trim())
-            {
-                var param = keywords[1].trim();
-                switch(keywords[0]) {
-                    case 'platform':
-                        platforms.push(param);
-                        break;
-                    case 'author':
-                        authors.push(param);
-                        break;
-                    case 'license':
-                        licenses.push(param);
-                        break;   
-                    default:
-                        searchWords.push(filter);         
-                }
-            }
-            else
-                searchWords.push(filter);
-        });
         this.props.plugins.forEach(function(plugin) {
             var fullPluginText = plugin.name.concat(plugin.author, plugin.keywords, plugin.license, plugin.description);
-            if(ifPresent(platforms, plugin.keywords) && ifPresent(authors, plugin.author) && ifPresent(licenses, plugin.license) && ifPresent(searchWords, fullPluginText))
-                plugins.push(<Plugin plugin={plugin} key={plugin.author + plugin.name}/>);
+            if(this.contains(filters['platforms'], plugin.keywords) 
+                && this.contains(filters['authors'], plugin.author) 
+                && this.contains(filters['licenses'], plugin.license) 
+                && this.contains(filters['searchWords'], fullPluginText)) {
+                    plugins.push(<Plugin plugin={plugin} key={plugin.author + plugin.name}/>);
+            }
         }.bind(this));
         return (
             <div className="col-xs-offset-2 col-xs-8">
@@ -257,15 +272,13 @@ var App = React.createClass({
     },
     addCondition: function(condition) {
         this.setState(function(previousState, currentProps) {
-            if(previousState.filterText.indexOf(condition) > -1)
-            {
+            if(previousState.filterText.indexOf(condition) > -1) {
                 return {
                     filterText: previousState.filterText,
                     plugins: previousState.plugins
                 };
             }
-            else
-            {    
+            else {    
                 return {
                     filterText: previousState.filterText + condition + ' ',
                     plugins: previousState.plugins
@@ -299,11 +312,9 @@ var App = React.createClass({
 
         var getDownloadCount = function(plugins,that) {
             var packageNames = "";
-            for(var index=0; index < plugins.length; index++)
-            {
+            for(var index=0; index < plugins.length; index++) {
                 packageNames += plugins[index].name + ",";
-                if(index%50 === 0 || index === plugins.length -1)
-                {
+                if(index%50 === 0 || index === plugins.length -1) {
                     xhrRequest("https://api.npmjs.org/downloads/point/last-month/" + packageNames, function(xhrResult) {
                         plugins.forEach(function(plugin) {
                             if(xhrResult[plugin.name])
