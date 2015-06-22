@@ -5,6 +5,7 @@ var gulp       = require('gulp'),
     buffer     = require('vinyl-buffer'),
     source     = require('vinyl-source-stream'),
     browserify = require('browserify'),
+    argv       = require('yargs').argv,
     reactify   = require('reactify');
 
 gulp.task('styles', function () {
@@ -15,7 +16,7 @@ gulp.task('styles', function () {
 });
 
 gulp.task('scripts', function () {
-    browserify('./assets/js/app.js', { debug: true })
+    browserify('./assets/js/app.js', { debug: argv.debug ? true : false })
         .transform(reactify)
         .bundle()
         .on('error', gutil.log)

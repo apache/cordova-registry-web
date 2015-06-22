@@ -369,9 +369,9 @@ var App = React.createClass({
                                 <div id="pluggy"></div>
                             </div>
                             <div className="col-xs-9">
-                                <p className="discover-message">Search Cordova</p>
+                                <h1><p className="discover-message">Search Cordova</p></h1>
                                 <br/>
-                                <p className="discover-message">Plugins</p>
+                                <h1><p className="discover-message">Plugins</p></h1>
                             </div>
                         </div>
                     </div>
