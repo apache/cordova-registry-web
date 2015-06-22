@@ -290,6 +290,7 @@ var App = React.createClass({
     componentDidMount: function() {
         var plugins = [],
             officialPlugins = require('./official-plugins.json').plugins,
+            blacklistedPlugins = require('./blacklisted-plugins.json').plugins,
             pluginCount = 0,
             self = this,
             queryHost = "http://npmsearch.com/query",
@@ -343,6 +344,18 @@ var App = React.createClass({
                     }
                 };
             });
+
+            for(var i = plugins.length -1; i >= 0 ; i--)
+            {
+                for(var j = 0; j < blacklistedPlugins.length; j++)
+                {
+                    if(plugins[i].name[0] === blacklistedPlugins[j])
+                    {
+                        plugins.splice(i, 1);
+                        break;
+                    }
+                }
+            }
 
             for (var i = 0; i < plugins.length; i++) {
                 // Calculate last time plugin is modified (in days)
