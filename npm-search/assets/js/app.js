@@ -1,6 +1,6 @@
 var React    = window.React = require('react'), // assign it to window for react chrome extension
     classNames = require('classnames'), 
-    App = {};
+    App = {};   
 
 var OfficialPlugin = React.createClass({
     render: function() {
@@ -8,7 +8,7 @@ var OfficialPlugin = React.createClass({
             <div id="featured"></div>
         );
     }
-})
+});
 
 var PlatformButton = React.createClass({
     onClick: function() {
@@ -20,7 +20,7 @@ var PlatformButton = React.createClass({
             <li className = "clickable" onClick={this.onClick}> {this.props.platform} </li>
         );
     }
-})
+});
 
 var SupportedPlatforms = React.createClass({
     getInitialState: function() {
@@ -96,7 +96,7 @@ var SupportedPlatforms = React.createClass({
             </ul>
         );
     }
-})
+});
 
 var SearchBar = React.createClass({
     handleChange: function() {
@@ -121,7 +121,7 @@ var SearchBar = React.createClass({
             </div>
         );
     }
-})
+});
 
 var Plugin = React.createClass({
     render: function() {
@@ -168,7 +168,15 @@ var Plugin = React.createClass({
             </li>
         )
     }
-})
+});
+
+var timer=0;
+window.onpopstate = function(e){
+    if(e.state){
+        var appInstance = React.render(<App />, document.getElementById('container'));
+        appInstance.loadFilterText(e.state.filterText);
+    }
+};
 
 var PluginList = React.createClass({
     contains: function(values, pluginInfo) {
@@ -235,6 +243,17 @@ var PluginList = React.createClass({
         var plugins = [],
             filterText = this.props.filterText.toLowerCase();
 
+        var delay = (function(){
+          return function(callback, ms){
+            clearTimeout (timer);
+            timer = setTimeout(callback, ms);
+          };
+        })();
+
+        delay(function(){
+                    window.history.pushState({"filterText":filterText}, "", "?q=" + filterText);
+            }, 2000 );    
+
         var filters = this.populateFilters(filterText);
 
         this.props.plugins.forEach(function(plugin) {
@@ -280,11 +299,22 @@ var App = React.createClass({
             }
             else {    
                 return {
-                    filterText: previousState.filterText + condition + ' ',
+                    filterText: previousState.filterText + ' ' + condition + ' ',
                     plugins: previousState.plugins
                 };
             }
         });
+    },
+    loadFilterText : function(filterText) {
+        this.setState(function(previousState, currentProps) {
+            return {
+                filterText: filterText,
+                plugins: previousState.plugins
+            };
+        });
+    },
+    getURLParameter : function(name) {
+        return decodeURIComponent((new RegExp('[?|&]' + name + '=' + '([^&;]+?)(&|#|;|$)').exec(location.search)||[,""])[1].replace(/\+/g, '%20'))||null;
     },
 
     componentDidMount: function() {
@@ -363,10 +393,19 @@ var App = React.createClass({
             };
 
             if (this.isMounted()) {
-                this.setState({
-                  plugins: plugins,
-                  placeHolderText: 'Search ' + pluginCount + ' plugins...'
-                });
+                var q = this.getURLParameter('q');
+                if(q) {
+                    this.setState({
+                        plugins: plugins,
+                        filterText: q
+                    });
+                }
+                else {
+                    this.setState({
+                        plugins: plugins,
+                        placeHolderText: 'Search ' + pluginCount + ' plugins...'
+                    });
+                }
                 getDownloadCount(plugins,this);
             }
         }
@@ -405,13 +444,8 @@ var App = React.createClass({
     }
 });
 
-App.start = function() {
-    
-    React.render( 
-        <App />, 
-        document.getElementById('container') 
-     )    
-
+App.start = function() {    
+    React.render(<App />, document.getElementById('container'));
 };
 
 function xhrRequest(url, success, fail) {
