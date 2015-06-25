@@ -6,7 +6,9 @@ var gulp       = require('gulp'),
     source     = require('vinyl-source-stream'),
     browserify = require('browserify'),
     argv       = require('yargs').argv,
-    reactify   = require('reactify');
+    reactify   = require('reactify'),
+    uglify     = require('gulp-uglify'),
+    gulpif     = require('gulp-if');
 
 gulp.task('styles', function () {
     gulp.src(['assets/css/base.css', 'assets/css/flexboxgrid.css'])
@@ -22,6 +24,8 @@ gulp.task('scripts', function () {
         .on('error', gutil.log)
         .pipe(source('app.js'))
         .pipe(buffer())
+        .pipe(gulpif(!argv.debug, uglify())) // minify only if not debug build.
+        .on('error', gutil.log)
         .pipe(gulp.dest('./build/'));
 });
 
@@ -36,7 +40,7 @@ gulp.task('images', function () {
 gulp.task('dev', function () {
     gulp.run('build');
 
-    gulp.watch(['assets/js/**/*.js', 'assets/js/official-plugins.json'], [ 'scripts' ]);
+    gulp.watch(['assets/js/**/*.js', 'assets/js/*.json'], [ 'scripts' ]);
     gulp.watch('assets/css/**/*.css', [ 'styles' ]);
     gulp.watch('assets/img/**/*', [ 'images' ]);
 
