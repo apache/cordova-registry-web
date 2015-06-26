@@ -170,15 +170,17 @@ var Plugin = React.createClass({
     }
 });
 
-var timer=0;
-window.onpopstate = function(e){
-    if(e.state){
+var timer=null;
+
+window.addEventListener('popstate', function(e) {
+    if(e.state) {
         var appInstance = React.render(<App />, document.getElementById('container'));
         appInstance.loadFilterText(e.state.filterText);
     }
-};
+});
 
 var PluginList = React.createClass({
+    
     contains: function(values, pluginInfo) {
         var allValuesPresent = true;
         if(values.length == 0) {
@@ -314,7 +316,8 @@ var App = React.createClass({
         });
     },
     getURLParameter : function(name) {
-        return decodeURIComponent((new RegExp('[?|&]' + name + '=' + '([^&;]+?)(&|#|;|$)').exec(location.search)||[,""])[1].replace(/\+/g, '%20'))||null;
+        return decodeURIComponent((new RegExp('[?|&]' + name + '=' + '([^&;]+?)(&|#|;|$)').exec(location.search)
+            ||[,""])[1].replace(/\+/g, '%20'))||null;
     },
 
     componentDidMount: function() {
@@ -421,9 +424,7 @@ var App = React.createClass({
                                 <div id="pluggy"></div>
                             </div>
                             <div className="col-xs-9">
-                                <h1><p className="discover-message">Search Cordova</p></h1>
-                                <br/>
-                                <h1><p className="discover-message">Plugins</p></h1>
+                                <h1><p className="discover-message">Search Cordova Plugins</p></h1>
                             </div>
                         </div>
                     </div>
