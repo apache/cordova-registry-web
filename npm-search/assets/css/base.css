@@ -5,11 +5,6 @@ body {
   margin: 0; 
 } 
 
-h1 {
-  -webkit-margin-before: 0.3em;
-  -webkit-margin-after: 0.3em;
-}
-
 /*---------------------------------------------------
     Pluggy and msg
 ---------------------------------------------------*/
@@ -30,8 +25,8 @@ h1 {
 
 .discover-message {
   background-color: white;
-  font-size: 48px;
-  margin: 5px;
+  font-size: 56px;
+  margin: 25px 5px 5px 5px;
   text-align: left;
   display: inline-block;
   padding: 0px 8px;
