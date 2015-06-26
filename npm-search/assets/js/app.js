@@ -302,7 +302,7 @@ var App = React.createClass({
             }
             else {    
                 return {
-                    filterText: previousState.filterText + ' ' + condition + ' ',
+                    filterText: previousState.filterText.trim() + ' ' + condition + ' ',
                     plugins: previousState.plugins
                 };
             }
