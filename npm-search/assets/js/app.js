@@ -88,11 +88,14 @@ var SupportedPlatforms = React.createClass({
         if(otherPlatformsSupported.length > 0 && !this.state.moreClicked) {
             moreButton = <li className="clickable" onClick={this.onClick}>...</li>
         }
+        if (!this.state.moreClicked) {
+            otherPlatformsSupported = null;
+        }
         return (
             <ul className="supportedPlatforms">
                 {majorPlatformsSupported}
                 {moreButton}
-                { this.state.moreClicked ? {otherPlatformsSupported} : null }
+                {otherPlatformsSupported} 
             </ul>
         );
     }
