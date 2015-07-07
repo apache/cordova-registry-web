@@ -1,9 +1,13 @@
+body {
+  font-family: 'Segoe UI', tahoma, arial, helvetica, sans-serif;
+  font-size: 16px;
+  margin: 0;
+}
 
-body { 
-  font-family: 'Segoe UI', tahoma, arial, helvetica, sans-serif; 
-  font-size: 16px; 
-  margin: 0; 
-} 
+h2 {
+    padding: 48px 0;
+    font-size: 34px;
+}
 
 /*---------------------------------------------------
     Pluggy and msg
@@ -80,120 +84,120 @@ body {
 }
 
 .pluginList li {
-  margin: 0 0 60px 0; 
+  margin: 0 0 60px 0;
 }
 
 /*---------------------------------------------------
     PluginCards
 ---------------------------------------------------*/
-.pluginCard {  
-  position: relative;  
-  border: 1px solid #CDCDCD;  
-  background: white;  
-  min-height: 10em;  
+.pluginCard {
+  position: relative;
+  border: 1px solid #CDCDCD;
+  background: white;
+  min-height: 10em;
 }
 
-.pluginCard:after { 
-  z-index: -1; 
-  position: absolute; 
-  content: ""; 
-  bottom: 18px; 
-  right: 2px; 
-  left: auto; 
-  width: 50%; 
-  top: 80%; 
-  max-width:300px; 
-  background: #777; 
-  -webkit-box-shadow: 0 15px 10px #777; 
-  -moz-box-shadow: 0 15px 10px #777; 
-  box-shadow: 0 15px 10px #777; 
-  -webkit-transform: rotate(3deg); 
-  -moz-transform: rotate(3deg); 
-  -o-transform: rotate(3deg); 
-  -ms-transform: rotate(3deg); 
-  transform: rotate(3deg); 
-} 
+.pluginCard:after {
+  z-index: -1;
+  position: absolute;
+  content: "";
+  bottom: 18px;
+  right: 2px;
+  left: auto;
+  width: 50%;
+  top: 80%;
+  max-width:300px;
+  background: #777;
+  -webkit-box-shadow: 0 15px 10px #777;
+  -moz-box-shadow: 0 15px 10px #777;
+  box-shadow: 0 15px 10px #777;
+  -webkit-transform: rotate(3deg);
+  -moz-transform: rotate(3deg);
+  -o-transform: rotate(3deg);
+  -ms-transform: rotate(3deg);
+  transform: rotate(3deg);
+}
 
-.pluginCard h3 { 
-  margin: 0.2em 0.2em 0.4em 0em; 
-  font-size: 1.5em; 
-  display: inline-block; 
-} 
+.pluginCard h3 {
+  margin: 0.2em 0.2em 0.4em 0em;
+  font-size: 1.5em;
+  display: inline-block;
+}
 
-.pluginCard a:link, 
-.pluginCard a:visited { 
-  text-decoration: none; 
-  color: #404D58; 
-} 
+.pluginCard a:link,
+.pluginCard a:visited {
+  text-decoration: none;
+  color: #404D58;
+}
 
-.pluginCard a:hover, 
-.pluginCard a:active { 
-  text-decoration: underline;   
-} 
+.pluginCard a:hover,
+.pluginCard a:active {
+  text-decoration: underline;
+}
 
-.featuredPlugin { 
-  -webkit-box-shadow: -3px 0px 0px #4CC2E4; 
-  -moz-box-shadow: -3px 0px 0px #4CC2E4; 
-  box-shadow: -3px 0px 0px #4CC2E4; 
-  border-left-width: 0px; 
-} 
+.featuredPlugin {
+  -webkit-box-shadow: -3px 0px 0px #4CC2E4;
+  -moz-box-shadow: -3px 0px 0px #4CC2E4;
+  box-shadow: -3px 0px 0px #4CC2E4;
+  border-left-width: 0px;
+}
 
 .pluginCardContents {
-  border: 1px solid #363636; 
-  margin-bottom: 10px; 
-  position: relative; 
-  background: white; 
+  border: 1px solid #363636;
+  margin-bottom: 10px;
+  position: relative;
+  background: white;
 }
 
-.primaryContent { 
-  display: flex; 
-  flex-direction: column; 
-} 
+.primaryContent {
+  display: flex;
+  flex-direction: column;
+}
 
-.primaryContent .header small { 
-  color: #83878B; 
-} 
- 
-.primaryContent .pluginAuthor { 
-  font-weight: bold; 
-} 
- 
-.primaryContent .pluginDesc { 
-  flex-grow: 1; 
-  font-size: 1em; 
-  color: #404040; 
-} 
+.primaryContent .header small {
+  color: #83878B;
+}
 
-.supportedPlatforms { 
-  list-style-type: none; 
-  padding: 5px 0px; 
-  font-size: 0.8em; 
-}  
- 
-.supportedPlatforms li { 
-  margin: 0 5px 0 0; 
-  display: inline-block; 
-  border: 1px solid #F2F2F2; 
-  padding: 2px 10px; 
-  color: #7A828B; 
-}  
- 
-.secondaryContent { 
-  display: flex; 
-  flex-direction: column; 
-  text-align: right; 
-  font-size: 0.9em; 
-  color: #7A828B; 
-}  
- 
-.download { 
-flex-grow: 1; 
-}  
- 
-.extraInfo p { 
-margin-top: 2px; 
-margin-bottom: 2px; 
-} 
+.primaryContent .pluginAuthor {
+  font-weight: bold;
+}
+
+.primaryContent .pluginDesc {
+  flex-grow: 1;
+  font-size: 1em;
+  color: #404040;
+}
+
+.supportedPlatforms {
+  list-style-type: none;
+  padding: 5px 0px;
+  font-size: 0.8em;
+}
+
+.supportedPlatforms li {
+  margin: 0 5px 0 0;
+  display: inline-block;
+  border: 1px solid #F2F2F2;
+  padding: 2px 10px;
+  color: #7A828B;
+}
+
+.secondaryContent {
+  display: flex;
+  flex-direction: column;
+  text-align: right;
+  font-size: 0.9em;
+  color: #7A828B;
+}
+
+.download {
+flex-grow: 1;
+}
+
+.extraInfo p {
+margin-top: 2px;
+margin-bottom: 2px;
+}
 
 .clickable {
   cursor: pointer;
@@ -273,7 +277,9 @@ margin-bottom: 2px;
   margin: 0 8px;
   line-height: 55px;
 }
-.menu a:hover {
+.menu a:hover,
+.menu a:link,
+.menu a:visited {
   color: #4cc2e4;
 }
 .menu-dropdown {
