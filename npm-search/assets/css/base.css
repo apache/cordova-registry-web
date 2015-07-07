@@ -95,6 +95,7 @@ h2 {
   border: 1px solid #CDCDCD;
   background: white;
   min-height: 10em;
+  height: 10em;
 }
 
 .pluginCard:after {
@@ -151,7 +152,9 @@ h2 {
 
 .primaryContent {
   display: flex;
+  display: -webkit-flex;
   flex-direction: column;
+  -webkit-flex-direction: column;
 }
 
 .primaryContent .header small {
@@ -163,6 +166,7 @@ h2 {
 }
 
 .primaryContent .pluginDesc {
+  -webkit-flex-grow: 1;
   flex-grow: 1;
   font-size: 1em;
   color: #404040;
@@ -184,14 +188,17 @@ h2 {
 
 .secondaryContent {
   display: flex;
+  display: -webkit-flex;
   flex-direction: column;
+  -webkit-flex-direction: column;
   text-align: right;
   font-size: 0.9em;
   color: #7A828B;
 }
 
 .download {
-flex-grow: 1;
+  -webkit-flex-grow: 1;
+  flex-grow: 1;
 }
 
 .extraInfo p {
@@ -344,6 +351,9 @@ pre code {
     margin-left: 24px;
     margin-right: 24px;
   }
+  .pluginCard {
+    height: auto;
+  }
 }
 @media all and (max-width: 890px) {
   h2 {
@@ -355,6 +365,9 @@ pre code {
   }
   .menu-dropdown {
     display: block;
+  }
+  .pluginCard {
+    height: auto;
   }
 }
 @media all and (max-width: 720px) {
@@ -374,6 +387,9 @@ pre code {
     width: 110px;
     height: 37px;
     background-size: 112px 425px;
+  }
+  .pluginCard {
+    height: auto;
   }
 }
 @media all and (max-width: 585px) {
@@ -395,6 +411,9 @@ pre code {
   .icon-about {
     background-position: 0 -110px;
   }
+  .pluginCard {
+    height: auto;
+  }
 }
 @media all and (max-width: 440px) {
   .icon {
@@ -402,5 +421,8 @@ pre code {
   }
     h2 {
     font-size: 20px;
+  }
+  .pluginCard {
+    height: auto;
   }
 }

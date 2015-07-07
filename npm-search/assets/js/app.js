@@ -1,6 +1,6 @@
 var React    = window.React = require('react'), // assign it to window for react chrome extension
-    classNames = require('classnames'), 
-    App = {};   
+    classNames = require('classnames'),
+    App = {};
 
 var OfficialPlugin = React.createClass({
     render: function() {
@@ -95,7 +95,7 @@ var SupportedPlatforms = React.createClass({
             <ul className="supportedPlatforms">
                 {majorPlatformsSupported}
                 {moreButton}
-                {otherPlatformsSupported} 
+                {otherPlatformsSupported}
             </ul>
         );
     }
@@ -134,40 +134,40 @@ var Plugin = React.createClass({
         }
         var downloadField;
 
-        var classes = classNames({  
-            'pluginCard': true,  
-            'featuredPlugin': this.props.plugin.isOfficial,  
-            'row': true  
-        }); 
+        var classes = classNames({
+            'pluginCard': true,
+            'featuredPlugin': this.props.plugin.isOfficial,
+            'row': true
+        });
 
         if(this.props.plugin.downloadCount) {
             var downloadCount = this.props.plugin.downloadCount.toLocaleString();
             downloadField = <p><small> {downloadCount} downloads last month</small></p>;
         }
         return (
-            <li> 
-                <div className={classes}> 
-                    <div className="primaryContent col-xs-9"> 
-                        <div className="header"> 
-                            <h3><a href={'https://www.npmjs.com/package/' + this.props.plugin.name} target="_blank">{this.props.plugin.name}</a></h3> 
-                            <small className="pluginVersion">v{this.props.plugin.version}</small> 
-                            <small> by </small> 
-                            <small className="pluginAuthor">{this.props.plugin.author}</small> 
-                        </div> 
-                        <div className="pluginDesc">{this.props.plugin.description}</div> 
-                        <SupportedPlatforms keywords={this.props.plugin.keywords}/> 
-                        </div> 
-                        <div className="secondaryContent col-xs-3"> 
-                        <div className="download"> 
-                            <p></p> 
-                        </div> 
-                        <div className="extraInfo"> 
-                            <p><small><strong>License:</strong> {license}</small></p> 
-                            {downloadField} 
-                            <p><small><em>Last updated {this.props.plugin.modified} days ago</em></small></p> 
-                        </div> 
-                    </div> 
-                </div> 
+            <li>
+                <div className={classes}>
+                    <div className="primaryContent col-xs-9">
+                        <div className="header">
+                            <h3><a href={'https://www.npmjs.com/package/' + this.props.plugin.name} target="_blank">{this.props.plugin.name}</a></h3>
+                            <small className="pluginVersion">v{this.props.plugin.version}</small>
+                            <small> by </small>
+                            <small className="pluginAuthor">{this.props.plugin.author}</small>
+                        </div>
+                        <div className="pluginDesc">{this.props.plugin.description}</div>
+                        <SupportedPlatforms keywords={this.props.plugin.keywords}/>
+                        </div>
+                        <div className="secondaryContent col-xs-3">
+                        <div className="download">
+                            <p></p>
+                        </div>
+                        <div className="extraInfo">
+                            <p><small><strong>License:</strong> {license}</small></p>
+                            {downloadField}
+                            <p><small><em>Last updated {this.props.plugin.modified} days ago</em></small></p>
+                        </div>
+                    </div>
+                </div>
             </li>
         )
     }
@@ -183,7 +183,7 @@ window.addEventListener('popstate', function(e) {
 });
 
 var PluginList = React.createClass({
-    
+
     contains: function(values, pluginInfo) {
         var allValuesPresent = true;
         if(values.length == 0) {
@@ -194,7 +194,7 @@ var PluginList = React.createClass({
         }
         values.forEach(function(value) {
             var valuePresent = false;
-            for(var index=0; index < pluginInfo.length; index++) {  
+            for(var index=0; index < pluginInfo.length; index++) {
                 if(pluginInfo[index] && pluginInfo[index].toLowerCase().indexOf(value) > -1) {
                     valuePresent = true;
                 }
@@ -233,9 +233,9 @@ var PluginList = React.createClass({
                         break;
                     case 'license':
                         filters['licenses'].push(param);
-                        break;   
+                        break;
                     default:
-                        filters['searchWords'].push(searchString);         
+                        filters['searchWords'].push(searchString);
                 }
             }
             else {
@@ -257,15 +257,15 @@ var PluginList = React.createClass({
 
         delay(function(){
                     window.history.pushState({"filterText":filterText}, "", "?q=" + filterText);
-            }, 2000 );    
+            }, 2000 );
 
         var filters = this.populateFilters(filterText);
 
         this.props.plugins.forEach(function(plugin) {
             var fullPluginText = plugin.name.concat(plugin.author, plugin.keywords, plugin.license, plugin.description);
-            if(this.contains(filters['platforms'], plugin.keywords) 
-                && this.contains(filters['authors'], plugin.author) 
-                && this.contains(filters['licenses'], plugin.license) 
+            if(this.contains(filters['platforms'], plugin.keywords)
+                && this.contains(filters['authors'], plugin.author)
+                && this.contains(filters['licenses'], plugin.license)
                 && this.contains(filters['searchWords'], fullPluginText)) {
                     plugins.push(<Plugin plugin={plugin} key={plugin.author + plugin.name}/>);
             }
@@ -302,7 +302,7 @@ var App = React.createClass({
                     plugins: previousState.plugins
                 };
             }
-            else {    
+            else {
                 return {
                     filterText: previousState.filterText.trim() + ' ' + condition + ' ',
                     plugins: previousState.plugins
@@ -448,7 +448,7 @@ var App = React.createClass({
     }
 });
 
-App.start = function() {    
+App.start = function() {
     React.render(<App />, document.getElementById('container'));
 };
 
