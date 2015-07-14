@@ -2576,6 +2576,14 @@ a.dep-link {
   color: #fff;
 }
 /* ----- everything else ----- */
+#banner {
+  background-color: #ff8001;
+  color: #ffffff;
+}
+#banner a {
+  color: #ffffff;
+  border-bottom: 2px solid #ffffff;
+}
 div#results {
   font-size: 20px;
   width: 100%;
