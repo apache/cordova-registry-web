@@ -8,7 +8,9 @@ var gulp       = require('gulp'),
     argv       = require('yargs').argv,
     reactify   = require('reactify'),
     uglify     = require('gulp-uglify'),
-    gulpif     = require('gulp-if');
+    gulpif     = require('gulp-if'),
+    browserSync = require('browser-sync'),
+    envify      = require('envify');
 
 gulp.task('styles', function () {
     gulp.src(['assets/css/base.css', 'assets/css/flexboxgrid.css'])
@@ -18,8 +20,11 @@ gulp.task('styles', function () {
 });
 
 gulp.task('scripts', function () {
+    // This is needed for envify to remove debug only code from REACT
+    process.env.NODE_ENV = argv.debug ? '' : 'production';
     browserify('./assets/js/app.js', { debug: argv.debug ? true : false })
         .transform(reactify)
+        .transform(envify)
         .bundle()
         .on('error', gutil.log)
         .pipe(source('app.js'))
@@ -37,13 +42,26 @@ gulp.task('images', function () {
         .pipe(gulp.dest('build/img'));
 });
 
-gulp.task('dev', function () {
-    gulp.run('build');
-
+gulp.task('dev', ['build'], function () {
     gulp.watch(['assets/js/**/*.js', 'assets/js/*.json'], [ 'scripts' ]);
     gulp.watch('assets/css/**/*.css', [ 'styles' ]);
     gulp.watch('assets/img/**/*', [ 'images' ]);
 
 });
+
+gulp.task('serve', ['dev'], function() {
+  browserSync({
+    server: {
+      baseDir: '.'
+    },
+    files: [
+      '*.html',
+      './build/*.css',
+      './build/*.js'
+    ]
+  });
+});
+
+
 
 gulp.task('build', [ 'styles', 'scripts', 'images' ]);

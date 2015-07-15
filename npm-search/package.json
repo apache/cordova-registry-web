@@ -30,7 +30,9 @@
     "classnames": "^2.1.2",
     "vinyl-buffer": "^1.0.0",
     "vinyl-source-stream": "^1.1.0",
-    "yargs": "^3.12.0"
+    "yargs": "^3.12.0",
+    "browser-sync": "^2.7.13",
+    "envify": "^3.4.0"
   },
   "maintainers": [
     {
