@@ -2,6 +2,11 @@ var React    = window.React = require('react'), // assign it to window for react
     classNames = require('classnames'),
     App = {};
 
+var Constants = {
+    DownloadCountBatch: 100,
+    NpmSearchInitialSize: 500
+}
+
 var OfficialPlugin = React.createClass({
     render: function() {
         return (
@@ -127,6 +132,9 @@ var SearchBar = React.createClass({
 });
 
 var Plugin = React.createClass({
+    shouldComponentUpdate: function(nextProps, nextState) {
+        return this.props.plugin !== nextProps.plugin;
+    },
     render: function() {
         var license = this.props.plugin.license;
         if (license && license.length > 1) {
@@ -183,66 +191,67 @@ window.addEventListener('popstate', function(e) {
 });
 
 var PluginList = React.createClass({
-
-    contains: function(values, pluginInfo) {
-        var allValuesPresent = true;
-        if(values.length == 0) {
+    statics: {
+        contains: function(values, pluginInfo) {
+            var allValuesPresent = true;
+            if(values.length == 0) {
+                return allValuesPresent;
+            }
+            if(!pluginInfo) {
+                return false;
+            }
+            values.forEach(function(value) {
+                var valuePresent = false;
+                for(var index=0; index < pluginInfo.length; index++) {
+                    if(pluginInfo[index] && pluginInfo[index].toLowerCase().indexOf(value) > -1) {
+                        valuePresent = true;
+                    }
+                }
+                if(!valuePresent) {
+                    allValuesPresent = false;
+                }
+            });
             return allValuesPresent;
-        }
-        if(!pluginInfo) {
-            return false;
-        }
-        values.forEach(function(value) {
-            var valuePresent = false;
-            for(var index=0; index < pluginInfo.length; index++) {
-                if(pluginInfo[index] && pluginInfo[index].toLowerCase().indexOf(value) > -1) {
-                    valuePresent = true;
-                }
-            }
-            if(!valuePresent) {
-                allValuesPresent = false;
-            }
-        });
-        return allValuesPresent;
-    },
-    populateFilters: function(filterText)
-    {
-        var searchStrings = filterText.split(" ");
-        var filters = [];
-        filters['platforms'] = [];
-        filters['authors'] = [];
-        filters['licenses'] = [];
-        filters['searchWords'] = [];
+        },
+        populateFilters: function(filterText)
+        {
+            var searchStrings = filterText.split(" ");
+            var filters = [];
+            filters['platforms'] = [];
+            filters['authors'] = [];
+            filters['licenses'] = [];
+            filters['searchWords'] = [];
 
-        searchStrings.forEach(function(searchString) {
-            var keywords = searchString.split(":");
-            if(keywords.length == 1) {
-                var param = keywords[0].trim();
-                if(param) {
-                    filters['searchWords'].push(param);
+            searchStrings.forEach(function(searchString) {
+                var keywords = searchString.split(":");
+                if(keywords.length == 1) {
+                    var param = keywords[0].trim();
+                    if(param) {
+                        filters['searchWords'].push(param);
+                    }
                 }
-            }
-            else if(keywords[1].trim()) {
-                var param = keywords[1].trim();
-                switch(keywords[0]) {
-                    case 'platform':
-                        filters['platforms'].push(param);
-                        break;
-                    case 'author':
-                        filters['authors'].push(param);
-                        break;
-                    case 'license':
-                        filters['licenses'].push(param);
-                        break;
-                    default:
-                        filters['searchWords'].push(searchString);
+                else if(keywords[1].trim()) {
+                    var param = keywords[1].trim();
+                    switch(keywords[0]) {
+                        case 'platform':
+                            filters['platforms'].push(param);
+                            break;
+                        case 'author':
+                            filters['authors'].push(param);
+                            break;
+                        case 'license':
+                            filters['licenses'].push(param);
+                            break;
+                        default:
+                            filters['searchWords'].push(searchString);
+                    }
                 }
-            }
-            else {
-                filters['searchWords'].push(searchString);
-            }
-        });
-        return filters;
+                else {
+                    filters['searchWords'].push(searchString);
+                }
+            });
+            return filters;
+        }
     },
     render: function() {
         var plugins = [],
@@ -259,14 +268,14 @@ var PluginList = React.createClass({
                     window.history.pushState({"filterText":filterText}, "", "?q=" + filterText);
             }, 2000 );
 
-        var filters = this.populateFilters(filterText);
+        var filters = PluginList.populateFilters(filterText);
 
         this.props.plugins.forEach(function(plugin) {
             var fullPluginText = plugin.name.concat(plugin.author, plugin.keywords, plugin.license, plugin.description);
-            if(this.contains(filters['platforms'], plugin.keywords)
-                && this.contains(filters['authors'], plugin.author)
-                && this.contains(filters['licenses'], plugin.license)
-                && this.contains(filters['searchWords'], fullPluginText)) {
+            if(PluginList.contains(filters['platforms'], plugin.keywords)
+                && PluginList.contains(filters['authors'], plugin.author)
+                && PluginList.contains(filters['licenses'], plugin.license)
+                && PluginList.contains(filters['searchWords'], fullPluginText)) {
                     plugins.push(<Plugin plugin={plugin} key={plugin.author + plugin.name}/>);
             }
         }.bind(this));
@@ -318,11 +327,21 @@ var App = React.createClass({
             };
         });
     },
-    getURLParameter : function(name) {
-        return decodeURIComponent((new RegExp('[?|&]' + name + '=' + '([^&;]+?)(&|#|;|$)').exec(location.search)
-            ||[,""])[1].replace(/\+/g, '%20'))||null;
+    statics: {
+        getURLParameter : function(name) {
+            return decodeURIComponent((new RegExp('[?|&]' + name + '=' + '([^&;]+?)(&|#|;|$)').exec(location.search)
+                ||[,""])[1].replace(/\+/g, '%20'))||null;
+        },
+        shallowCopy: function(src) {
+            var dst = {};
+            for(var i in src) {
+                if(src.hasOwnProperty(i)) {
+                    dst[i] = src[i];
+                }
+            }
+            return dst;
+        }
     },
-
     componentDidMount: function() {
         var plugins = [],
             officialPlugins = require('./official-plugins.json').plugins,
@@ -332,7 +351,7 @@ var App = React.createClass({
             queryHost = "http://npmsearch.com/query",
             queryFields = "fields=name,keywords,license,description,author,modified,homepage,version",
             queryKeywords = "q=keywords:%22ecosystem:cordova%22",
-            queryInitialSize = 300;
+            queryInitialSize = Constants.NpmSearchInitialSize;
 
         xhrRequest(queryHost + "?" + queryFields + "&" + queryKeywords + "&size=" + queryInitialSize + "&start=0", function(xhrResult) {
             plugins = xhrResult.results;
@@ -347,16 +366,18 @@ var App = React.createClass({
             }
         }, function() { console.log('xhr err'); });
 
-        var getDownloadCount = function(plugins,that) {
+        var getDownloadCount = function(plugins, that) {
             var packageNames = "";
             for(var index=0; index < plugins.length; index++) {
                 packageNames += plugins[index].name + ",";
-                if(index%50 === 0 || index === plugins.length -1) {
+                if(index % Constants.DownloadCountBatch === 0 || index === plugins.length -1) {
                     xhrRequest("https://api.npmjs.org/downloads/point/last-month/" + packageNames, function(xhrResult) {
-                        plugins.forEach(function(plugin) {
-                            if(xhrResult[plugin.name])
-                                plugin.downloadCount = xhrResult[plugin.name].downloads;
-                        });
+                        for(var j = 0; j < plugins.length; j++) {
+                            if(xhrResult[plugins[j].name]) {
+                                plugins[j] = App.shallowCopy(plugins[j]);
+                                plugins[j].downloadCount = xhrResult[plugins[j].name].downloads;
+                            }
+                        }
                         that.setState({
                             plugins: plugins
                         });
@@ -399,7 +420,7 @@ var App = React.createClass({
             };
 
             if (this.isMounted()) {
-                var q = this.getURLParameter('q');
+                var q = App.getURLParameter('q');
                 if(q) {
                     this.setState({
                         plugins: plugins,
@@ -416,7 +437,6 @@ var App = React.createClass({
             }
         }
     },
-
     render: function() {
         return (
             <div>
