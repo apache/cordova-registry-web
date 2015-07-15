@@ -2,6 +2,11 @@ var React    = window.React = require('react'), // assign it to window for react
     classNames = require('classnames'),
     App = {};
 
+var Constants = {
+    DownloadCountBatch: 100,
+    NpmSearchInitialSize: 500
+}
+
 var OfficialPlugin = React.createClass({
     render: function() {
         return (
@@ -332,7 +337,7 @@ var App = React.createClass({
             queryHost = "http://npmsearch.com/query",
             queryFields = "fields=name,keywords,license,description,author,modified,homepage,version",
             queryKeywords = "q=keywords:%22ecosystem:cordova%22",
-            queryInitialSize = 300;
+            queryInitialSize = Constants.NpmSearchInitialSize;
 
         xhrRequest(queryHost + "?" + queryFields + "&" + queryKeywords + "&size=" + queryInitialSize + "&start=0", function(xhrResult) {
             plugins = xhrResult.results;
@@ -347,11 +352,11 @@ var App = React.createClass({
             }
         }, function() { console.log('xhr err'); });
 
-        var getDownloadCount = function(plugins,that) {
+        var getDownloadCount = function(plugins, that) {
             var packageNames = "";
             for(var index=0; index < plugins.length; index++) {
                 packageNames += plugins[index].name + ",";
-                if(index%50 === 0 || index === plugins.length -1) {
+                if(index % Constants.DownloadCountBatch === 0 || index === plugins.length -1) {
                     xhrRequest("https://api.npmjs.org/downloads/point/last-month/" + packageNames, function(xhrResult) {
                         plugins.forEach(function(plugin) {
                             if(xhrResult[plugin.name])
