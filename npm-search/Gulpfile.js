@@ -13,16 +13,15 @@ var gulp       = require('gulp'),
     envify      = require('envify');
 
 gulp.task('styles', function () {
-    gulp.src(['assets/css/base.css', 'assets/css/flexboxgrid.css'])
+    gulp.src(['src/css/base.css', 'src/css/flexboxgrid.css'])
         .pipe(concat('styles.css'))
-        .pipe(gulp.dest('./build/'));
-
+        .pipe(gulp.dest('./build/css/'));
 });
 
 gulp.task('scripts', function () {
     // This is needed for envify to remove debug only code from REACT
     process.env.NODE_ENV = argv.debug ? '' : 'production';
-    browserify('./assets/js/app.js', { debug: argv.debug ? true : false })
+    browserify('./src/js/app.js', { debug: argv.debug ? true : false })
         .transform(reactify)
         .transform(envify)
         .bundle()
@@ -31,37 +30,48 @@ gulp.task('scripts', function () {
         .pipe(buffer())
         .pipe(gulpif(!argv.debug, uglify())) // minify only if not debug build.
         .on('error', gutil.log)
-        .pipe(gulp.dest('./build/'));
+        .pipe(gulp.dest('./build/js/'));
 });
 
 gulp.task('images', function () {
-    gulp.src(['assets/img/**/*.png', 'assets/img/**/*.gif'])
+    gulp.src(['src/img/**/*.png', 'src/img/**/*.gif'])
         .pipe(imagemin())
-        .pipe(gulp.dest('build/img/'));
-    gulp.src(['assets/img/**/*.svg'])
-        .pipe(gulp.dest('build/img'));
+        .pipe(gulp.dest('./build/img/'));
+    gulp.src(['src/img/**/*.svg'])
+        .pipe(gulp.dest('./build/img'));
 });
 
-gulp.task('dev', ['build'], function () {
-    gulp.watch(['assets/js/**/*.js', 'assets/js/*.json'], [ 'scripts' ]);
-    gulp.watch('assets/css/**/*.css', [ 'styles' ]);
-    gulp.watch('assets/img/**/*', [ 'images' ]);
+gulp.task('html', function () {
+    gulp.src(['src/*.html'])
+        .pipe(gulp.dest('./build/'));
+});
 
+gulp.task('etc', function () {
+    gulp.src(['src/etc/*'])
+        .pipe(gulp.dest('./build/etc'));
+})
+
+gulp.task('dev', ['build'], function () {
+    gulp.watch(['src/js/**/*.js', 'src/js/*.json'], [ 'scripts' ]);
+    gulp.watch('src/css/**/*.css', [ 'styles' ]);
+    gulp.watch('src/img/**', [ 'images' ]);
+    gulp.watch('src/*.html', ['html']);
+    gulp.watch('src/etc/**', ['etc']);
 });
 
 gulp.task('serve', ['dev'], function() {
   browserSync({
     server: {
-      baseDir: '.'
+      baseDir: './build'
     },
     files: [
-      '*.html',
-      './build/*.css',
-      './build/*.js'
+      './build/*.html',
+      './build/img/**',
+      './build/css/*.css',
+      './build/js/*.js',
+      './build/etc/**'
     ]
   });
 });
 
-
-
-gulp.task('build', [ 'styles', 'scripts', 'images' ]);
+gulp.task('build', [ 'styles', 'scripts', 'images', 'html', 'etc' ]);

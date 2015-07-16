@@ -91,6 +91,9 @@ The site is setup to use livereload. As you modify & save files in the `attachme
 
 NOTE - The Grunt server & watch commands are set up to use livereload - this will automatically reload your browser after the server is done reloading - no more needing to click the refresh button on your browser. The livereload script is put in the HEAD of the index.html page - if you wish to not use it, you will need to comment or remove that from the index.html page.
 
+### Updating npm Search Page
+First read the README file that is located under npm-search folder. Once you make changes, run `gulp build` while on npm-search directory. In order to package npm search page with cordova registry website, run `grunt npmsearch` while on cordova-registry-web folder. After this please validate your changes with `grunt server`.
+
 ### Publish Plugins to your local instance
 ```bash
 plugman config set registry http://localhost:5984/registry/_design/app/_rewrite

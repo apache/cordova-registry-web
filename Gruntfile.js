@@ -104,6 +104,17 @@ module.exports = function(grunt) {
       before: {
         src: 'attachments/index.html',
         dest: './tmp/index.html'
+      },
+      npmsearch: {
+        expand: true,
+        cwd: 'npm-search/build/',
+        src: ['**', '!.gitkeep'],
+        dest: 'attachments/npm/'
+      }
+    },
+    clean: {
+      npmsearch: {
+        src: 'attachments/npm/'
       }
     }
   });
@@ -120,6 +131,13 @@ module.exports = function(grunt) {
       ]);
   });
 
+  grunt.registerTask('npmsearch', function(target) {
+      grunt.task.run([
+          'clean:npmsearch', // Deletes all files from attachments/npm 
+          'copy:npmsearch'   // Copy npm website from npm-search directory to attachments/npm
+      ])
+  });
+
   grunt.registerTask('cloudant', function (target) {
       grunt.task.run([
           'less',
@@ -129,6 +147,7 @@ module.exports = function(grunt) {
           'copy:after' //Copy index.html back to attachments, with the preprocess directives as seved.
       ]);
   });
+
   grunt.registerTask('iriscouch', function (target) {
       grunt.task.run([
           'less',

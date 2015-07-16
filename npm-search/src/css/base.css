@@ -13,7 +13,7 @@ h2 {
     Pluggy and msg
 ---------------------------------------------------*/
 #headerBackground {
-  background: url('img/grid.png');
+  background: url('../img/grid.png');
 }
 
 #topContent {
@@ -21,7 +21,7 @@ h2 {
 }
 
 #pluggy {
-  background: transparent url('img/pluggy.png') no-repeat center;
+  background: transparent url('../img/pluggy.png') no-repeat center;
   background-size: contain;
   height: 200px;
   margin-left: 25px;
@@ -57,7 +57,7 @@ h2 {
   font-size: 14px;
   padding: 0 5px 0 35px;
   color: #363636;
-  background: url('img/search.png') no-repeat;
+  background: url('../img/search.png') no-repeat;
   background-position: 5.5px 5.5px;
 }
 
@@ -215,7 +215,7 @@ margin-bottom: 2px;
 ---------------------------------------------------*/
 
 .icon {
-  background: url('img/sprite.png') no-repeat;
+  background: url('../img/sprite.png') no-repeat;
   background-position: 0 -220px;
   padding-left: 78px;
 }
@@ -251,12 +251,12 @@ margin-bottom: 2px;
   right: 0;
   bottom: -3px;
   height: 3px;
-  background: url('img/shadow.png');
+  background: url('../img/shadow.png');
 }
 
 .logo,
 .closing {
-  background: url('img/sprite.png') no-repeat;
+  background: url('../img/sprite.png') no-repeat;
   -webkit-transition: background 0.25s linear;
   -moz-transition: background 0.25s linear;
   transition: background 0.25s linear;

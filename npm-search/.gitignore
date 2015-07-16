@@ -7,4 +7,4 @@ Thumbs.db
 .DS_Store
 
 # ignores specific to this repo
-build/
+build/**
