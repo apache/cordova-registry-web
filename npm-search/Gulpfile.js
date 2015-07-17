@@ -9,8 +9,8 @@ var gulp       = require('gulp'),
     reactify   = require('reactify'),
     uglify     = require('gulp-uglify'),
     gulpif     = require('gulp-if'),
-    browserSync = require('browser-sync'),
-    envify      = require('envify');
+    serve      = require('gulp-serve'),
+    envify     = require('envify');
 
 gulp.task('styles', function () {
     gulp.src(['src/css/base.css', 'src/css/flexboxgrid.css'])
@@ -59,19 +59,6 @@ gulp.task('dev', ['build'], function () {
     gulp.watch('src/etc/**', ['etc']);
 });
 
-gulp.task('serve', ['dev'], function() {
-  browserSync({
-    server: {
-      baseDir: './build'
-    },
-    files: [
-      './build/*.html',
-      './build/img/**',
-      './build/css/*.css',
-      './build/js/*.js',
-      './build/etc/**'
-    ]
-  });
-});
+gulp.task('serve', ['dev'], serve('build'));
 
 gulp.task('build', [ 'styles', 'scripts', 'images', 'html', 'etc' ]);
