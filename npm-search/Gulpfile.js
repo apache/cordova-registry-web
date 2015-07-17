@@ -52,7 +52,7 @@ gulp.task('etc', function () {
 })
 
 gulp.task('dev', ['build'], function () {
-    gulp.watch(['src/js/**/*.js', 'src/js/*.json'], [ 'scripts' ]);
+    gulp.watch(['src/js/**/*.js', 'src/js/*.json', 'src/js/**/*.jsx'], [ 'scripts' ]);
     gulp.watch('src/css/**/*.css', [ 'styles' ]);
     gulp.watch('src/img/**', [ 'images' ]);
     gulp.watch('src/*.html', ['html']);
