@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/apache/cordova-registry-web",
   "devDependencies": {
+    "baconjs": "^0.7.70",
     "browserify": "^10.2.4",
     "classnames": "^2.1.2",
     "envify": "^3.4.0",

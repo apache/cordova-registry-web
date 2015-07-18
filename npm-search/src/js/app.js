@@ -8,14 +8,6 @@ var Constants = {
     NpmSearchInitialSize: 500
 }
 
-var OfficialPlugin = React.createClass({
-    render: function() {
-        return (
-            <div id="featured"></div>
-        );
-    }
-});
-
 var PlatformButton = React.createClass({
     onClick: function() {
         var appInstance = React.render(<App />, document.getElementById('container'));
@@ -268,11 +260,20 @@ var PluginList = React.createClass({
 
 var App = React.createClass({
     getInitialState: function() {
-        return {
-            plugins: [],
-            filterText: '',
-            placeHolderText: 'Loading...'
-        };
+        var q = App.getURLParameter('q');
+        if (q) {
+            return {
+                plugins: [],
+                filterText: q,
+                placeHolderText: 'Loading...'
+            }    
+        } else {
+            return {
+                plugins: [],
+                filterText: '',
+                placeHolderText: 'Loading...'
+            };
+        }
     },
     handleUserInput: function(filterText) {
         this.setState({
@@ -400,7 +401,8 @@ var App = React.createClass({
                 if(q) {
                     this.setState({
                         plugins: plugins,
-                        filterText: q
+                        filterText: q,
+                        placeHolderText: 'Search ' + pluginCount + ' plugins...'
                     });
                 }
                 else {
@@ -428,7 +430,7 @@ var App = React.createClass({
                         </div>
                     </div>
                     <SearchBar
-                        filterText={this.state.filterText}
+                        initialValue={this.state.filterText}
                         placeHolderText={this.state.placeHolderText}
                         onUserInput={this.handleUserInput}
                     />
