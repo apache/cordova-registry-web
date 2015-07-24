@@ -1,39 +1,46 @@
+html {
+  font-size: 62.5%;
+}
+
 body {
   font-family: 'Segoe UI', tahoma, arial, helvetica, sans-serif;
-  font-size: 16px;
+  font-size: 1.6rem;
   margin: 0;
 }
 
-h2 {
-    padding: 48px 0;
-    font-size: 34px;
-}
 
 /*---------------------------------------------------
     Pluggy and msg
 ---------------------------------------------------*/
-#headerBackground {
+#headblock {
   background: url('../img/grid.png');
+  padding-bottom: 1rem;
 }
 
-#topContent {
-  margin-top: 25px;
+#topcontent {
+  padding-top: 2.5rem;
+  text-align: center;
+  max-width: 80rem;
+  margin: 0 auto;
 }
 
 #pluggy {
-  background: transparent url('../img/pluggy.png') no-repeat center;
+  background: transparent url('../img/pluggy.png') no-repeat;
   background-size: contain;
-  height: 200px;
-  margin-left: 25px;
+  width: 10rem;
+  height: 20rem;
+  margin-left: 2.5rem;
 }
 
-.discover-message {
-  background-color: white;
-  font-size: 56px;
-  margin: 25px 5px 5px 5px;
-  text-align: left;
+#discovermessage {
   display: inline-block;
-  padding: 0px 8px;
+  max-width: 60rem;
+  vertical-align: top;
+}
+
+#discovermessage h1 {
+  background-color: white;
+  text-align: left;
   font-family: 'Segoe UI', tahoma, arial, helvetica, sans-serif;
 }
 
@@ -41,20 +48,20 @@ h2 {
     Searchbox
 ---------------------------------------------------*/
 
-#searchwrapper {
-  margin: 25px 0px;
+#search {
+  margin: 2.5rem auto 0 auto;
   border: 2px solid gray;
   background-color: white;
 }
 
-#searchwrapper .searchBox {
+#search .searchBox {
   display: block;
-  height: 35px;
+  height: 3.5rem;
   width: 100%;
   border: 0;
   background: none;
   outline: 0;
-  font-size: 14px;
+  font-size: 1.4rem;
   padding: 0 5px 0 35px;
   color: #363636;
   background: url('../img/search.png') no-repeat;
@@ -84,7 +91,7 @@ h2 {
 }
 
 .pluginList li {
-  margin: 0 0 60px 0;
+  margin: 0 0 2rem 0;
 }
 
 /*---------------------------------------------------
@@ -94,8 +101,8 @@ h2 {
   position: relative;
   border: 1px solid #CDCDCD;
   background: white;
-  min-height: 10em;
-  height: 10em;
+  min-height: 3em;
+  padding: 0.2rem 1rem 0.5rem 1rem;
 }
 
 .pluginCard:after {
@@ -120,7 +127,7 @@ h2 {
 }
 
 .pluginCard h3 {
-  margin: 0.2em 0.2em 0.4em 0em;
+  margin: 0 0.2rem 0.1rem 0;
   font-size: 1.5em;
   display: inline-block;
 }
@@ -137,9 +144,9 @@ h2 {
 }
 
 .featuredPlugin {
-  -webkit-box-shadow: -3px 0px 0px #4CC2E4;
-  -moz-box-shadow: -3px 0px 0px #4CC2E4;
-  box-shadow: -3px 0px 0px #4CC2E4;
+  -webkit-box-shadow: inset 3px 0 0 0 #4CC2E4;
+  -moz-box-shadow: inset 3px 0 0 0 #4CC2E4;
+  box-shadow: inset 3px 0 0 0 #4CC2E4;
   border-left-width: 0px;
 }
 
@@ -173,9 +180,12 @@ h2 {
 }
 
 .supportedPlatforms {
+  width: 75%;
+  display: inline-block;
   list-style-type: none;
-  padding: 5px 0px;
+  text-align: left;
   font-size: 0.8em;
+  padding-left: 0;
 }
 
 .supportedPlatforms li {
@@ -187,23 +197,22 @@ h2 {
 }
 
 .secondaryContent {
-  display: flex;
-  display: -webkit-flex;
-  flex-direction: column;
-  -webkit-flex-direction: column;
+  min-height: 7rem;
+  width: 100%;
+  display: block;
   text-align: right;
   font-size: 0.9em;
   color: #7A828B;
 }
 
-.download {
-  -webkit-flex-grow: 1;
-  flex-grow: 1;
+.extraInfo p {
+  margin-top: 2px;
+  margin-bottom: 2px;
 }
 
-.extraInfo p {
-margin-top: 2px;
-margin-bottom: 2px;
+.extraInfo {
+  display: inline-block;
+  width: 25%;
 }
 
 .clickable {
@@ -216,28 +225,12 @@ margin-bottom: 2px;
 
 .icon {
   background: url('../img/sprite.png') no-repeat;
-  background-position: 0 -220px;
-  padding-left: 78px;
-}
-.icon-about {
-  background-position: 0 -220px;
 }
 
 /*---------------------------------------------------
     Layout - Header
 ---------------------------------------------------*/
-#wrap,
-.wrap {
-  width: 1008px;
-  margin: 0 auto;
-  position: relative;
-}
-
-.header-placeholder {
-  height: 90px;
-}
 #header {
-  height: 90px;
   position: fixed;
   z-index: 10;
   left: 0;
@@ -252,6 +245,13 @@ margin-bottom: 2px;
   bottom: -3px;
   height: 3px;
   background: url('../img/shadow.png');
+}
+
+.logo {
+  top: 7rem;
+  width: 11rem;
+  height: 3.7rem;
+  background-size: 11.2rem 42.5rem;
 }
 
 .logo,
@@ -328,10 +328,10 @@ pre>code {
 pre {
   background-color: #f8f8f8;
   border: 1px solid #ccc;
-  font-size: 13px;
-  line-height: 19px;
+  font-size: 1.3rem;
+  line-height: 1.9rem;
   overflow: auto;
-  padding: 6px 10px;
+  padding: 0.6rem 1rem;
   border-radius: 3px;
 }
 
@@ -344,85 +344,146 @@ pre code {
 /*---------------------------------------------------
     Mobile
 ---------------------------------------------------*/
-@media all and (max-width: 1024px) {
-  #wrap,
-  .wrap {
-    width: auto;
-    margin-left: 24px;
-    margin-right: 24px;
+
+/* Extra small devices (phones, less than 768px) */
+/* No media query since this is the default in Bootstrap */
+.contentwrap {
+  margin: 0 auto;
+  max-width: 80rem;
+}
+.menu {
+  display: none;
+}
+.menu-dropdown {
+  display: block;
+  top: 1.6rem;
+}
+
+h2 {
+  font-size: 2rem;
+  padding-top: 0;
+  letter-spacing: 0;
+}
+
+.wrap {
+  position: relative;
+  margin-left: 1.2rem;
+  margin-right: 1.2rem;
+}
+
+#header,
+.header-placeholder {
+  height: 5.2rem;
+}
+
+.logo {
+  top: 0.7rem;
+  width: 11rem;
+  height: 3.7rem;
+  background-size: 11.2rem 42.5rem;
+}
+
+#pluggy {
+  display: none;
+}
+
+#discovermessage {
+  height: auto;
+  padding: 0 4rem 0 4rem;
+}
+
+#discovermessage h1 {
+  font-size: 4rem;
+}
+
+.icon {
+  background-position: 0px -110px;
+  background-size: 112px 425px;
+  display: block;
+  font-size: 2.2rem;
+  padding: 2rem 4.8rem 2rem 4.8rem;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
+/* Small devices (tablets, 768px and up) */
+@media (min-width: 768px) {
+  #discovermessage {
+    height: 20rem;
+    padding: 0 0 0 4rem;
   }
-  .pluginCard {
-    height: auto;
+  #discovermessage h1 {
+    font-size: 5rem;
+  }
+  .icon {
+    background-position: 0px -220px;
+    background-size: auto;
+    font-size: 2.4rem;
+    padding: 5.4rem 0 4.8rem 7.8rem;
+  }
+  h2 {
+    font-size: 2.2rem;
+    padding: 5.4rem 0;
+  }
+  #pluggy {
+    display: inline-block;
   }
 }
-@media all and (max-width: 890px) {
+
+/* Medium devices (desktops, 992px and up) */
+@media (min-width: 992px) {
   h2 {
-    font-size: 24px;
-    padding-top: 54px;
-  }
-  .menu {
-    display: none;
-  }
-  .menu-dropdown {
-    display: block;
-  }
-  .pluginCard {
-    height: auto;
-  }
-}
-@media all and (max-width: 720px) {
-  h2 {
-    font-size: 22px;
-    padding-top: 54px;
-  }
-  .menu-dropdown {
-    top: 16px;
+    font-size: 2.4rem;
+    padding-top: 5.4rem 0;
   }
   #header,
   .header-placeholder {
-    height: 52px;
+    height: 9rem;
+  }
+  .menu {
+    display: block;
+  }
+  .menu-dropdown {
+    display: none;
+  }
+  .contentwrap {
+    margin: 0 auto;
+    max-width: 80rem;
+  }
+  #wrap,
+  .wrap {
+    width: auto;
+    margin-left: 12rem;
+    margin-right: 12rem;
   }
   .logo {
-    top: 7px;
-    width: 110px;
-    height: 37px;
-    background-size: 112px 425px;
-  }
-  .pluginCard {
-    height: auto;
-  }
-}
-@media all and (max-width: 585px) {
-  h2 {
-    letter-spacing: 0;
-  }
-  .wrap {
-    margin-left: 12px;
-    margin-right: 12px;
+    top: 5px;
+    width: 220px;
+    height: 75px;
+    background-size: auto;
   }
   .icon {
-    background-size: 112px 425px;
-    padding: 20px 48px 20px 48px;
-    overflow: hidden;
-    display: block;
-    text-overflow: ellipsis;
-    white-space: nowrap;
+    background-position: 0 -220px;
+    padding-left: 78px;
   }
   .icon-about {
-    background-position: 0 -110px;
-  }
-  .pluginCard {
-    height: auto;
+    background-position: 0 -220px;
   }
 }
-@media all and (max-width: 440px) {
-  .icon {
-    padding: 22px 16px 20px 35px;
+
+/* Large devices (large desktops, 1200px and up) */
+@media (min-width: 1200px) {
+  h2 {
+      padding: 4.8rem 0;
+      font-size: 3.4rem;
   }
-    h2 {
-    font-size: 20px;
+  .contentwrap {
+    max-width: 100rem;
   }
-  .pluginCard {
-    height: auto;
+  #wrap,
+  .wrap {
+    width: 1008px;
+    margin: 0 auto;
   }
 }
