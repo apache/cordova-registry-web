@@ -13,7 +13,7 @@ var gulp       = require('gulp'),
     envify     = require('envify');
 
 gulp.task('styles', function () {
-    gulp.src(['src/css/base.css', 'src/css/flexboxgrid.css'])
+    gulp.src(['src/css/normalize.css', 'src/css/base.css'])
         .pipe(concat('styles.css'))
         .pipe(gulp.dest('./build/css/'));
 });

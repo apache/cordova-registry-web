@@ -93,7 +93,7 @@ var PluginList = React.createClass({
             }
         }.bind(this));
         return (
-            <div className="col-xs-offset-2 col-xs-8">
+            <div className="contentwrap">
                 <ul className="pluginList">
                     {plugins}
                 </ul>
