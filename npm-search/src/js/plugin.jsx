@@ -15,8 +15,7 @@ var Plugin = React.createClass({
 
         var classes = classNames({
             'pluginCard': true,
-            'featuredPlugin': this.props.plugin.isOfficial,
-            'row': true
+            'featuredPlugin': this.props.plugin.isOfficial
         });
 
         if(this.props.plugin.downloadCount) {
@@ -26,7 +25,7 @@ var Plugin = React.createClass({
         return (
             <li>
                 <div className={classes}>
-                    <div className="primaryContent col-xs-9">
+                    <div className="primaryContent">
                         <div className="header">
                             <h3><a href={'https://www.npmjs.com/package/' + this.props.plugin.name} target="_blank">{this.props.plugin.name}</a></h3>
                             <small className="pluginVersion">v{this.props.plugin.version}</small>
@@ -34,12 +33,9 @@ var Plugin = React.createClass({
                             <small className="pluginAuthor">{this.props.plugin.author}</small>
                         </div>
                         <div className="pluginDesc">{this.props.plugin.description}</div>
+                    </div>
+                    <div className="secondaryContent">
                         <SupportedPlatforms keywords={this.props.plugin.keywords}/>
-                        </div>
-                        <div className="secondaryContent col-xs-3">
-                        <div className="download">
-                            <p></p>
-                        </div>
                         <div className="extraInfo">
                             <p><small><strong>License:</strong> {license}</small></p>
                             {downloadField}

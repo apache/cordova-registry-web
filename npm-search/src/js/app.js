@@ -175,29 +175,21 @@ var App = React.createClass({
     render: function() {
         return (
             <div>
-                <div className="row" id="headerBackground">
-                    <div className="col-xs-offset-2 col-xs-8">
-                        <div id="topContent" className="row">
-                            <div className="col-xs-3">
-                                <div id="pluggy"></div>
-                            </div>
-                            <div className="col-xs-9">
-                                <h1><p className="discover-message">Search Cordova Plugins</p></h1>
-                            </div>
+                <div id="headblock">
+                        <div id="topcontent">
+                            <div id="pluggy"></div>
+                            <div id="discovermessage"><h1>Search Cordova Plugins</h1></div>
                         </div>
-                    </div>
                     <SearchBar
                         initialValue={this.state.filterText}
                         placeHolderText={this.state.placeHolderText}
                         onUserInput={this.handleUserInput}
                     />
                 </div>
-                <div className="row">
-                    <PluginList
-                        plugins={this.state.plugins}
-                        filterText={this.state.filterText}
-                    />
-                </div>
+                <PluginList
+                    plugins={this.state.plugins}
+                    filterText={this.state.filterText}
+                />
             </div>
         );
     }

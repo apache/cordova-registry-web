@@ -39,19 +39,19 @@ var SearchBar = React.createClass({
 
     render: function() {
         return (
-            <div className="col-xs-offset-2 col-xs-8">
-                <div id="searchwrapper">
-                    <input
-                        className="searchBox"
-                        type="search"
-                        autoComplete="off"
-                        placeholder={this.props.placeHolderText}
-                        value={this.state.textValue}
-                        onChange={this.handleChange}
-                        ref="filterTextInput"
-                    />
+                <div className="contentwrap">
+                    <div id="search">
+                        <input
+                            className="searchBox"
+                            type="search"
+                            autoComplete="off"
+                            placeholder={this.props.placeHolderText}
+                            value={this.state.textValue}
+                            onChange={this.handleChange}
+                            ref="filterTextInput"
+                        />
+                    </div>
                 </div>
-            </div>
         );
     }
 });
