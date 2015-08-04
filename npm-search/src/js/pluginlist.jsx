@@ -78,8 +78,9 @@ var PluginList = React.createClass({
         })();
 
         delay(function(){
-                    window.history.pushState({"filterText":filterText}, "", "?q=" + filterText);
-            }, 2000 );
+            window.history.pushState({"filterText":filterText}, "", "?q=" + filterText);
+            ga('send', 'pageview', '/index.html?q=' + filterText);
+        }, 2000 );
 
         var filters = PluginList.populateFilters(filterText);
 
