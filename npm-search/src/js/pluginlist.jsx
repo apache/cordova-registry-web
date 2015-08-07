@@ -1,105 +1,71 @@
 var React = require('react'),
     Plugin = require('./plugin.jsx');
+    EmptyPlugin = require('./empty-plugin.jsx');
 
-var timer=null;
+var InitialPageLength = 10;
+var PageExtensionLength = 20;
 
+/*
+    States site loaded
+ */
 var PluginList = React.createClass({
-    statics: {
-        contains: function(values, pluginInfo) {
-            var allValuesPresent = true;
-            if(values.length == 0) {
-                return allValuesPresent;
-            }
-            if(!pluginInfo) {
-                return false;
-            }
-            values.forEach(function(value) {
-                var valuePresent = false;
-                for(var index=0; index < pluginInfo.length; index++) {
-                    if(pluginInfo[index] && pluginInfo[index].toLowerCase().indexOf(value) > -1) {
-                        valuePresent = true;
-                    }
-                }
-                if(!valuePresent) {
-                    allValuesPresent = false;
-                }
-            });
-            return allValuesPresent;
-        },
-        populateFilters: function(filterText)
-        {
-            var searchStrings = filterText.split(" ");
-            var filters = [];
-            filters['platforms'] = [];
-            filters['authors'] = [];
-            filters['licenses'] = [];
-            filters['searchWords'] = [];
-
-            searchStrings.forEach(function(searchString) {
-                var keywords = searchString.split(":");
-                if(keywords.length == 1) {
-                    var param = keywords[0].trim();
-                    if(param) {
-                        filters['searchWords'].push(param);
-                    }
-                }
-                else if(keywords[1].trim()) {
-                    var param = keywords[1].trim();
-                    switch(keywords[0]) {
-                        case 'platform':
-                            filters['platforms'].push(param);
-                            break;
-                        case 'author':
-                            filters['authors'].push(param);
-                            break;
-                        case 'license':
-                            filters['licenses'].push(param);
-                            break;
-                        default:
-                            filters['searchWords'].push(searchString);
-                    }
-                }
-                else {
-                    filters['searchWords'].push(searchString);
-                }
-            });
-            return filters;
-        }
+    getInitialState: function() {
+        return { bootstrapped: false }
+    },
+    componentWillReceiveProps: function() {
+        // Recieving a set of plugins
+        this.setState({
+            bootstrapped: true,
+            searchPage: 0
+        });
+    },
+    increaseSearchResults: function() {
+        this.setState({ searchPage: this.state.searchPage + 1 });
     },
     render: function() {
-        var plugins = [],
-            filterText = this.props.filterText.toLowerCase();
+        if (!this.state.bootstrapped) {
+            var emptyPluginList = [];
 
-        var delay = (function(){
-          return function(callback, ms){
-            clearTimeout (timer);
-            timer = setTimeout(callback, ms);
-          };
-        })();
+            for (var i = 0; i < InitialPageLength; i++) {
+                emptyPluginList.push(<EmptyPlugin key={"emptyPlugin" + i}/>)
+            };
 
-        delay(function(){
-            window.history.pushState({"filterText":filterText}, "", "?q=" + filterText);
-            ga('send', 'pageview', '/index.html?q=' + filterText);
-        }, 2000 );
-
-        var filters = PluginList.populateFilters(filterText);
-
-        this.props.plugins.forEach(function(plugin) {
-            var fullPluginText = plugin.name.concat(plugin.author, plugin.keywords, plugin.license, plugin.description);
-            if(PluginList.contains(filters['platforms'], plugin.keywords)
-                && PluginList.contains(filters['authors'], plugin.author)
-                && PluginList.contains(filters['licenses'], plugin.license)
-                && PluginList.contains(filters['searchWords'], fullPluginText)) {
-                    plugins.push(<Plugin plugin={plugin} key={plugin.author + plugin.name}/>);
+            return (
+                <div className="contentwrap">
+                    <ul className="pluginList">
+                        {emptyPluginList}
+                    </ul>
+                </div>
+            )
+        } else {
+            var plugins = this.props.plugins;
+            var showMore = null, visiblePlugins = [];
+            if (plugins.length - this.state.searchPage * PageExtensionLength > InitialPageLength) {
+                showMore =
+                    <div className="pluginCard" onClick={this.increaseSearchResults} style={{cursor: 'pointer'}}>
+                        <div style={{ display: 'table', width:100 + '%', minHeight: 5 + 'rem'}}>
+                            <div style={{ display: 'table-cell', verticalAlign: 'middle'}}>
+                                <div style={{textAlign: 'center'}}>Show More</div>
+                            </div>
+                        </div>
+                    </div>;
             }
-        }.bind(this));
-        return (
-            <div className="contentwrap">
-                <ul className="pluginList">
-                    {plugins}
-                </ul>
-            </div>
-        );
+            for (var i = 0; i < InitialPageLength + this.state.searchPage * PageExtensionLength; i++) {
+                if (plugins[i]) {
+                    visiblePlugins.push(<Plugin plugin={plugins[i]} key={i}/>);
+                } else {
+                    break;
+                }
+            };
+            return (
+                <div className="contentwrap">
+                    <ul className="pluginList">
+                        {visiblePlugins}
+                    </ul>
+                    {showMore}
+                </div>
+            );
+        }
     }
 });
 

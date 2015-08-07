@@ -3,6 +3,7 @@ var React           = window.React = require('react'), // assign it to window fo
     PluginList      = require('./pluginlist.jsx'),
     App             = {};
 
+var timer = null;
 var Constants = {
     DownloadCountBatch: 100,
     NpmSearchInitialSize: 500
@@ -22,19 +23,29 @@ var App = React.createClass({
             return {
                 plugins: [],
                 filterText: q,
-                placeHolderText: 'Loading...'
+                placeHolderText: 'Loading...',
+                searchResults: []
             }
         } else {
             return {
                 plugins: [],
                 filterText: '',
-                placeHolderText: 'Loading...'
+                placeHolderText: 'Loading...',
+                searchResults: []
             };
         }
     },
     handleUserInput: function(filterText) {
+        /* Routing logic */
+        var filterTextLowerCase = filterText.toLowerCase();
+        delay(function(){
+            window.history.pushState({"filterText":filterTextLowerCase}, "", "?q=" + filterTextLowerCase);
+            ga('send', 'pageview', '/index.html?q=' + filterTextLowerCase);
+        }, 2000 );
+
         this.setState({
-            filterText: filterText
+            filterText: filterText,
+            searchResults: App.filterPlugins(this.state.plugins, filterText)
         });
     },
     addCondition: function(condition) {
@@ -74,6 +85,83 @@ var App = React.createClass({
                 }
             }
             return dst;
+        },
+        tagOfficialPlugins: function() {
+
+        },
+        filterPlugins: function(plugins, filter) {
+            var contains = function(values, pluginInfo) {
+                var allValuesPresent = true;
+                if(values.length == 0) {
+                    return allValuesPresent;
+                }
+                if(!pluginInfo) {
+                    return false;
+                }
+                values.forEach(function(value) {
+                    var valuePresent = false;
+                    for(var index=0; index < pluginInfo.length; index++) {
+                        if(pluginInfo[index] && pluginInfo[index].toLowerCase().indexOf(value) > -1) {
+                            valuePresent = true;
+                        }
+                    }
+                    if(!valuePresent) {
+                        allValuesPresent = false;
+                    }
+                });
+                return allValuesPresent;
+            }
+            var populateFilters = function(filterText) {
+                var searchStrings = filterText.split(" ");
+                var filters = [];
+                filters['platforms'] = [];
+                filters['authors'] = [];
+                filters['licenses'] = [];
+                filters['searchWords'] = [];
+
+                searchStrings.forEach(function(searchString) {
+                    var keywords = searchString.split(":");
+                    if(keywords.length == 1) {
+                        var param = keywords[0].trim();
+                        if(param) {
+                            filters['searchWords'].push(param);
+                        }
+                    }
+                    else if(keywords[1].trim()) {
+                        var param = keywords[1].trim();
+                        switch(keywords[0]) {
+                            case 'platform':
+                                filters['platforms'].push(param);
+                                break;
+                            case 'author':
+                                filters['authors'].push(param);
+                                break;
+                            case 'license':
+                                filters['licenses'].push(param);
+                                break;
+                            default:
+                                filters['searchWords'].push(searchString);
+                        }
+                    }
+                    else {
+                        filters['searchWords'].push(searchString);
+                    }
+                });
+                return filters;
+            }
+            var results = [];
+            var filters = populateFilters(filter);
+            for (var i = 0; i < plugins.length; i++) {
+                var plugin = plugins[i];
+                var fullPluginText = plugin.name.concat(plugin.author, plugin.keywords, plugin.license, plugin.description);
+                if(contains(filters['platforms'], plugin.keywords)
+                    && contains(filters['authors'], plugin.author)
+                    && contains(filters['licenses'], plugin.license)
+                    && contains(filters['searchWords'], fullPluginText)) {
+                        results.push(plugin);
+                }
+            };
+            return results;
         }
     },
     componentDidMount: function() {
@@ -113,7 +201,8 @@ var App = React.createClass({
                             }
                         }
                         that.setState({
-                            plugins: plugins
+                            plugins: plugins,
+                            searchResults: App.filterPlugins(plugins, this.state.filterText)
                         });
                     }.bind(self), function() { console.log('xhr err'); });
                     packageNames = "";
@@ -159,13 +248,15 @@ var App = React.createClass({
                     this.setState({
                         plugins: plugins,
                         filterText: q,
-                        placeHolderText: 'Search ' + pluginCount + ' plugins...'
+                        placeHolderText: 'Search ' + pluginCount + ' plugins...',
+                        searchResults: App.filterPlugins(plugins, q)
                     });
                 }
                 else {
                     this.setState({
                         plugins: plugins,
-                        placeHolderText: 'Search ' + pluginCount + ' plugins...'
+                        placeHolderText: 'Search ' + pluginCount + ' plugins...',
+                        searchResults: plugins
                     });
                 }
                 getDownloadCount(plugins,this);
@@ -176,20 +267,17 @@ var App = React.createClass({
         return (
             <div>
                 <div id="headblock">
-                        <div id="topcontent">
-                            <div id="pluggy"></div>
-                            <div id="discovermessage"><h1>Search Cordova Plugins</h1></div>
-                        </div>
+                    <div id="topcontent">
+                        <div id="pluggy"></div>
+                        <div id="discovermessage"><h1>Search Cordova Plugins</h1></div>
+                    </div>
                     <SearchBar
                         initialValue={this.state.filterText}
                         placeHolderText={this.state.placeHolderText}
                         onUserInput={this.handleUserInput}
                     />
                 </div>
-                <PluginList
-                    plugins={this.state.plugins}
-                    filterText={this.state.filterText}
-                />
+                <PluginList plugins={this.state.searchResults} />
             </div>
         );
     }
@@ -198,6 +286,11 @@ var App = React.createClass({
 App.start = function() {
     React.render(<App />, document.getElementById('container'));
 };
+
+function delay(callback, ms){
+    clearTimeout (timer);
+    timer = setTimeout(callback, ms);
+}
 
 function xhrRequest(url, success, fail) {
     var xhr = new XMLHttpRequest();
