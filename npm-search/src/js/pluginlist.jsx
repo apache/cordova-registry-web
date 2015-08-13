@@ -93,6 +93,15 @@ var PluginList = React.createClass({
                     plugins.push(<Plugin plugin={plugin} key={plugin.author + plugin.name}/>);
             }
         }.bind(this));
+
+        if (plugins.length === 0 && filterText) {
+            plugins.push(
+                <div className="pluginEmptyMessage">
+                    No plugins found. Learn how to <a href="http://cordova.apache.org/docs/en/edge/guide_hybrid_plugins_index.md.html#Plugin%20Development%20Guide">create one</a>
+                </div>
+            );
+        }
+
         return (
             <div className="contentwrap">
                 <ul className="pluginList">
