@@ -12,6 +12,7 @@ var Plugin = React.createClass({
             license = license[0];
         }
         var downloadField;
+        var npmLink = 'https://www.npmjs.com/package/' + this.props.plugin.name;
 
         var classes = classNames({
             'pluginCard': true,
@@ -22,12 +23,13 @@ var Plugin = React.createClass({
             var downloadCount = this.props.plugin.downloadCount.toLocaleString();
             downloadField = <p><small> {downloadCount} downloads last month</small></p>;
         }
+
         return (
             <li>
                 <div className={classes}>
                     <div className="primaryContent">
                         <div className="header">
-                            <h3><a href={'https://www.npmjs.com/package/' + this.props.plugin.name} target="_blank">{this.props.plugin.name}</a></h3>
+                            <h3><a href={npmLink} onClick={trackOutboundLink.bind(this, npmLink)} target="_blank">{this.props.plugin.name}</a></h3>
                             <small className="pluginVersion">v{this.props.plugin.version}</small>
                             <small> by </small>
                             <small className="pluginAuthor">{this.props.plugin.author}</small>
@@ -47,5 +49,9 @@ var Plugin = React.createClass({
         )
     }
 });
+
+function trackOutboundLink(url) {
+    ga('send', 'event', 'outbound', 'click', url);
+}
 
 module.exports = Plugin;
