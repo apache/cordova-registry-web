@@ -175,7 +175,7 @@ var App = React.createClass({
             queryKeywords = "q=keywords:%22ecosystem:cordova%22",
             queryInitialSize = Constants.NpmSearchInitialSize;
 
-        xhrRequest(queryHost + "?" + queryFields + "&" + queryKeywords + "&size=" + queryInitialSize + "&start=0", function(xhrResult) {
+        xhrRequest(queryHost + "?" + queryFields + "&" + queryKeywords + "&size=" + queryInitialSize + "&start=0&sort=rating:desc", function(xhrResult) {
             plugins = xhrResult.results;
             pluginCount = xhrResult.total;
             if (pluginCount <= queryInitialSize) {
