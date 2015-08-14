@@ -7,6 +7,20 @@ var Plugin = React.createClass({
         return this.props.plugin !== nextProps.plugin;
     },
     render: function() {
+        if(!this.props.plugin) {
+            // Empty card with loading wheel
+            return (
+                <li>
+                    <div className="pluginCard">
+                        <div style={{ textAlign: 'center', height: 10 + "rem"}}>
+                            <span style={{ display: 'inline-block', height: 100 + "%", verticalAlign: 'middle'}} />
+                            <img style={{verticalAlign: 'middle'}} src="img/loading.gif" />
+                        </div>
+                    </div>
+                </li>
+            )
+        }
+
         var license = this.props.plugin.license;
         if (license && license.length > 1) {
             license = license[0];

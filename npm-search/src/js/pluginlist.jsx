@@ -1,6 +1,5 @@
 var React = require('react'),
     Plugin = require('./plugin.jsx');
-    EmptyPlugin = require('./empty-plugin.jsx');
 
 var InitialPageLength = 10;
 var PageExtensionLength = 20;
@@ -27,7 +26,7 @@ var PluginList = React.createClass({
             var emptyPluginList = [];
 
             for (var i = 0; i < InitialPageLength; i++) {
-                emptyPluginList.push(<EmptyPlugin key={"emptyPlugin" + i}/>)
+                emptyPluginList.push(<Plugin key={i}/>)
             };
 
             return (
