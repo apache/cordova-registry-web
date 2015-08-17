@@ -181,7 +181,7 @@ var App = React.createClass({
             if (pluginCount <= queryInitialSize) {
                 processPlugins.bind(self, officialPlugins, plugins)();
             } else {
-                xhrRequest(queryHost + "?" + queryFields + "&" + queryKeywords + "&size=" + (pluginCount - queryInitialSize) + "&start=" + queryInitialSize, function(xhrResult) {
+                xhrRequest(queryHost + "?" + queryFields + "&" + queryKeywords + "&size=" + (pluginCount - queryInitialSize) + "&start=" + queryInitialSize + "&sort=rating:desc", function(xhrResult) {
                         plugins = [].concat(plugins, xhrResult.results);
                         processPlugins.bind(self, officialPlugins, plugins)();
                 }, function() { console.log('xhr err'); });
@@ -200,6 +200,15 @@ var App = React.createClass({
                                 plugins[j].downloadCount = xhrResult[plugins[j].name].downloads;
                             }
                         }
+
+                        // If we were unable to do server side sorting because
+                        // we requested in multiple batches, do it in the client
+                        if(plugins.length > Constants.NpmSearchInitialSize) {
+                            plugins.sort(function(p1, p2) {
+                                return p2.downloadCount - p1.downloadCount;
+                            });
+                        }
+
                         that.setState({
                             plugins: plugins,
                             searchResults: App.filterPlugins(plugins, this.state.filterText)
