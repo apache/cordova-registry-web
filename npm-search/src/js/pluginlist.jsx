@@ -1,6 +1,5 @@
 var React = require('react'),
     Plugin = require('./plugin.jsx');
-    EmptyPlugin = require('./empty-plugin.jsx');
 
 var InitialPageLength = 10;
 var PageExtensionLength = 20;
@@ -27,7 +26,7 @@ var PluginList = React.createClass({
             var emptyPluginList = [];
 
             for (var i = 0; i < InitialPageLength; i++) {
-                emptyPluginList.push(<EmptyPlugin key={"emptyPlugin" + i}/>)
+                emptyPluginList.push(<Plugin key={i}/>)
             };
 
             return (
@@ -50,21 +49,32 @@ var PluginList = React.createClass({
                         </div>
                     </div>;
             }
-            for (var i = 0; i < InitialPageLength + this.state.searchPage * PageExtensionLength; i++) {
-                if (plugins[i]) {
-                    visiblePlugins.push(<Plugin plugin={plugins[i]} key={i}/>);
-                } else {
-                    break;
-                }
-            };
-            return (
-                <div className="contentwrap">
-                    <ul className="pluginList">
-                        {visiblePlugins}
-                    </ul>
-                    {showMore}
-                </div>
-            );
+
+            if (plugins.length === 0) {
+                return (
+                    <div className="contentwrap">
+                        <div className="pluginEmptyMessage">
+                            No plugins found. Learn how to <a href="http://cordova.apache.org/docs/en/edge/guide_hybrid_plugins_index.md.html#Plugin%20Development%20Guide">create one</a>
+                        </div>
+                    </div>
+                );
+            } else {
+                for (var i = 0; i < InitialPageLength + this.state.searchPage * PageExtensionLength; i++) {
+                    if (plugins[i]) {
+                        visiblePlugins.push(<Plugin plugin={plugins[i]} key={i}/>);
+                    } else {
+                        break;
+                    }
+                };
+                return (
+                    <div className="contentwrap">
+                        <ul className="pluginList">
+                            {visiblePlugins}
+                        </ul>
+                        {showMore}
+                    </div>
+                );
+            }
         }
     }
 });

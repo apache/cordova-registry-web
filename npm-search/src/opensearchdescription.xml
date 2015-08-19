@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<OpenSearchDescription xmlns="http://a9.com/-/spec/opensearch/1.1/">
+    <ShortName>Cordova Plugin NPM Search</ShortName>
+    <LongName>Cordova Plugin NPM Search</LongName>
+    <Description>Search for Cordova plugins hosted in NPM</Description>
+
+    <Url type="text/html" template="http://plugins.cordova.io/npm/index.html?q={searchTerms}">
+
+    <Image height="16" width="16" type="image/png">http://plugins.cordova.io/npm/img/favicon-16x16.png</Image>
+    <Image height="32" width="32" type="image/png">http://plugins.cordova.io/npm/img/favicon-32x32.png</Image>
+    <Image height="96" width="96" type="image/png">http://plugins.cordova.io/npm/img/favicon-96x96.png</Image>
+
+    <Query role="example" searchTerms="camera plugin"/>
+</OpenSearchDescription>
