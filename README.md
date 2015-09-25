@@ -15,7 +15,7 @@ We also need to install the `grunt-cli` and `couchapp` globally. Type `npm insta
 ### Clone Cordova-Registry repo
 If you are interested in publishing plugins to your local repo, you will need this repo.
 ```bash
-git clone https://git-wip-us.apache.org/repos/asf/cordova-registry-web.git
+git clone https://git-wip-us.apache.org/repos/asf/cordova-registry.git
 ```
 Navigate to the cordova-registry directory and run `npm install`.
 
