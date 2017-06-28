@@ -1,6 +1,12 @@
-Cordova Registry UI
+Cordova Registry Web
 ===================
-This repo contains the assets for [stage.plugins.cordova.io](http://stage.plugins.cordova.io). The site is located in the attachments folder. Below we go over the steps of getting setup, running locally and pushing to the server. The main UI files for the site can be found in the `attachments` directory. 
+
+
+### :warning: Deprecated! This repo is no longer maintained. Use at your own risk :warning:
+---
+
+
+This repo contains the assets for [stage.plugins.cordova.io](http://stage.plugins.cordova.io). The site is located in the attachments folder. Below we go over the steps of getting setup, running locally and pushing to the server. The main UI files for the site can be found in the `attachments` directory.
 
 Setup
 =====
@@ -10,7 +16,7 @@ git clone https://git-wip-us.apache.org/repos/asf/cordova-registry-web.git
 ```
 In your terminal, navigate to the cordova-registry-web directory and `npm install`. This will install the dependencies required to deploy locally.
 
-We also need to install the `grunt-cli` and `couchapp` globally. Type `npm install grunt-cli -g` and `npm install couchapp -g`. 
+We also need to install the `grunt-cli` and `couchapp` globally. Type `npm install grunt-cli -g` and `npm install couchapp -g`.
 
 ### Clone Cordova-Registry repo
 If you are interested in publishing plugins to your local repo, you will need this repo.
@@ -23,7 +29,7 @@ Navigate to the cordova-registry directory and run `npm install`.
 ```bash
 brew install couchdb
 ```
-Once installed, start CouchDB. You can do this by running `couchdb` in your terminal. 
+Once installed, start CouchDB. You can do this by running `couchdb` in your terminal.
 Go to `http://localhost:5984` in your browser to confirm it is working.
 
 ### Create databases in couch
